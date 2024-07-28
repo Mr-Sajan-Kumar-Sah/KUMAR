@@ -1,0 +1,283 @@
+/* Custom CSS */
+/* Home Section Styles */
+#home {
+    background: url('img/background.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+}
+
+#home .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#home img {
+    border: 5px solid #fff;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    animation: profileFadeIn 2s ease-in;
+}
+
+#home h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: textSlideIn 2s ease-in-out;
+}
+
+#home p {
+    font-size: 1.25rem;
+    animation: textFadeIn 2s ease-in 0.5s;
+}
+
+/* Profile Image Animation */
+@keyframes profileFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Text Animations */
+@keyframes textSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Additional Animations */
+@keyframes backgroundPulse {
+    0% {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Applying the additional animations to the home section */
+#home {
+    animation: backgroundPulse 5s infinite alternate;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+h1, h2, h3 {
+    font-family: 'Georgia', serif;
+    margin-bottom: 20px;
+}
+
+.container {
+    padding-top: 20px;
+}
+
+/* Navbar Styles */
+.navbar {
+    background: linear-gradient(45deg, #343a40, #6c757d);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.5s;
+}
+
+.navbar-brand {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item .nav-link {
+    font-size: 1.1rem;
+    padding: 15px;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #ffc107;
+    background-color: #444;
+    border-radius: 5px;
+}
+
+/* Section Styles */
+#home {
+    background: url('img/background.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    animation: fadeIn 2s ease-in;
+}
+
+#home h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#home p {
+    font-size: 1.25rem;
+}
+
+#resume, #projects, #contact {
+    background-color: white;
+    padding: 60px 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#resume:hover, #projects:hover, #contact:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#resume h2, #projects h2, #contact h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Card Styles */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.card-body:hover {
+    background-color: #f8f9fa;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+    transform: scale(1.05);
+}
+
+/* Form Styles */
+.form-group label {
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary {
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+footer a {
+    color: #ffc107;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Adding color transitions to sections */
+#home, #resume, #projects, #contact {
+    animation: colorChange 5s infinite alternate;
+}
+
+@keyframes colorChange {
+    0% {
+        background-color: #ffffff;
+    }
+    25% {
+        background-color: #f8f9fa;
+    }
+    50% {
+        background-color: #e9ecef;
+    }
+    75% {
+        background-color: #dee2e6;
+    }
+    100% {
+        background-color: #ced4da;
+    }
+}
