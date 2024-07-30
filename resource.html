@@ -7,10 +7,99 @@
     <title>Mr.Sajan</title>
     <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/newcss.css" />
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
-    />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+    <style>
+      /* Modal Styles */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+      }
+
+      .modal__content {
+        background-color: #fefefe;
+        margin: 5% auto; /* Centered with some margin */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+        max-height: 80vh; /* Limit height to 80% of viewport height */
+        overflow-y: auto; /* Add scroll if content is too long */
+        border-radius: 10px;
+      }
+
+      .modal__close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .modal__close:hover,
+      .modal__close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .modal__text-content {
+        white-space: pre-wrap; /* Preserve whitespace and line breaks */
+      }
+
+      /* Resource Grid Layout */
+      .resources__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .resource__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .resource__icon {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .resource__title {
+        margin-bottom: 10px;
+      }
+
+      .button--flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .button--flex:hover {
+        background-color: #0056b3;
+      }
+
+      .button__icon {
+        margin-left: 5px;
+      }
+    </style>
   </head>
 
   <body oncontextmenu="return false">
@@ -62,52 +151,102 @@
         </div>
       </nav>
     </header>
-    <!-- main-->
 
     <main class="main">
-     
-    <!--===================== Resources =====================-->
-<section class="resources section" id="resources">
-    <h2 class="section__title">Resources</h2>
-    <span class="section__subtitle">Viewable Files</span>
-  
-    <div class="resources__container container grid">
-      <!-- Resource 1: Embedded PDF -->
-      <div class="resource__item">
-        <i class="uil uil-file-alt resource__icon"></i>
-        <h3 class="resource__title">Sample PDF</h3>
-        <div class="resource__content">
-          <embed src="Resources/tree.pdf" type="application/pdf" width="100%" height="500px" />
+      <!--===================== Resources =====================-->
+      <section class="resources section" id="resources">
+        <h2 class="section__title">Resources</h2>
+        <span class="section__subtitle">Viewable Files</span>
+
+        <div class="resources__container container grid">
+          <!-- Generate 20 buttons dynamically -->
+          <!-- This can be done manually or using a server-side script. Here's an example for manual addition -->
+          <div class="resource__item">
+            <i class="uil uil-file-alt resource__icon"></i>
+            <h3 class="resource__title">Numpy</h3>
+            <button class="button button--flex" data-file="Resources/numpy.text">
+              Open
+              <i class="uil uil-open button__icon"></i>
+            </button>
+          </div>
+
+          <div class="resource__item">
+            <i class="uil uil-file-alt resource__icon"></i>
+            <h3 class="resource__title">Pandas</h3>
+            <button class="button button--flex" data-file="Resources/">
+              Open
+              <i class="uil uil-open button__icon"></i>
+            </button>
+          </div>
+
+          <!-- Repeat above block for additional files up to 20 -->
+          <!-- Example for next files -->
+          <div class="resource__item">
+            <i class="uil uil-file-alt resource__icon"></i>
+            <h3 class="resource__title">Matplotlib</h3>
+            <button class="button button--flex" data-file="path/to/your-file20.txt">
+              Open
+              <i class="uil uil-open button__icon"></i>
+            </button>
+          </div>
+
+          <div class="resource__item">
+            <i class="uil uil-file-alt resource__icon"></i>
+            <h3 class="resource__title">Text File 20</h3>
+            <button class="button button--flex" data-file="path/to/your-file20.txt">
+              View File 20
+              <i class="uil uil-open button__icon"></i>
+            </button>
+          </div>
+
+          <div class="resource__item">
+            <i class="uil uil-file-alt resource__icon"></i>
+            <h3 class="resource__title">Text File 20</h3>
+            <button class="button button--flex" data-file="path/to/your-file20.txt">
+              View File 20
+              <i class="uil uil-open button__icon"></i>
+            </button>
+          </div>
+
+          <div class="resource__item">
+            <i class="uil uil-file-alt resource__icon"></i>
+            <h3 class="resource__title">Text File 20</h3>
+            <button class="button button--flex" data-file="path/to/your-file20.txt">
+              View File 20
+              <i class="uil uil-open button__icon"></i>
+            </button>
+          </div>
+
+          <div class="resource__item">
+            <i class="uil uil-file-alt resource__icon"></i>
+            <h3 class="resource__title">Text File 20</h3>
+            <button class="button button--flex" data-file="path/to/your-file20.txt">
+              View File 20
+              <i class="uil uil-open button__icon"></i>
+            </button>
+          </div>
+
+          <div class="resource__item">
+            <i class="uil uil-file-alt resource__icon"></i>
+            <h3 class="resource__title">Text File 20</h3>
+            <button class="button button--flex" data-file="path/to/your-file20.txt">
+              View File 20
+              <i class="uil uil-open button__icon"></i>
+            </button>
+          </div>
+
+          <div class="resource__item">
+            <i class="uil uil-file-alt resource__icon"></i>
+            <h3 class="resource__title">Text File 20</h3>
+            <button class="button button--flex" data-file="path/to/your-file20.txt">
+              View File 20
+              <i class="uil uil-open button__icon"></i>
+            </button>
+          </div>
         </div>
-      </div>
-  
-      <!-- Resource 2: Jupyter Notebook Link -->
-      <!-- Jupyter Notebook Link -->
-<div class="resource__item">
-    <i class="uil uil-file-alt resource__icon"></i>
-    <h3 class="resource__title">Sample Jupyter Notebook</h3>
-    <a href="https://github.com/Mr-Sajan-Kumar-Sah/KUMAR/blob/main/Resources/numpy.ipynb" class="button button--flex" target="_blank">
-      View Notebook
-      <i class="uil uil-open button__icon"></i>
-    </a>
-  </div>
 
-  <!-- Jupyter Notebook Link -->
-<div class="resource__item">
-    <i class="uil uil-file-alt resource__icon"></i>
-    <h3 class="resource__title">Sample Jupyter Notebook</h3>
-    <a href="https://mybinder.org/v2/gh/Mr-Sajan-Kumar-Sah/KUMAR/blob/main/Resources/numpy.ipynb/main" class="button button--flex" target="_blank">
-      Open in Binder
-      <i class="uil uil-open button__icon"></i>
-    </a>
-  </div>
-  
-  
-  </section>
-  
-
-      
-     
+        
+      </section>
 
       <!--===================== Contact Me =====================-->
       <section class="contact section" id="contact">
@@ -118,34 +257,27 @@
           <div>
             <div class="contact__information">
               <i class="uil uil-calling contact__icon"></i>
-
               <div>
                 <h3 class="contact__title">Contact Me</h3>
-                <span class="contact__subtitle"
-                  ><a href="tel:6362243314"></a>+919337804460</span
-                >
+                <span class="contact__subtitle">
+                  <a href="tel:6362243314"></a>+919337804460
+                </span>
               </div>
             </div>
 
             <div class="contact__information">
               <i class="uil uil-envelope-minus contact__icon"></i>
-
               <div>
                 <h3 class="contact__title">Email</h3>
-                <span class="contact__subtitle"
-                  >sajansah205@gmail.com</span
-                >
+                <span class="contact__subtitle">sajansah205@gmail.com</span>
               </div>
             </div>
 
             <div class="contact__information">
               <i class="uil uil-map-marker contact__icon"></i>
-
               <div>
                 <h3 class="contact__title">Location</h3>
-                <span class="contact__subtitle"
-                  >Janakpur, Nepal</span
-                >
+                <span class="contact__subtitle">Janakpur, Nepal</span>
               </div>
             </div>
           </div>
@@ -165,20 +297,11 @@
 
             <div class="contact__content">
               <label for="" class="content__label">Message</label>
-              <textarea
-                name=""
-                id=""
-                cols="0"
-                rows="7"
-                class="contact__input"
-              ></textarea>
+              <textarea name="" id="" cols="0" rows="7" class="contact__input"></textarea>
             </div>
 
             <div>
-              <a
-                href=" mailto: sajansah205@gmail.com?subject=Type Here! &body=Srry"
-                class="button button--flex"
-              >
+              <a href="mailto:sajansah205@gmail.com?subject=Type Here!&body=Srry" class="button button--flex">
                 Send Message
                 <i class="uil uil-message button__icon"></i>
               </a>
@@ -194,38 +317,21 @@
         <div class="footer__container container grid">
           <div>
             <h1 class="footer__title">Mr.Sajan Sah</h1>
-            <span class="footer__subtitle"
-              >Computer Science Engineering Student</span
-            >
+            <span class="footer__subtitle">Computer Science Engineering Student</span>
           </div>
 
           <ul class="footer__links">
-            <li>
-              <a href="#qualification" class="footer__link">Qualification</a>
-            </li>
-            <li>
-              <a href="#portfolio" class="footer__link">Portfolio</a>
-            </li>
-            <li>
-              <a href="#contact" class="footer__link">Contact-Me</a>
-            </li>
+            <li><a href="#qualification" class="footer__link">Qualification</a></li>
+            <li><a href="#portfolio" class="footer__link">Portfolio</a></li>
+            <li><a href="#contact" class="footer__link">Contact-Me</a></li>
           </ul>
 
           <div class="footer__socials">
-            <a
-              href="#"
-              class="footer__social"
-              target="__blank"
-            >
-            <i class="fa-brands fa-instagram"></i>
+            <a href="#" class="footer__social" target="__blank">
+              <i class="fa-brands fa-instagram"></i>
             </a>
-
-            <a
-              href="#"
-              target="__blank"
-              class="footer__social"
-            >
-            <i class="fa-brands fa-x-twitter"></i>
+            <a href="#" target="__blank" class="footer__social">
+              <i class="fa-brands fa-x-twitter"></i>
             </a>
           </div>
         </div>
@@ -238,6 +344,51 @@
     <a href="#" class="scrollup" id="scroll-up">
       <i class="uil uil-arrow-up scrollup__icon"></i>
     </a>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal__content">
+        <span class="modal__close">&times;</span>
+        <div id="modal-text-content" class="modal__text-content"></div>
+      </div>
+    </div>
+
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("modal__close")[0];
+
+      // Get the modal text content container
+      var modalTextContent = document.getElementById("modal-text-content");
+
+      // Add click event listeners to all buttons
+      document.querySelectorAll('.button[data-file]').forEach(button => {
+        button.addEventListener('click', function() {
+          var filePath = this.getAttribute('data-file');
+          fetch(filePath)
+            .then(response => response.text())
+            .then(data => {
+              modalTextContent.textContent = data;
+              modal.style.display = "block";
+            })
+            .catch(error => console.error('Error loading the text file:', error));
+        });
+      });
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
 
     <script type="text/javascript" src="assets/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/2205d59d52.js" crossorigin="anonymous"></script>
