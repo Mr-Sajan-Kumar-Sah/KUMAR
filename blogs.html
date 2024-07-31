@@ -1,264 +1,284 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mr.Sajan</title>
-    <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="assets/newcss.css" />
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mr.Sajan</title>
+  <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="assets/newcss.css" />
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
 
-      .blog {
-        background: #f9f9f9;
-        padding: 20px;
-      }
+    .blog {
+      background: #f9f9f9;
+      padding: 20px;
+    }
 
-      .blog__title {
-        font-size: 2em;
-        margin-bottom: 10px;
-      }
+    .blog__title {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
 
-      .blog__post {
-        background: #fff;
-        margin-bottom: 20px;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
+    .blog__post {
+      background: #fff;
+      margin-bottom: 20px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-      .blog__post-title {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-      }
+    .blog__post-title {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
 
-      .blog__post-date {
-        font-size: 0.9em;
-        color: #888;
-        margin-bottom: 10px;
-      }
+    .blog__post-date {
+      font-size: 0.9em;
+      color: #888;
+      margin-bottom: 10px;
+    }
 
-      .blog__post-content {
-        font-size: 1em;
-        color: #333;
-      }
-    </style>
-  </head>
+    .blog__post-content {
+  font-size: 1.2em; /* Increase the font size */
+  color: #333;
+  height: 400px; /* Increase the height of the box */
+  overflow-y: scroll; /* Keep vertical scrolling */
+  padding: 20px; /* Increase padding inside the box */
+  border: 1px solid #ddd;
+  background: #fefefe;
+  white-space: pre-wrap; /* Preserve whitespace and line breaks */
+}
 
-  <body oncontextmenu="return false">
-    <header class="header" id="header">
-      <nav class="nav container">
-        <a href="#" class="nav__logo">Mr.Sajan Sah</a>
-        <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list grid">
-            <li class="nav__item">
-              <a href="#home" class="nav__link active-link">
-                <i class="uil uil-estate nav__icon"></i>Home
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#about" class="nav__link">
-                <i class="uil uil-user nav__icon"></i>About
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#skills" class="nav__link">
-                <i class="uil uil-file-alt nav__icon"></i>Skills
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#qualification" class="nav__link">
-                <i class="uil uil-briefcase-alt nav__icon"></i>Qualification
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#portfolio" class="nav__link">
-                <i class="uil uil-scenery nav__icon"></i>Projects
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#blog" class="nav__link">
-                <i class="uil uil-pen nav__icon"></i>Blog
-              </a>
-            </li>
-            <li class="nav__item">
-              <a href="#contact" class="nav__link">
-                <i class="uil uil-message nav__icon"></i>Contact-Me
-              </a>
-            </li>
-          </ul>
-          <i class="uil uil-times nav__close" id="nav-close"></i>
+  </style>
+</head>
+
+<body oncontextmenu="return false">
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo">Mr.Sajan Sah</a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list grid">
+          <li class="nav__item">
+            <a href="#home" class="nav__link active-link">
+              <i class="uil uil-estate nav__icon"></i>Home
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#about" class="nav__link">
+              <i class="uil uil-user nav__icon"></i>About
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#skills" class="nav__link">
+              <i class="uil uil-file-alt nav__icon"></i>Skills
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#qualification" class="nav__link">
+              <i class="uil uil-briefcase-alt nav__icon"></i>Qualification
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#portfolio" class="nav__link">
+              <i class="uil uil-scenery nav__icon"></i>Projects
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#blog" class="nav__link">
+              <i class="uil uil-pen nav__icon"></i>Blog
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="#contact" class="nav__link">
+              <i class="uil uil-message nav__icon"></i>Contact-Me
+            </a>
+          </li>
+        </ul>
+        <i class="uil uil-times nav__close" id="nav-close"></i>
+      </div>
+      <div class="nav__btns">
+        <i class="uil uil-moon change-theme" id="theme-button"></i>
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="uil uil-apps"></i>
         </div>
-        <div class="nav__btns">
-          <i class="uil uil-moon change-theme" id="theme-button"></i>
-          <div class="nav__toggle" id="nav-toggle">
-            <i class="uil uil-apps"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="blog section" id="blog">
+      <h2 class="section__title">My Blog</h2>
+      <span class="section__subtitle">Daily learnings in Machine Learning</span>
+
+      <div class="blog__container container grid">
+        <div class="blog__post">
+          <h3 class="blog__post-title">Adaboost Algorithm Explained</h3>
+          <span class="blog__post-date">August 1, 2024</span>
+
+          <div class="blog__post-content" id="blog-content">
+            <!-- Content will be loaded here -->
           </div>
         </div>
-      </nav>
-    </header>
 
-    <main class="main">
-      <section class="blog section" id="blog">
-        <h2 class="section__title">My Blog</h2>
-        <span class="section__subtitle">Daily learnings in Machine Learning</span>
+        <!-- Add more blog posts here -->
 
-        <div class="blog__container container grid">
-          <div class="blog__post">
-            <h3 class="blog__post-title">Introduction to Machine Learning</h3>
-            <span class="blog__post-date">August 1, 2024</span>
-            <p class="blog__post-content">
-              Today, I started my journey into Machine Learning. I learned about the basics of ML, including the definition and different types of learning algorithms.
-            </p>
-          </div>
+      </div>
+    </section>
 
-          <!-- Add more blog posts here -->
-
-        </div>
-      </section>
-
-      <section class="contact section" id="contact">
-        <h2 class="section__title">Contact Me</h2>
-        <span class="section__subtitle">Get in touch</span>
-        <div class="contact__container container grid">
-          <div>
-            <div class="contact__information">
-              <i class="uil uil-calling contact__icon"></i>
-              <div>
-                <h3 class="contact__title">Contact Me</h3>
-                <span class="contact__subtitle">
-                  <a href="tel:6362243314"></a>+919337804460
-                </span>
-              </div>
-            </div>
-
-            <div class="contact__information">
-              <i class="uil uil-envelope-minus contact__icon"></i>
-              <div>
-                <h3 class="contact__title">Email</h3>
-                <span class="contact__subtitle">sajansah205@gmail.com</span>
-              </div>
-            </div>
-
-            <div class="contact__information">
-              <i class="uil uil-map-marker contact__icon"></i>
-              <div>
-                <h3 class="contact__title">Location</h3>
-                <span class="contact__subtitle">Janakpur, Nepal</span>
-              </div>
+    <section class="contact section" id="contact">
+      <h2 class="section__title">Contact Me</h2>
+      <span class="section__subtitle">Get in touch</span>
+      <div class="contact__container container grid">
+        <div>
+          <div class="contact__information">
+            <i class="uil uil-calling contact__icon"></i>
+            <div>
+              <h3 class="contact__title">Contact Me</h3>
+              <span class="contact__subtitle">
+                <a href="tel:6362243314"></a>+919337804460
+              </span>
             </div>
           </div>
 
-          <form action="" class="contact__form grid">
-            <div class="contact__inputs grid">
-              <div class="contact__content">
-                <label for="" class="content__label">Name</label>
-                <input type="text" class="contact__input" />
-              </div>
+          <div class="contact__information">
+            <i class="uil uil-envelope-minus contact__icon"></i>
+            <div>
+              <h3 class="contact__title">Email</h3>
+              <span class="contact__subtitle">sajansah205@gmail.com</span>
+            </div>
+          </div>
 
-              <div class="contact__content">
-                <label for="" class="content__label">Email</label>
-                <input type="Email" class="contact__input" />
-              </div>
+          <div class="contact__information">
+            <i class="uil uil-map-marker contact__icon"></i>
+            <div>
+              <h3 class="contact__title">Location</h3>
+              <span class="contact__subtitle">Janakpur, Nepal</span>
+            </div>
+          </div>
+        </div>
+
+        <form action="" class="contact__form grid">
+          <div class="contact__inputs grid">
+            <div class="contact__content">
+              <label for="" class="content__label">Name</label>
+              <input type="text" class="contact__input" />
             </div>
 
             <div class="contact__content">
-              <label for="" class="content__label">Message</label>
-              <textarea name="" id="" cols="0" rows="7" class="contact__input"></textarea>
+              <label for="" class="content__label">Email</label>
+              <input type="Email" class="contact__input" />
             </div>
+          </div>
 
-            <div>
-              <a href="mailto:sajansah205@gmail.com?subject=Type Here!&body=Srry" class="button button--flex">
-                Send Message
-                <i class="uil uil-message button__icon"></i>
-              </a>
-            </div>
-          </form>
-        </div>
-      </section>
-    </main>
+          <div class="contact__content">
+            <label for="" class="content__label">Message</label>
+            <textarea name="" id="" cols="0" rows="7" class="contact__input"></textarea>
+          </div>
 
-    <footer class="footer">
-      <div class="footer__bg">
-        <div class="footer__container container grid">
           <div>
-            <h1 class="footer__title">Mr.Sajan Sah</h1>
-            <span class="footer__subtitle">Computer Science Engineering Student</span>
-          </div>
-
-          <ul class="footer__links">
-            <li><a href="#qualification" class="footer__link">Qualification</a></li>
-            <li><a href="#portfolio" class="footer__link">Portfolio</a></li>
-            <li><a href="#contact" class="footer__link">Contact-Me</a></li>
-          </ul>
-
-          <div class="footer__socials">
-            <a href="#" class="footer__social" target="__blank">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="#" target="__blank" class="footer__social">
-              <i class="fa-brands fa-x-twitter"></i>
+            <a href="mailto:sajansah205@gmail.com?subject=Type Here!&body=Srry" class="button button--flex">
+              Send Message
+              <i class="uil uil-message button__icon"></i>
             </a>
           </div>
-        </div>
-        <p class="footer__copy">&#169; sajankumar.com.np. All right reserved</p>
+        </form>
       </div>
-    </footer>
+    </section>
+  </main>
 
-    <a href="#" class="scrollup" id="scroll-up">
-      <i class="uil uil-arrow-up scrollup__icon"></i>
-    </a>
+  <footer class="footer">
+    <div class="footer__bg">
+      <div class="footer__container container grid">
+        <div>
+          <h1 class="footer__title">Mr.Sajan Sah</h1>
+          <span class="footer__subtitle">Computer Science Engineering Student</span>
+        </div>
 
-    <script>
-      const navMenu = document.getElementById('nav-menu'),
-            navToggle = document.getElementById('nav-toggle'),
-            navClose = document.getElementById('nav-close')
+        <ul class="footer__links">
+          <li><a href="#qualification" class="footer__link">Qualification</a></li>
+          <li><a href="#portfolio" class="footer__link">Portfolio</a></li>
+          <li><a href="#contact" class="footer__link">Contact-Me</a></li>
+        </ul>
 
-      if (navToggle) {
-        navToggle.addEventListener('click', () => {
-          navMenu.classList.add('show-menu')
+        <div class="footer__socials">
+          <a href="#" class="footer__social" target="__blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="#" target="__blank" class="footer__social">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+      <p class="footer__copy">&#169; sajankumar.com.np. All rights reserved</p>
+    </div>
+  </footer>
+
+  <a href="#" class="scrollup" id="scroll-up">
+    <i class="uil uil-arrow-up scrollup__icon"></i>
+  </a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fetch the content from the text file
+      fetch('Resources/numpy.text')
+        .then(response => response.text())
+        .then(text => {
+          // Insert the content into the blog post container
+          document.getElementById('blog-content').textContent = text;
         })
-      }
+        .catch(error => console.error('Error loading the blog content:', error));
+    });
 
-      if (navClose) {
-        navClose.addEventListener('click', () => {
-          navMenu.classList.remove('show-menu')
-        })
-      }
+    // JavaScript for navigation toggle and theme switch
+    const navMenu = document.getElementById('nav-menu'),
+          navToggle = document.getElementById('nav-toggle'),
+          navClose = document.getElementById('nav-close')
 
-      const themeButton = document.getElementById('theme-button')
-      const darkTheme = 'dark-theme'
-      const iconTheme = 'uil-sun'
-
-      const selectedTheme = localStorage.getItem('selected-theme')
-      const selectedIcon = localStorage.getItem('selected-icon')
-
-      const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
-      const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun'
-
-      if (selectedTheme) {
-        document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-        themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
-      }
-
-      themeButton.addEventListener('click', () => {
-        document.body.classList.toggle(darkTheme)
-        themeButton.classList.toggle(iconTheme)
-        localStorage.setItem('selected-theme', getCurrentTheme())
-        localStorage.setItem('selected-icon', getCurrentIcon())
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.add('show-menu')
       })
+    }
 
-      const scrollUp = () => {
-        const scrollUp = document.getElementById('scroll-up')
-        if (this.scrollY >= 200) scrollUp.classList.add('show-scroll')
-        else scrollUp.classList.remove('show-scroll')
-      }
-      window.addEventListener('scroll', scrollUp)
-    </script>
-  </body>
+    if (navClose) {
+      navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu')
+      })
+    }
+
+    const themeButton = document.getElementById('theme-button')
+    const darkTheme = 'dark-theme'
+    const iconTheme = 'uil-sun'
+
+    const selectedTheme = localStorage.getItem('selected-theme')
+    const selectedIcon = localStorage.getItem('selected-icon')
+
+    const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun'
+
+    if (selectedTheme) {
+      document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+      themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
+    }
+
+    themeButton.addEventListener('click', () => {
+      document.body.classList.toggle(darkTheme)
+      themeButton.classList.toggle(iconTheme)
+      localStorage.setItem('selected-theme', getCurrentTheme())
+      localStorage.setItem('selected-icon', getCurrentIcon())
+    })
+
+    const scrollUp = () => {
+      const scrollUp = document.getElementById('scroll-up')
+      if (this.scrollY >= 200) scrollUp.classList.add('show-scroll')
+      else scrollUp.classList.remove('show-scroll')
+    }
+    window.addEventListener('scroll', scrollUp)
+  </script>
+</body>
 </html>
