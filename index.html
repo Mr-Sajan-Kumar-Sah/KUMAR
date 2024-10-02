@@ -30,8 +30,8 @@
               </a>
             </li>
             <li class="nav__item">
-              <a href="resource.html" class="nav__link">
-                <i class="uil uil-file-alt nav__icon"></i>Skills
+              <a href="ra.html" class="nav__link">
+                <i class="uil uil-file-alt nav__icon"></i>Dog
               </a>
             </li>
             <li class="nav__item">
@@ -49,6 +49,7 @@
                 <i class="uil uil-message nav__icon"></i>Contact-Me
               </a>
             </li>
+            <li><a href="#" id="resource-link">Resource (Login Required)</a></li>
           </ul>
           <i class="uil uil-times nav__close" id="nav-close"></i>
         </div>
@@ -65,6 +66,21 @@
     <!-- main-->
 
     <main class="main">
+
+
+
+      <div id="loginModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); padding:20px; border:1px solid #ccc; background-color:white;">
+        <h2>Login to Access Resource</h2>
+        <form id="loginForm">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" required>
+            <br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
       <!--========================= Home =====================-->
 
       <section class="home section" id="home">
@@ -568,7 +584,6 @@
                 </h3>
                 <p class="portfolio__description">
                   This placement prediction model is designed to predict whether a student will be placed in a job based on their IQ and CGPA. The model is trained using historical data, where it learned patterns that correlate these factors with successful job placements. Using scikit-learn, the model processes the IQ and CGPA inputs and predicts the likelihood of placement, providing a straightforward "Placed" or "Not Placed" outcome.
-
                 </p>
               
                 <a
@@ -580,6 +595,10 @@
                 </a>
               </div>
             </div>
+
+
+            
+      
             <!-- ------------------------portfollio 2-------------------- -->
 
 
@@ -735,5 +754,37 @@
     <script type="text/javascript" src="assets/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/2205d59d52.js" crossorigin="anonymous"></script>
     <script src="assets/ptj.js"></script>
+
+    <script>
+      // Function to show login modal when "Resource" is clicked
+      document.getElementById('resource-link').addEventListener('click', function(event) {
+          event.preventDefault();  // Prevent navigation
+          document.getElementById('loginModal').style.display = 'block';  // Show login modal
+      });
+
+      // Handle form submission for login
+      document.getElementById('loginForm').addEventListener('submit', async function(event) {
+          event.preventDefault();
+          
+          const id = document.getElementById('id').value;
+          const password = document.getElementById('password').value;
+
+          // Send login request to the back-end
+          const response = await fetch('/login', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ id, password })
+          });
+
+          const result = await response.json();
+          if (result.success) {
+              window.location.href = "/protected-resource";  // Redirect on successful login
+          } else {
+              alert('Invalid ID or Password');
+          }
+      });
+  </script>
   </body>
 </html>
