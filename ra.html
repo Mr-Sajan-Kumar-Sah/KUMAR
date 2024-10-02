@@ -77,10 +77,10 @@
         }
 
         const formData = new FormData();
-        formData.append('image', imageUpload);  // Update 'file' to 'image'
+        formData.append('image', imageUpload);  // Append the uploaded image
 
-        // Make a POST request to your Flask backend
-        const response = await fetch('https://dogs-wl11.onrender.com', {
+        // Make a POST request to the correct Flask backend endpoint
+        const response = await fetch('https://dogs-wl11.onrender.com/predict', {
             method: 'POST',
             body: formData
         });
@@ -95,5 +95,6 @@
         }
     });
 </script>
+
 </body>
 </html>
