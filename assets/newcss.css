@@ -1118,25 +1118,29 @@ img {
 
   .footer__container {
     grid-template-columns: repeat(5, 1fr);
-  }
+    max-width: 100%; /* Adjust this based on your layout */
+    margin: 0 auto; /* Center the content if it's smaller */
+}
 
-  .footer__bg {
+.footer__bg {
     padding: 4rem 0 3.5rem;
-  }
+    width: fit-content; /* Only take up the space the content needs */
+}
 
-  .footer__links {
+.footer__links {
     flex-direction: row;
     column-gap: 2rem;
-  }
-
-  .footer__socials {
-    justify-self: flex-end;
-  }
-
-  .footer__copy {
-    margin-top: 4.5rem;
-  }
 }
+
+.footer__socials {
+    justify-self: flex-end;
+}
+
+.footer__copy {
+    margin-top: 4.5rem;
+    text-align: center; /* Center text if you want */
+}
+
 
 /* For large devices */
 

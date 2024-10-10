@@ -229,24 +229,31 @@ h1, h2, h3 {
 }
 
 /* Footer Styles */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    transition: background-color 0.5s, color 0.5s;
+.footer__container {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 100%; /* Adjust this based on your layout */
+    margin: 0 auto; /* Center the content if it's smaller */
 }
 
-footer a {
-    color: #ffc107;
-    text-decoration: none;
-    transition: color 0.3s;
+.footer__bg {
+    padding: 4rem 0 3.5rem;
+    width: fit-content; /* Only take up the space the content needs */
 }
 
-footer a:hover {
-    color: #fff;
-    text-decoration: underline;
+.footer__links {
+    flex-direction: row;
+    column-gap: 2rem;
 }
+
+.footer__socials {
+    justify-self: flex-end;
+}
+
+.footer__copy {
+    margin-top: 4.5rem;
+    text-align: center; /* Center text if you want */
+}
+
 
 /* Animations */
 @keyframes fadeIn {
