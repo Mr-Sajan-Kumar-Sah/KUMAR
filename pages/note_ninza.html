@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mr.Sajan</title>
+    <link rel="stylesheet" href="../assets/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../assets/newcss.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <style>
+        header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    position: fixed; /* Ensures the header stays at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Optional: Add a background to prevent text from showing through */
+    z-index: 1000;
+}
+
+.content {
+    max-width: 800px;
+    margin: 100px auto 40px; /* Add top margin to account for the header's height */
+    text-align: center;
+    padding: 0 20px; /* Ensure some padding around the content */
+}
+
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .content img {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1rem;
+            color: #555;
+            text-align: justify;
+        }
+    </style>
+
+
+  </head>
+
+  <body oncontextmenu="return false">
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav__logo">Mr.Sajan Sah</a>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list grid">
+            <li class="nav__item">
+              <a href="#home" class="nav__link active-link">
+                <i class="uil uil-estate nav__icon"></i>Home
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#about" class="nav__link">
+                <i class="uil uil-user nav__icon"></i>About
+              </a>
+            </li>
+            
+            <li class="nav__item">
+              <a href="blogs.html" class="nav__link">
+                <i class="uil uil-briefcase-alt nav__icon"></i>Blogs
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="project.html" class="nav__link">
+                <i class="uil uil-scenery nav__icon"></i>Projects
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#contact" class="nav__link">
+                <i class="uil uil-message nav__icon"></i>Contact-Me
+              </a>
+            </li>
+          </ul>
+          <i class="uil uil-times nav__close" id="nav-close"></i>
+        </div>
+        <div class="nav__btns">
+          <!-- Theme change button -->
+          <i class="uil uil-moon change-theme" id="theme-button"></i>
+
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="uil uil-apps"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- main-->
+
+    <main class="main">
+      <!--========================= Home =====================-->
+      <div class="content">
+        <h1>Electric Race Car, Incubate Nepal</h1>
+        <img src="/assets/img/p.png" alt="Electric Race Car">
+        <p>
+            Incubate Nepal was an 8-week mentored research program, hosted by Harvard and MIT alumni. 
+            I was selected for this research from a competitive pool of 800+ applicants. 
+            Under the mentorship of MIT alumni Yaseem Rana, we built this remote control electric race car 
+            that was able to attain instantaneous 2g's vertical and 1.5g's horizontal acceleration. 
+            After thorough research on the aerodynamics and differential gears, we 3D modeled this race car. 
+            I assembled the electronics, fabricated the suspension mechanism and trapezoid suspension for the car. 
+            We 3D printed all the parts and completed the project with a successful test run.
+        </p>
+    </div>
+      
+
+    </main>
+
+    <!--================== Footer ===============-->
+    <div class="footer-bottom pt-5 pb-5">
+      <div class="container">
+        <div class="row text-center text-white">
+          <div class="col-12">
+            <div class="footer-bottom__copyright">
+              &emsp;&emsp;&COPY; Copyright 2024 sajankumar.com.np | Created by Mr.Sajan Sah<br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--================== SCROLL TOP ==================-->
+
+    <script type="text/javascript" src="../assets/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/2205d59d52.js" crossorigin="anonymous"></script>
+    <script src="../assets/ptj.js"></script>
+  </body>
+</html>
