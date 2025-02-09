@@ -45,6 +45,12 @@
                 <i class="uil uil-message nav__icon"></i>Contact-Me
               </a>
             </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link login-trigger">
+                  <i class="uil uil-message nav__icon"></i> Login
+              </a>
+          </li>
+          
           </ul>
           <i class="uil uil-times nav__close" id="nav-close"></i>
         </div>
@@ -142,6 +148,54 @@
           </div>
       </div>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const loginLink = document.querySelector(".login-trigger");  // Updated selector
+    
+    // Create a sliding password input bar
+    const passwordContainer = document.createElement("div");
+    passwordContainer.style.position = "fixed";
+    passwordContainer.style.top = "-60px";
+    passwordContainer.style.left = "50%";
+    passwordContainer.style.transform = "translateX(-50%)";
+    passwordContainer.style.background = "#fff";
+    passwordContainer.style.padding = "10px";
+    passwordContainer.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+    passwordContainer.style.transition = "top 0.5s ease-in-out";
+    passwordContainer.style.display = "flex";
+    passwordContainer.style.alignItems = "center";
+    passwordContainer.style.gap = "10px";
+    passwordContainer.style.zIndex = "1000";
+    document.body.appendChild(passwordContainer);
+    
+    const passwordInput = document.createElement("input");
+    passwordInput.type = "password";
+    passwordInput.placeholder = "Enter Password";
+    passwordInput.style.padding = "5px";
+    passwordContainer.appendChild(passwordInput);
+    
+    const submitBtn = document.createElement("button");
+    submitBtn.innerText = "Login";
+    submitBtn.style.padding = "5px 10px";
+    passwordContainer.appendChild(submitBtn);
+    
+    loginLink.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevents page reload
+        passwordContainer.style.top = "20px"; // Slide down password input
+    });
+    
+    submitBtn.addEventListener("click", function () {
+        if (passwordInput.value === "9898") {
+            window.location.href = "manage_blog.html"; // Redirect to the blog management page
+        } else {
+            alert("Incorrect Password");
+            passwordInput.value = "";
+        }
+    });
+});
+
+    </script>
+    
 
     <script type="text/javascript" src="assets/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/2205d59d52.js" crossorigin="anonymous"></script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Blog Posts</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        textarea, input, select { width: 100%; padding: 10px; margin-top: 5px; }
+        .toolbar button { margin: 5px; padding: 8px; cursor: pointer; }
+        .blog-list { margin-top: 20px; }
+        .blog-item { border: 1px solid #ddd; padding: 10px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Manage Blog Posts</h2>
+        <label>Title:</label>
+        <input type="text" id="title">
+        
+        <label>Image URL:</label>
+        <input type="text" id="imageUrl" placeholder="Enter image URL">
+        
+        <label>Description:</label>
+        <textarea id="description"></textarea>
+        
+        <label>Category:</label>
+        <select id="category">
+            <option>Technology</option>
+            <option>Business</option>
+            <option>Health</option>
+        </select>
+        
+        <div class="toolbar">
+            <button onclick="formatText('bold')">Bold</button>
+            <button onclick="formatText('italic')">Italic</button>
+            <button onclick="formatText('underline')">Underline</button>
+            <button onclick="addElement('img')">Image</button>
+            <button onclick="addElement('video')">Video</button>
+            <button onclick="addElement('code')">Code</button>
+        </div>
+        
+        <div contenteditable="true" id="editor" style="border: 1px solid #ccc; padding: 10px; min-height: 200px;"></div>
+        
+        <button onclick="savePost()">Save Post</button>
+        
+        <h3>Blog Posts</h3>
+        <div class="blog-list" id="blogList"></div>
+    </div>
+    
+    <script>
+        function formatText(command) {
+            document.execCommand(command, false, null);
+        }
+        
+        function addElement(type) {
+            let editor = document.getElementById('editor');
+            if (type === 'img') {
+                let url = prompt('Enter image URL:');
+                if (url) editor.innerHTML += `<img src="${url}" style="max-width:100%;">`;
+            } else if (type === 'video') {
+                let url = prompt('Enter YouTube embed link:');
+                if (url) editor.innerHTML += `<iframe width="100%" height="200" src="${url}" frameborder="0"></iframe>`;
+            } else if (type === 'code') {
+                let code = prompt('Enter code:');
+                if (code) editor.innerHTML += `<pre><code>${code}</code></pre>`;
+            }
+        }
+        
+        function savePost() {
+            let title = document.getElementById('title').value;
+            let imageUrl = document.getElementById('imageUrl').value;
+            let description = document.getElementById('description').value;
+            let category = document.getElementById('category').value;
+            let content = document.getElementById('editor').innerHTML;
+            
+            if (!title || !imageUrl || !description || !content) {
+                alert('All fields are required!');
+                return;
+            }
+            
+            let post = { title, imageUrl, description, category, content };
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.push(post);
+            localStorage.setItem('posts', JSON.stringify(posts));
+            
+            alert('Blog saved successfully!');
+            loadPosts();
+        }
+        
+        function loadPosts() {
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            let blogList = document.getElementById('blogList');
+            blogList.innerHTML = '';
+            
+            posts.forEach((post, index) => {
+                blogList.innerHTML += `
+                    <div class="blog-item">
+                        <h4>${post.title}</h4>
+                        <img src="${post.imageUrl}" style="max-width:100%;">
+                        <p><strong>Category:</strong> ${post.category}</p>
+                        <p>${post.description}</p>
+                        <button onclick="deletePost(${index})">Delete</button>
+                    </div>
+                `;
+            });
+        }
+        
+        function deletePost(index) {
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.splice(index, 1);
+            localStorage.setItem('posts', JSON.stringify(posts));
+            loadPosts();
+        }
+        
+        window.onload = loadPosts;
+    </script>
+</body>
+</html>

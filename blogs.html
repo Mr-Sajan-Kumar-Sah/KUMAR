@@ -1,187 +1,122 @@
-
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mr.Sajan</title>
-  <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="assets/newcss.css" />
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mr.Sajan</title>
+    <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/newcss.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; }
+      .container { max-width: 800px; margin: auto; }
+      .blog-card { border: 1px solid #ddd; padding: 10px; margin: 10px 0; cursor: pointer; }
+      .blog-card img { max-width: 100%; height: auto; }
+    </style>
+  </head>
 
-    .blog {
-      background: #f9f9f9;
-      padding: 20px;
-    }
-
-    .blog__title {
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
-
-    .blog__post {
-      background: #fff;
-      margin-bottom: 20px;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .blog__post-title {
-      font-size: 1.5em;
-      margin-bottom: 10px;
-    }
-
-    .blog__post-date {
-      font-size: 0.9em;
-      color: #888;
-      margin-bottom: 10px;
-    }
-
-    .blog__post-content {
-  font-size: 1.2em; /* Increase the font size */
-  color: #333;
-  height: 400px; /* Increase the height of the box */
-  overflow-y: scroll; /* Keep vertical scrolling */
-  padding: 20px; /* Increase padding inside the box */
-  border: 1px solid #ddd;
-  background: #fefefe;
-  white-space: pre-wrap; /* Preserve whitespace and line breaks */
-}
-
-  </style>
-</head>
-
-<body oncontextmenu="return false">
-  <header class="header" id="header">
-    <nav class="nav container">
-      <a href="#" class="nav__logo">Mr.Sajan Sah</a>
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list grid">
-          <li class="nav__item">
-            <a href="#home" class="nav__link active-link">
-              <i class="uil uil-estate nav__icon"></i>Home
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#about" class="nav__link">
-              <i class="uil uil-user nav__icon"></i>About
-            </a>
-          </li>
-        
-          <li class="nav__item">
-            <a href="#portfolio" class="nav__link">
-              <i class="uil uil-scenery nav__icon"></i>Projects
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#contact" class="nav__link">
-              <i class="uil uil-message nav__icon"></i>Contact-Me
-            </a>
-          </li>
-        </ul>
-        <i class="uil uil-times nav__close" id="nav-close"></i>
-      </div>
-      <div class="nav__btns">
-        <i class="uil uil-moon change-theme" id="theme-button"></i>
-        <div class="nav__toggle" id="nav-toggle">
-          <i class="uil uil-apps"></i>
+  <body oncontextmenu="return false">
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="index.html" class="nav__logo">Mr.Sajan Sah</a>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list grid">
+            <li class="nav__item">
+              <a href="index.html" class="nav__link active-link">
+                <i class="uil uil-estate nav__icon"></i>Home
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="/pages/about.html" class="nav__link">
+                <i class="uil uil-user nav__icon"></i>About
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="pages/certificates.html" class="nav__link">
+                <i class="uil uil-briefcase-alt nav__icon"></i>Certificates
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="projects.html" class="nav__link">
+                <i class="uil uil-scenery nav__icon"></i>Projects
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="pages/contact.html" class="nav__link">
+                <i class="uil uil-message nav__icon"></i>Contact-Me
+              </a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link login-trigger">
+                  <i class="uil uil-message nav__icon"></i> Login
+              </a>
+            </li>
+          </ul>
+          <i class="uil uil-times nav__close" id="nav-close"></i>
         </div>
-      </div>
-    </nav>
-  </header>
+        <div class="nav__btns">
+          <!-- Theme change button -->
+          <i class="uil uil-moon change-theme" id="theme-button"></i>
 
-  <main class="main">
-    <section class="blog section" id="blog">
-      <h2 class="section__title">My Blog</h2>
-      <span class="section__subtitle">Daily learnings in Machine Learning</span>
-
-      <div class="blog__container container grid">
-        <div class="blog__post">
-          <h3 class="blog__post-title">Adaboost Algorithm Explained</h3>
-          <span class="blog__post-date">August 1, 2024</span>
-
-          <div class="blog__post-content" id="blog-content">
-            <!-- Content will be loaded here -->
+          <div class="nav__toggle" id="nav-toggle">
+            <i class="uil uil-apps"></i>
           </div>
         </div>
+      </nav>
+    </header>
+    <!-- main-->
 
-        <!-- Add more blog posts here -->
-
+    <main class="main">
+      <div class="container">
+        <h2>Blogs</h2>
+        <div id="blogContainer"></div>
       </div>
-    </section>
+    </main>
 
-    <section class="contact section" id="contact">
-      <h2 class="section__title">Contact Me</h2>
-      <span class="section__subtitle">Get in touch</span>
-      <div class="contact__container container grid">
-        <div>
-          <div class="contact__information">
-            <i class="uil uil-calling contact__icon"></i>
-            <div>
-              <h3 class="contact__title">Contact Me</h3>
-              <span class="contact__subtitle">
-                <a href="tel:6362243314"></a>+919337804460
-              </span>
-            </div>
+    <!--================== Footer ===============-->
+    <div class="footer-bottom pt-5 pb-5" style="background-color: #222; color: white; text-align: center;">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-12">
+                  <div class="footer-bottom__copyright" style="font-size: 16px; font-weight: 500;">
+                      &copy; 2025 <a href="https://sajankumar.com.np" style="color: #fff; text-decoration: none; font-weight: bold;">sajankumar.com.np</a>
+                  </div>
+              </div>
           </div>
-
-          <div class="contact__information">
-            <i class="uil uil-envelope-minus contact__icon"></i>
-            <div>
-              <h3 class="contact__title">Email</h3>
-              <span class="contact__subtitle">sajansah205@gmail.com</span>
-            </div>
-          </div>
-
-          <div class="contact__information">
-            <i class="uil uil-map-marker contact__icon"></i>
-            <div>
-              <h3 class="contact__title">Location</h3>
-              <span class="contact__subtitle">Janakpur, Nepal</span>
-            </div>
-          </div>
-        </div>
-
-        <form action="" class="contact__form grid">
-          <div class="contact__inputs grid">
-            <div class="contact__content">
-              <label for="" class="content__label">Name</label>
-              <input type="text" class="contact__input" />
-            </div>
-
-            <div class="contact__content">
-              <label for="" class="content__label">Email</label>
-              <input type="Email" class="contact__input" />
-            </div>
-          </div>
-
-          <div class="contact__content">
-            <label for="" class="content__label">Message</label>
-            <textarea name="" id="" cols="0" rows="7" class="contact__input"></textarea>
-          </div>
-
-          <div>
-            <a href="mailto:sajansah205@gmail.com?subject=Type Here!&body=Srry" class="button button--flex">
-              Send Message
-              <i class="uil uil-message button__icon"></i>
-            </a>
-          </div>
-        </form>
       </div>
-    </section>
-  </main>
-
+    </div>
   
+    <script>
+      function loadBlogs() {
+          let posts = JSON.parse(localStorage.getItem('posts')) || [];
+          let blogContainer = document.getElementById('blogContainer');
+          blogContainer.innerHTML = '';
+          
+          posts.forEach((post, index) => {
+              let blogCard = document.createElement('div');
+              blogCard.className = 'blog-card';
+              blogCard.innerHTML = `
+                  <h3>${post.title}</h3>
+                  <img src="${post.imageUrl}" alt="Blog Image">
+                  <p>${post.description}</p>
+              `;
+              blogCard.onclick = function() {
+                  localStorage.setItem('selectedPost', JSON.stringify(post));
+                  window.location.href = 'blog_view.html';
+              };
+              blogContainer.appendChild(blogCard);
+          });
+      }
+      
+      window.onload = loadBlogs;
+    </script>
 
-  <a href="#" class="scrollup" id="scroll-up">
-    <i class="uil uil-arrow-up scrollup__icon"></i>
-  </a>
-
-</body>
+    <script type="text/javascript" src="assets/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/2205d59d52.js" crossorigin="anonymous"></script>
+    <script src="assets/ptj.js"></script>
+  </body>
 </html>
