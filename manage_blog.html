@@ -15,6 +15,7 @@
         .blog-list { margin-top: 20px; }
         .blog-item { border: 1px solid #ddd; padding: 10px; margin: 5px 0; }
     </style>
+    <script src="https://cdn.ckeditor.com/4.21.0/full/ckeditor.js"></script>
 </head>
 <body>
     <header class="header" id="header">
@@ -91,7 +92,8 @@
             <button onclick="addElement('video')">Video</button>
             <button onclick="addElement('code')">Code</button>
         </div>
-        <div contenteditable="true" id="editor" style="border: 1px solid #ccc; padding: 10px; min-height: 200px;"></div>
+        <label>Content:</label>
+        <textarea id="editor"></textarea>
         <button onclick="savePost()">Save Post</button>
         <h3>Blog Posts</h3>
         <div class="blog-list" id="blogList"></div>
@@ -210,6 +212,34 @@ document.addEventListener('DOMContentLoaded', () => {
     </script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
-    
+
+    <script>
+        // Initialize CKEditor
+        CKEDITOR.replace('editor');
+
+        function savePost() {
+            const title = document.getElementById('title').value;
+            const category = document.getElementById('category').value;
+            const content = CKEDITOR.instances.editor.getData();
+
+            if (!title || !content) {
+                alert('Please fill in all fields!');
+                return;
+            }
+
+            const postHTML = `
+                <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+                    <h4>${title}</h4>
+                    <p><strong>Category:</strong> ${category}</p>
+                    <div>${content}</div>
+                </div>
+            `;
+
+            document.getElementById('blogList').innerHTML += postHTML;
+            alert('Post saved successfully!');
+        }
+    </script>
+
+
 </body>
 </html>
