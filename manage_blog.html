@@ -6,10 +6,7 @@
     <title>Mr.Sajan</title>
     <link rel="stylesheet" href="assets/swiper-bundle.min.css" />
     <link rel="stylesheet" href="assets/newcss.css" />
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
-    />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         .container { max-width: 800px; margin: auto; }
@@ -19,84 +16,73 @@
         .blog-item { border: 1px solid #ddd; padding: 10px; margin: 5px 0; }
     </style>
 </head>
-
-
 <body>
-
     <header class="header" id="header">
         <nav class="nav container">
-          <a href="index.html" class="nav__logo">Mr.Sajan Sah</a>
-          <div class="nav__menu" id="nav-menu">
-            <ul class="nav__list grid">
-              <li class="nav__item">
-                <a href="index.html" class="nav__link active-link">
-                  <i class="uil uil-estate nav__icon"></i>Home
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="/pages/about.html" class="nav__link">
-                  <i class="uil uil-user nav__icon"></i>About
-                </a>
-              </li>
-              
-              <li class="nav__item">
-                <a href="pages/certificates.html" class="nav__link">
-                  <i class="uil uil-briefcase-alt nav__icon"></i>Certificates
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="projects.html" class="nav__link">
-                  <i class="uil uil-scenery nav__icon"></i>Projects
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="pages/contact.html" class="nav__link">
-                  <i class="uil uil-message nav__icon"></i>Contact-Me
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="blogs.html" class="nav__link">
-                  <i class="uil uil-message nav__icon"></i>Blogs
-                </a>
-              </li>
-              <li class="nav__item">
-                <a href="#" class="nav__link login-trigger">
-                    <i class="uil uil-message nav__icon"></i> Login
-                </a>
-            </li>
-            
-            </ul>
-            <i class="uil uil-times nav__close" id="nav-close"></i>
-          </div>
-          <div class="nav__btns">
-            <!-- Theme change button -->
-            <i class="uil uil-moon change-theme" id="theme-button"></i>
-  
-            <div class="nav__toggle" id="nav-toggle">
-              <i class="uil uil-apps"></i>
+            <a href="index.html" class="nav__logo">Mr.Sajan Sah</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list grid">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link active-link">
+                            <i class="uil uil-estate nav__icon"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/pages/about.html" class="nav__link">
+                            <i class="uil uil-user nav__icon"></i>About
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="pages/certificates.html" class="nav__link">
+                            <i class="uil uil-briefcase-alt nav__icon"></i>Certificates
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="projects.html" class="nav__link">
+                            <i class="uil uil-scenery nav__icon"></i>Projects
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="pages/contact.html" class="nav__link">
+                            <i class="uil uil-message nav__icon"></i>Contact-Me
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="blogs.html" class="nav__link">
+                            <i class="uil uil-message nav__icon"></i>Blogs
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link login-trigger">
+                            <i class="uil uil-message nav__icon"></i> Login
+                        </a>
+                    </li>
+                </ul>
+                <i class="uil uil-times nav__close" id="nav-close"></i>
             </div>
-          </div>
+            <div class="nav__btns">
+                <i class="uil uil-moon change-theme" id="theme-button"></i>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="uil uil-apps"></i>
+                </div>
+            </div>
         </nav>
-      </header>
+    </header>
 
     <div class="container">
         <h2>Manage Blog Posts</h2>
         <label>Title:</label>
         <input type="text" id="title">
-        
         <label>Image URL:</label>
         <input type="text" id="imageUrl" placeholder="Enter image URL">
-        
         <label>Description:</label>
         <textarea id="description"></textarea>
-        
         <label>Category:</label>
         <select id="category">
             <option>Technology</option>
             <option>Business</option>
             <option>Health</option>
         </select>
-        
         <div class="toolbar">
             <button onclick="formatText('bold')">Bold</button>
             <button onclick="formatText('italic')">Italic</button>
@@ -105,20 +91,22 @@
             <button onclick="addElement('video')">Video</button>
             <button onclick="addElement('code')">Code</button>
         </div>
-        
         <div contenteditable="true" id="editor" style="border: 1px solid #ccc; padding: 10px; min-height: 200px;"></div>
-        
         <button onclick="savePost()">Save Post</button>
-        
         <h3>Blog Posts</h3>
         <div class="blog-list" id="blogList"></div>
     </div>
-    
+
     <script>
+        // Define Firebase and Firestore variables globally
+        let db;
+
+        // Function to format text
         function formatText(command) {
             document.execCommand(command, false, null);
         }
-        
+
+        // Function to add elements (image, video, code)
         function addElement(type) {
             let editor = document.getElementById('editor');
             if (type === 'img') {
@@ -132,54 +120,96 @@
                 if (code) editor.innerHTML += `<pre><code>${code}</code></pre>`;
             }
         }
-        
-        function savePost() {
-            let title = document.getElementById('title').value;
-            let imageUrl = document.getElementById('imageUrl').value;
-            let description = document.getElementById('description').value;
-            let category = document.getElementById('category').value;
-            let content = document.getElementById('editor').innerHTML;
-            
+
+        // Function to save a blog post
+        async function savePost() {
+            const title = document.getElementById('title').value;
+            const imageUrl = document.getElementById('imageUrl').value;
+            const description = document.getElementById('description').value;
+            const category = document.getElementById('category').value;
+            const content = document.getElementById('editor').innerHTML;
+
             if (!title || !imageUrl || !description || !content) {
                 alert('All fields are required!');
                 return;
             }
-            
-            let post = { title, imageUrl, description, category, content };
-            let posts = JSON.parse(localStorage.getItem('posts')) || [];
-            posts.push(post);
-            localStorage.setItem('posts', JSON.stringify(posts));
-            
-            alert('Blog saved successfully!');
-            loadPosts();
+
+            const post = { title, imageUrl, description, category, content };
+
+            console.log('Saving post:', post); // Debugging
+
+            try {
+                const docRef = await db.collection('blogs').add(post);
+                console.log('Blog saved with ID:', docRef.id); // Debugging
+                alert('Blog saved successfully!');
+                loadPosts();
+            } catch (error) {
+                console.error('Error saving blog:', error);
+                alert('Failed to save blog. Check console for details.');
+            }
         }
-        
-        function loadPosts() {
-            let posts = JSON.parse(localStorage.getItem('posts')) || [];
-            let blogList = document.getElementById('blogList');
-            blogList.innerHTML = '';
-            
-            posts.forEach((post, index) => {
-                blogList.innerHTML += `
-                    <div class="blog-item">
-                        <h4>${post.title}</h4>
-                        <img src="${post.imageUrl}" style="max-width:100%;">
-                        <p><strong>Category:</strong> ${post.category}</p>
-                        <p>${post.description}</p>
-                        <button onclick="deletePost(${index})">Delete</button>
-                    </div>
-                `;
-            });
+
+        // Function to load blog posts
+        async function loadPosts() {
+            try {
+                const snapshot = await db.collection('blogs').get();
+                const blogList = document.getElementById('blogList');
+                blogList.innerHTML = '';
+
+                snapshot.forEach((doc) => {
+                    const post = doc.data();
+                    blogList.innerHTML += `
+                        <div class="blog-item">
+                            <h4>${post.title}</h4>
+                            <img src="${post.imageUrl}" style="max-width:100%;">
+                            <p><strong>Category:</strong> ${post.category}</p>
+                            <p>${post.description}</p>
+                            <button onclick="deletePost('${doc.id}')">Delete</button>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error('Error loading blogs:', error);
+            }
         }
-        
-        function deletePost(index) {
-            let posts = JSON.parse(localStorage.getItem('posts')) || [];
-            posts.splice(index, 1);
-            localStorage.setItem('posts', JSON.stringify(posts));
-            loadPosts();
+
+        // Function to delete a blog post
+        async function deletePost(id) {
+            try {
+                await db.collection('blogs').doc(id).delete();
+                loadPosts();
+            } catch (error) {
+                console.error('Error deleting blog:', error);
+            }
         }
-        
-        window.onload = loadPosts;
+
+        // Initialize Firebase when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Your Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyBtxzo1ObhEb-gSG00qxeRBg9WHeuLk2rE",
+        authDomain: "webpage-d2496.firebaseapp.com",
+        projectId: "webpage-d2496",
+        storageBucket: "webpage-d2496.firebasestorage.app",
+        messagingSenderId: "921444545874",
+        appId: "1:921444545874:web:c77134d28bb7294742b68b",
+        measurementId: "G-0P5F4JSTHD"
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore(); // Ensure Firestore is initialized
+
+    // Debugging: Check Firebase initialization
+    console.log('Firebase initialized:', app);
+    console.log('Firestore instance:', db);
+
+    // Load posts when the page loads
+    loadPosts();
+});
+
     </script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
+    
 </body>
 </html>
