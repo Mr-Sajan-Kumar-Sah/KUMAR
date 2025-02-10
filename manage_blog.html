@@ -8,67 +8,40 @@
     <link rel="stylesheet" href="assets/newcss.css" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .container { max-width: 800px; margin: auto; }
+        body { font-family: Arial, sans-serif; margin: 0; display: flex; }
+        .sidebar { 
+            width: 300px; 
+            height: 100vh; 
+            overflow-y: auto; 
+            background-color: #f4f4f4; 
+            padding: 20px; 
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+            position: fixed; 
+            left: 0; 
+            top: 0; 
+        }
+        .container { 
+            flex: 1; 
+            margin-left: 320px; 
+            padding: 20px; 
+            max-width: 800px; 
+        }
         textarea, input, select { width: 100%; padding: 10px; margin-top: 5px; }
         .toolbar button { margin: 5px; padding: 8px; cursor: pointer; }
         .blog-list { margin-top: 20px; }
-        .blog-item { border: 1px solid #ddd; padding: 10px; margin: 5px 0; }
+        .blog-item { border: 1px solid #ddd; padding: 10px; margin: 5px 0; background-color: #fff; }
+        .blog-item img { max-width: 100%; height: auto; }
     </style>
+    <script src="https://cdn.ckeditor.com/4.21.0/full/ckeditor.js"></script>
 </head>
 <body>
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="index.html" class="nav__logo">Mr.Sajan Sah</a>
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list grid">
-                    <li class="nav__item">
-                        <a href="index.html" class="nav__link active-link">
-                            <i class="uil uil-estate nav__icon"></i>Home
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="/pages/about.html" class="nav__link">
-                            <i class="uil uil-user nav__icon"></i>About
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="pages/certificates.html" class="nav__link">
-                            <i class="uil uil-briefcase-alt nav__icon"></i>Certificates
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="projects.html" class="nav__link">
-                            <i class="uil uil-scenery nav__icon"></i>Projects
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="pages/contact.html" class="nav__link">
-                            <i class="uil uil-message nav__icon"></i>Contact-Me
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="blogs.html" class="nav__link">
-                            <i class="uil uil-message nav__icon"></i>Blogs
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#" class="nav__link login-trigger">
-                            <i class="uil uil-message nav__icon"></i> Login
-                        </a>
-                    </li>
-                </ul>
-                <i class="uil uil-times nav__close" id="nav-close"></i>
-            </div>
-            <div class="nav__btns">
-                <i class="uil uil-moon change-theme" id="theme-button"></i>
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class="uil uil-apps"></i>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Sidebar for Blog Posts -->
+    <div class="sidebar">
+        <h3>Blog Posts</h3>
+        <div class="blog-list" id="blogList"></div>
+    </div>
 
+    <!-- Main Content -->
     <div class="container">
         <h2>Manage Blog Posts</h2>
         <label>Title:</label>
@@ -91,10 +64,11 @@
             <button onclick="addElement('video')">Video</button>
             <button onclick="addElement('code')">Code</button>
         </div>
-        <div contenteditable="true" id="editor" style="border: 1px solid #ccc; padding: 10px; min-height: 200px;"></div>
+        <textarea id="editor"></textarea>
+        <script>
+            CKEDITOR.replace('editor');
+        </script>
         <button onclick="savePost()">Save Post</button>
-        <h3>Blog Posts</h3>
-        <div class="blog-list" id="blogList"></div>
     </div>
 
     <script>
@@ -129,7 +103,7 @@
             const category = document.getElementById('category').value;
             const content = document.getElementById('editor').innerHTML;
 
-            if (!title || !imageUrl || !description || !content) {
+            if (!title || !imageUrl || !description || !editor) {
                 alert('All fields are required!');
                 return;
             }
@@ -184,33 +158,31 @@
         }
 
         // Initialize Firebase when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Your Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyBtxzo1ObhEb-gSG00qxeRBg9WHeuLk2rE",
-        authDomain: "webpage-d2496.firebaseapp.com",
-        projectId: "webpage-d2496",
-        storageBucket: "webpage-d2496.firebasestorage.app",
-        messagingSenderId: "921444545874",
-        appId: "1:921444545874:web:c77134d28bb7294742b68b",
-        measurementId: "G-0P5F4JSTHD"
-    };
+        document.addEventListener('DOMContentLoaded', () => {
+            // Your Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyBtxzo1ObhEb-gSG00qxeRBg9WHeuLk2rE",
+                authDomain: "webpage-d2496.firebaseapp.com",
+                projectId: "webpage-d2496",
+                storageBucket: "webpage-d2496.firebasestorage.app",
+                messagingSenderId: "921444545874",
+                appId: "1:921444545874:web:c77134d28bb7294742b68b",
+                measurementId: "G-0P5F4JSTHD"
+            };
 
-    // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    db = firebase.firestore(app);  // Ensure Firestore is properly initialized
+            // Initialize Firebase
+            const app = firebase.initializeApp(firebaseConfig);
+            db = firebase.firestore(app);  // Ensure Firestore is properly initialized
 
-    // Debugging: Check Firebase initialization
-    console.log('Firebase initialized:', app);
-    console.log('Firestore instance:', db);
+            // Debugging: Check Firebase initialization
+            console.log('Firebase initialized:', app);
+            console.log('Firestore instance:', db);
 
-    // Load posts when the page loads
-    loadPosts();
-});
-
+            // Load posts when the page loads
+            loadPosts();
+        });
     </script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore-compat.js"></script>
-    
 </body>
 </html>

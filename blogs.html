@@ -11,9 +11,66 @@
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
     />
-    
+
     <style>
-      /* Floating Modal Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #f9f9f9;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 15px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      #blogContainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .blog-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .blog-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .blog-card h3 {
+        margin: 15px;
+        font-size: 1.5rem;
+        color: #007bff;
+      }
+
+      .blog-card p {
+        margin: 15px;
+        font-size: 1rem;
+        color: #555;
+      }
+
       .modal {
         display: none; /* Initially hidden */
         position: fixed;
@@ -26,7 +83,7 @@
         justify-content: center;
         align-items: center;
       }
-      
+
       .modal-content {
         background: white;
         padding: 20px;
@@ -34,14 +91,16 @@
         border-radius: 10px;
         position: relative;
         text-align: center;
+        max-height: 80vh; /* Fixed height */
+        overflow-y: auto; /* Enables vertical scrolling */
       }
-      
+
       .modal-content img {
         max-width: 100%;
         height: auto;
         margin-top: 10px;
       }
-      
+
       .close-btn {
         position: absolute;
         top: 10px;
@@ -86,13 +145,12 @@
             </li>
             <li class="nav__item">
               <a href="#" class="nav__link login-trigger">
-                  <i class="uil uil-message nav__icon"></i> Login
+                <i class="uil uil-message nav__icon"></i> Login
               </a>
             </li>
           </ul>
           <i class="uil uil-times nav__close" id="nav-close"></i>
         </div>
-      
       </nav>
     </header>
 
@@ -106,11 +164,11 @@
     <!-- Floating Modal for Blog View -->
     <div id="blogModal" class="modal">
       <div class="modal-content">
-          <span class="close-btn">&times;</span>
-          <h2 id="modalTitle"></h2>
-          <img id="modalImage" src="" alt="Blog Image">
-          <p id="modalDescription"></p>
-          <div id="modalContent"></div>
+        <span class="close-btn">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <img id="modalImage" src="" alt="Blog Image" />
+        <p id="modalDescription"></p>
+        <div id="modalContent"></div>
       </div>
     </div>
 
@@ -119,13 +177,13 @@
       import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
       const firebaseConfig = {
-          apiKey: "AIzaSyBtxzo1ObhEb-gSG00qxeRBg9WHeuLk2rE",
-          authDomain: "webpage-d2496.firebaseapp.com",
-          projectId: "webpage-d2496",
-          storageBucket: "webpage-d2496.firebasestorage.app",
-          messagingSenderId: "921444545874",
-          appId: "1:921444545874:web:c77134d28bb7294742b68b",
-          measurementId: "G-0P5F4JSTHD"
+        apiKey: "AIzaSyBtxzo1ObhEb-gSG00qxeRBg9WHeuLk2rE",
+        authDomain: "webpage-d2496.firebaseapp.com",
+        projectId: "webpage-d2496",
+        storageBucket: "webpage-d2496.firebasestorage.app",
+        messagingSenderId: "921444545874",
+        appId: "1:921444545874:web:c77134d28bb7294742b68b",
+        measurementId: "G-0P5F4JSTHD",
       };
 
       const app = initializeApp(firebaseConfig);
@@ -133,48 +191,47 @@
 
       async function loadBlogs() {
         try {
-            const blogContainer = document.getElementById('blogContainer');
-            blogContainer.innerHTML = '';
+          const blogContainer = document.getElementById("blogContainer");
+          blogContainer.innerHTML = "";
 
-            const querySnapshot = await getDocs(collection(db, "blogs"));
-            querySnapshot.forEach((doc) => {
-                const post = doc.data();
-                const blogCard = document.createElement('div');
-                blogCard.className = 'blog-card';
-                blogCard.innerHTML = `
-                    <h3>${post.title}</h3>
-                    <img src="${post.imageUrl}" alt="Blog Image">
-                    <p>${post.description.substring(0, 100)}...</p>
-                `;
+          const querySnapshot = await getDocs(collection(db, "blogs"));
+          querySnapshot.forEach((doc) => {
+            const post = doc.data();
+            const blogCard = document.createElement("div");
+            blogCard.className = "blog-card";
+            blogCard.innerHTML = `
+              <h3>${post.title}</h3>
+              <img src="${post.imageUrl}" alt="Blog Image" />
+              <p>${post.description.substring(0, 100)}...</p>
+            `;
 
-                blogCard.onclick = () => {
-                    document.getElementById('modalTitle').innerText = post.title;
-                    document.getElementById('modalImage').src = post.imageUrl;
-                    document.getElementById('modalDescription').innerText = post.description;
-                    document.getElementById('modalContent').innerHTML = post.content || '';
-                    document.getElementById('blogModal').style.display = 'flex';
-                };
-
-                blogContainer.appendChild(blogCard);
-            });
-
-            document.querySelector('.close-btn').onclick = () => {
-                document.getElementById('blogModal').style.display = 'none';
+            blogCard.onclick = () => {
+              document.getElementById("modalTitle").innerText = post.title;
+              document.getElementById("modalImage").src = post.imageUrl;
+              document.getElementById("modalDescription").innerText = post.description;
+              document.getElementById("modalContent").innerHTML = post.content || "";
+              document.getElementById("blogModal").style.display = "flex";
             };
 
-            window.onclick = (event) => {
-                const modal = document.getElementById('blogModal');
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            };
+            blogContainer.appendChild(blogCard);
+          });
+
+          document.querySelector(".close-btn").onclick = () => {
+            document.getElementById("blogModal").style.display = "none";
+          };
+
+          window.onclick = (event) => {
+            const modal = document.getElementById("blogModal");
+            if (event.target === modal) {
+              modal.style.display = "none";
+            }
+          };
         } catch (error) {
-            console.error('Error loading blogs:', error);
+          console.error("Error loading blogs:", error);
         }
-    }
+      }
 
-    document.addEventListener("DOMContentLoaded", loadBlogs);
+      document.addEventListener("DOMContentLoaded", loadBlogs);
     </script>
-
   </body>
 </html>
