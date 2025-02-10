@@ -11,6 +11,49 @@
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
     />
+    <style>
+      /* Popup styling */
+      .popup-container {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        width: 300px;
+        text-align: center;
+        z-index: 1000;
+      }
+
+      .popup-container input {
+        width: 90%;
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .popup-container button {
+        margin: 10px 5px;
+        padding: 8px 12px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      .login-btn {
+        background: #28a745;
+        color: white;
+      }
+
+      .close-btn {
+        background: #dc3545;
+        color: white;
+      }
+    </style>
   </head>
 
   <body oncontextmenu="return false">
@@ -29,7 +72,6 @@
                 <i class="uil uil-user nav__icon"></i>About
               </a>
             </li>
-            
             <li class="nav__item">
               <a href="pages/certificates.html" class="nav__link">
                 <i class="uil uil-briefcase-alt nav__icon"></i>Certificates
@@ -51,11 +93,10 @@
               </a>
             </li>
             <li class="nav__item">
-              <a href="#" class="nav__link login-trigger">
-                  <i class="uil uil-message nav__icon"></i> Login
+              <a href="#" class="nav__link login-trigger" id="loginButton">
+                <i class="uil uil-message nav__icon"></i> Login
               </a>
-          </li>
-          
+            </li>
           </ul>
           <i class="uil uil-times nav__close" id="nav-close"></i>
         </div>
@@ -69,16 +110,26 @@
         </div>
       </nav>
     </header>
-    <!-- main-->
 
+    <!-- Main Content -->
     <main class="main">
+      <!-- Login Popup -->
+      <div class="popup-container" id="loginPopup">
+        <h3>Login</h3>
+        <input type="email" placeholder="Enter your email" id="email" />
+        <input type="password" placeholder="Enter your password" id="password" />
+        <br />
+        <button class="login-btn">Login</button>
+        <button class="close-btn" id="closePopup">Close</button>
+      </div>
 
+      <!-- Home Section -->
       <section class="home section" id="home">
         <div class="home__container container grid">
           <div class="home__content grid">
             <div class="home__social">
               <a
-                href="https://www.linkedin.com/in/sajan-sah-7b5713257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "
+                href="https://www.linkedin.com/in/sajan-sah-7b5713257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                 target="_blank"
                 class="home__social-icon"
               >
@@ -133,75 +184,103 @@
                 A third-year undergraduate engineering student at
                 <strong>Kalinga Institue Of Industrial Technology </strong>, Bhubneswar.
               </p>
-              <a href="https://wa.me/919337804460?text=Hello,%20I%20would%20like%20to%20get%20in%20touch%20with%20you." class="button button--flex">
-    Whatsapp me<i class="uil uil-message button__icon"></i>
+              <a
+                href="https://wa.me/919337804460?text=Hello,%20I%20would%20like%20to%20get%20in%20touch%20with%20you."
+                class="button button--flex"
+              >
+                Whatsapp me<i class="uil uil-message button__icon"></i>
               </a>
             </div>
           </div>
+        </div>
       </section>
     </main>
 
-    <!--================== Footer ===============-->
-    <div class="footer-bottom pt-5 pb-5" style="background-color: #222; color: white; text-align: center;">
+    <!-- Footer -->
+    <div
+      class="footer-bottom pt-5 pb-5"
+      style="background-color: #222; color: white; text-align: center"
+    >
       <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-12">
-                  <div class="footer-bottom__copyright" style="font-size: 16px; font-weight: 500;">
-                      &copy; 2025 <a href="https://sajankumar.com.np" style="color: #fff; text-decoration: none; font-weight: bold;">sajankumar.com.np</a>
-                  </div>
-              </div>
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div
+              class="footer-bottom__copyright"
+              style="font-size: 16px; font-weight: 500"
+            >
+              &copy; 2025
+              <a
+                href="https://sajankumar.com.np"
+                style="color: #fff; text-decoration: none; font-weight: bold"
+                >sajankumar.com.np</a
+              >
+            </div>
           </div>
+        </div>
       </div>
-  </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const loginLink = document.querySelector(".login-trigger");  // Updated selector
-    
-    // Create a sliding password input bar
-    const passwordContainer = document.createElement("div");
-    passwordContainer.style.position = "fixed";
-    passwordContainer.style.top = "-60px";
-    passwordContainer.style.left = "50%";
-    passwordContainer.style.transform = "translateX(-50%)";
-    passwordContainer.style.background = "#fff";
-    passwordContainer.style.padding = "10px";
-    passwordContainer.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
-    passwordContainer.style.transition = "top 0.5s ease-in-out";
-    passwordContainer.style.display = "flex";
-    passwordContainer.style.alignItems = "center";
-    passwordContainer.style.gap = "10px";
-    passwordContainer.style.zIndex = "1000";
-    document.body.appendChild(passwordContainer);
-    
-    const passwordInput = document.createElement("input");
-    passwordInput.type = "password";
-    passwordInput.placeholder = "Enter Password";
-    passwordInput.style.padding = "5px";
-    passwordContainer.appendChild(passwordInput);
-    
-    const submitBtn = document.createElement("button");
-    submitBtn.innerText = "Login";
-    submitBtn.style.padding = "5px 10px";
-    passwordContainer.appendChild(submitBtn);
-    
-    loginLink.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevents page reload
-        passwordContainer.style.top = "20px"; // Slide down password input
-    });
-    
-    submitBtn.addEventListener("click", function () {
-        if (passwordInput.value === "9898") {
-            window.location.href = "manage_blog.html"; // Redirect to the blog management page
-        } else {
-            alert("Incorrect Password");
-            passwordInput.value = "";
-        }
-    });
-});
+    </div>
 
+    <!-- Firebase and Login Script -->
+    <script type="module">
+      // Import Firebase Modules (Firebase v9+)
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+      // Firebase Configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBtxzo1ObhEb-gSG00qxeRBg9WHeuLk2rE",
+        authDomain: "webpage-d2496.firebaseapp.com",
+        projectId: "webpage-d2496",
+        storageBucket: "webpage-d2496.appspot.com",
+        messagingSenderId: "921444545874",
+        appId: "1:921444545874:web:c77134d28bb7294742b68b",
+        measurementId: "G-0P5F4JSTHD",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      // Handle Login Popup
+      document.addEventListener("DOMContentLoaded", function () {
+        const loginButton = document.getElementById("loginButton");
+        const loginPopup = document.getElementById("loginPopup");
+        const closePopup = document.getElementById("closePopup");
+        const loginSubmit = document.querySelector(".login-btn");
+
+        // Open login popup
+        loginButton.addEventListener("click", () => {
+          loginPopup.style.display = "block";
+        });
+
+        // Close popup
+        closePopup.addEventListener("click", () => {
+          loginPopup.style.display = "none";
+        });
+
+        // Handle login
+        loginSubmit.addEventListener("click", async function () {
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          if (email && password) {
+            try {
+              const userCredential = await signInWithEmailAndPassword(auth, email, password);
+              const user = userCredential.user;
+
+              // Redirect to another page after successful login
+              window.location.href = "manage_blog.html"; // Change this to your desired redirect page
+            } catch (error) {
+              alert("Login Failed: " + error.message);
+            }
+          } else {
+            alert("Email and password are required.");
+          }
+        });
+      });
     </script>
-    
 
+    <!-- External Scripts -->
     <script type="text/javascript" src="assets/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/2205d59d52.js" crossorigin="anonymous"></script>
     <script src="assets/ptj.js"></script>
