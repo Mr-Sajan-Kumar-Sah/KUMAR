@@ -87,11 +87,12 @@
       .modal-content {
         background: white;
         padding: 20px;
-        width: 50%;
+        width: 70%; /* Increased width */
+        max-width: 800px; /* Maximum width */
         border-radius: 10px;
         position: relative;
         text-align: center;
-        max-height: 80vh; /* Fixed height */
+        max-height: 90vh; /* Increased height */
         overflow-y: auto; /* Enables vertical scrolling */
       }
 
@@ -108,6 +109,27 @@
         font-size: 24px;
         cursor: pointer;
         font-weight: bold;
+      }
+
+      .modal-options {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .modal-options button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .modal-options button:hover {
+        background-color: #0056b3;
       }
     </style>
   </head>
@@ -165,6 +187,10 @@
     <div id="blogModal" class="modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>
+        <div class="modal-options">
+          <button id="speakBtn">Speak</button>
+          <button id="translateBtn">Translate to Hindi</button>
+        </div>
         <h2 id="modalTitle"></h2>
         <img id="modalImage" src="" alt="Blog Image" />
         <p id="modalDescription"></p>
@@ -224,6 +250,52 @@
             const modal = document.getElementById("blogModal");
             if (event.target === modal) {
               modal.style.display = "none";
+            }
+          };
+
+          // Speak functionality (reads only the content part)
+          document.getElementById("speakBtn").onclick = () => {
+            const contentToSpeak = document.getElementById("modalContent").innerText;
+            if (contentToSpeak) {
+              const utterance = new SpeechSynthesisUtterance(contentToSpeak);
+              window.speechSynthesis.speak(utterance);
+            } else {
+              alert("No content to speak.");
+            }
+          };
+
+          // Translate functionality using LibreTranslate
+          document.getElementById("translateBtn").onclick = async () => {
+            const textToTranslate = document.getElementById("modalContent").innerText;
+            const targetLanguage = "hi"; // Hindi language code
+
+            try {
+              const response = await fetch("https://libretranslate.com/translate", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  q: textToTranslate,
+                  source: "en",
+                  target: targetLanguage,
+                  format: "text",
+                }),
+              });
+
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+
+              const data = await response.json();
+              if (data.translatedText) {
+                document.getElementById("modalContent").innerText = data.translatedText;
+              } else {
+                alert("Translation failed. Please try again.");
+              }
+            } catch (error) {
+              console.error("Translation error:", error);
+              alert("Translation service is currently unavailable. Please try again later.");
             }
           };
         } catch (error) {
