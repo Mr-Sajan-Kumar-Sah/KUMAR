@@ -1,6 +1,5 @@
 import os
 import json
-import tempfile
 from flask import Flask, request, jsonify
 import firebase_admin
 from firebase_admin import credentials, auth
@@ -16,13 +15,8 @@ try:
     # Parse the JSON string into a dictionary
     cred_dict = json.loads(firebase_credentials)
 
-    # Write the dictionary to a temporary file
-    with tempfile.NamedTemporaryFile(mode="w", delete=False) as temp_file:
-        json.dump(cred_dict, temp_file)
-        temp_file_path = temp_file.name
-
-    # Use the temporary file to initialize Firebase
-    cred = credentials.Certificate(temp_file_path)
+    # Use the dictionary to initialize Firebase
+    cred = credentials.Certificate(cred_dict)
     firebase_admin.initialize_app(cred)
 except json.JSONDecodeError as e:
     raise ValueError(f"Invalid JSON in FIREBASE_CREDENTIALS: {e}")
