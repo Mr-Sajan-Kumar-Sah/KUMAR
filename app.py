@@ -7,7 +7,7 @@ import json
 
 # Load Firebase credentials from environment variable
 firebase_credentials = os.getenv("FIREBASE_CREDENTIALS")
-cred = credentials.Certificate(json.loads(firebase_credentials))
+cred = credentials.Certificate(json.loads(FIREBASE_CREDENTIALS))
 firebase_admin.initialize_app(cred)
 
 # Create Flask app
