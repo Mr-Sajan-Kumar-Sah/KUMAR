@@ -18,8 +18,13 @@ try:
 
     # Write the dictionary to a temporary file
     with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".json") as temp_file:
-        json.dump(cred_dict, temp_file)
+        json.dump(cred_dict, temp_file, indent=2)  # Ensure proper JSON formatting
         temp_file_path = temp_file.name
+
+    # Debug: Print the temporary file path and contents
+    print("Temporary file path:", temp_file_path)
+    with open(temp_file_path, "r") as f:
+        print("Temporary file contents:", f.read())
 
     # Use the temporary file to initialize Firebase
     cred = credentials.Certificate(temp_file_path)
