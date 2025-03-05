@@ -1,14 +1,25 @@
+import os
+import json
 from flask import Flask, request, jsonify
 import firebase_admin
 from firebase_admin import credentials, auth
 from functools import wraps
-import os
-import json
 
 # Load Firebase credentials from environment variable
 firebase_credentials = os.getenv("FIREBASE_CREDENTIALS")
-cred = credentials.Certificate(json.loads(firebase_credentials))
-firebase_admin.initialize_app(cred)
+
+if not firebase_credentials:
+    raise ValueError("FIREBASE_CREDENTIALS environment variable is not set")
+
+try:
+    # Parse the JSON string into a dictionary
+    cred_dict = json.loads(firebase_credentials)
+    cred = credentials.Certificate(cred_dict)  # Pass the dictionary directly
+    firebase_admin.initialize_app(cred)
+except json.JSONDecodeError as e:
+    raise ValueError(f"Invalid JSON in FIREBASE_CREDENTIALS: {e}")
+except Exception as e:
+    raise ValueError(f"Failed to initialize Firebase: {e}")
 
 # Create Flask app
 app = Flask(__name__)
