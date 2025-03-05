@@ -260,23 +260,38 @@
 
         // Handle login
         loginSubmit.addEventListener("click", async function () {
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-          if (email && password) {
-            try {
-              const userCredential = await signInWithEmailAndPassword(auth, email, password);
-              const user = userCredential.user;
+  if (email && password) {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-              // Redirect to another page after successful login
-              window.location.href = "manage_blog.html"; // Change this to your desired redirect page
-            } catch (error) {
-              alert("Login Failed: " + error.message);
-            }
-          } else {
-            alert("Email and password are required.");
-          }
-        });
+      // Get the Firebase ID token
+      const idToken = await user.getIdToken();
+
+      // Send the token to your backend for verification
+      const response = await fetch("https://your-render-url/manage_blog", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
+      });
+
+      if (response.ok) {
+        // Redirect to manage_blog.html
+        window.location.href = "manage_blog.html";
+      } else {
+        alert("Access denied");
+      }
+    } catch (error) {
+      alert("Login Failed: " + error.message);
+    }
+  } else {
+    alert("Email and password are required.");
+  }
+});
       });
     </script>
 
