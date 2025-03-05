@@ -3,13 +3,11 @@ import firebase_admin
 from firebase_admin import credentials, auth
 from functools import wraps
 import os
-from dotenv import load_dotenv
+import json
 
-# Load environment variables
-load_dotenv()
-
-# Initialize Firebase Admin SDK
-cred = credentials.Certificate("serviceAccountKey.json")  # Download this file from Firebase Console
+# Load Firebase credentials from environment variable
+firebase_credentials = os.getenv("FIREBASE_CREDENTIALS")
+cred = credentials.Certificate(json.loads(firebase_credentials))
 firebase_admin.initialize_app(cred)
 
 # Create Flask app
