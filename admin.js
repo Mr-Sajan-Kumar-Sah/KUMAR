@@ -11,9 +11,13 @@ const firebaseConfig = {
   };
 
 // Initialize Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+import { getDatabase, ref, set, push, remove, get } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-
+const auth = getAuth(app);
 // DOM Elements
 const projectsTableBody = document.getElementById('projectsTableBody');
 const blogsTableBody = document.getElementById('blogsTableBody');
@@ -56,7 +60,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 // ====================== AUTHENTICATION ======================
 function checkAdminAuth() {
-    return localStorage.getItem('adminToken') !== null;
+    const token = localStorage.getItem('adminToken');
+    return token !== null && token !== undefined;
 }
 
 function adminLogout() {
