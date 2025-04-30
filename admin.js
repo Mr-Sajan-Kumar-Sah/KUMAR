@@ -1,25 +1,19 @@
+// Firebase imports
+import { getDatabase, ref, set, push, remove, get } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js";
+import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js";
+import { getStorage, ref as storageRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js";
 
-// Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyCWMMjn8zoqd9FBSLe8GU0kxzuvPtgd26o",
-    authDomain: "sajankumar-7fe56.firebaseapp.com",
-    projectId: "sajankumar-7fe56",
-    storageBucket: "sajankumar-7fe56.firebasestorage.app",
-    messagingSenderId: "530497965075",
-    appId: "1:530497965075:web:a29f682c663c1d13b283e6",
-    measurementId: "G-4HDJ9D9R32"
-  };
+// Initialize Firebase services
+const db = getDatabase();
+const auth = getAuth();
+const storage = getStorage();
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
-const auth = firebase.auth();
 // DOM Elements
 const projectsTableBody = document.getElementById('projectsTableBody');
 const blogsTableBody = document.getElementById('blogsTableBody');
 const adminNotification = document.getElementById('adminNotification');
 const themeToggle = document.getElementById('themeToggle');
-const logoutBtn = document.querySelector('.btn-logout');
+const logoutBtn = document.querySelector('.btn-outline');
 
 // Initialize Quill editors
 let projectEditor, blogEditor;
@@ -61,9 +55,13 @@ function checkAdminAuth() {
 }
 
 function adminLogout() {
-    localStorage.removeItem('adminToken');
-    localStorage.removeItem('adminEmail');
-    window.location.href = 'admin-login.html';
+    signOut(auth).then(() => {
+        localStorage.removeItem('adminToken');
+        localStorage.removeItem('adminEmail');
+        window.location.href = 'admin-login.html';
+    }).catch((error) => {
+        showNotification('Logout error: ' + error.message, 'error');
+    });
 }
 
 // ====================== PROJECT FUNCTIONS ======================
@@ -152,7 +150,7 @@ async function loadBlogs() {
         // Update stats
         const totalViews = Object.values(blogs).reduce((sum, blog) => sum + (blog.views || 0), 0);
         document.getElementById('totalBlogs').textContent = Object.keys(blogs).length;
-        document.getElementById('blogViews').textContent = totalViews;
+        document.getElementById('blogViews').textContent = totalViews.toLocaleString();
         
         // Add event listeners
         document.querySelectorAll('.btn-edit').forEach(btn => {
