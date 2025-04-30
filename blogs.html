@@ -99,6 +99,8 @@
             height: 200px;
             position: relative;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
         
         .blog-image::before {
@@ -300,11 +302,10 @@
                 <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="social-link" aria-label="Medium"><i class="fab fa-medium"></i></a>
+                <a href="admin-login.html" class="admin-link">
+                    <i class="fas fa-lock"></i>
+                </a>
             </div>
-            <a href="admin-login.html" class="admin-link">
-                <i class="fas fa-lock"></i>
-                <span>Admin</span>
-            </a>
         </div>
     </nav>
 
@@ -328,172 +329,12 @@
         
         <!-- Blog Grid -->
         <section class="container">
-            <div class="blog-grid">
-                <!-- Featured Post -->
-                <article class="blog-card featured-post" data-category="research">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1655720827864-d2f2b9d9d9a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="blog-overlay"></div>
-                        <div class="blog-category">Featured</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>June 15, 2023</span>
-                        </div>
-                        <h2 class="blog-title">The Future of Quantum Machine Learning</h2>
-                        <p class="blog-excerpt">
-                            Exploring how quantum computing is revolutionizing machine learning algorithms and what it means for the future of AI. We dive into the latest research and practical applications of this emerging field.
-                        </p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Quantum Computing</span>
-                            <span class="blog-tag">Machine Learning</span>
-                            <span class="blog-tag">Research</span>
-                        </div>
-                        <a href="blog-post.html" class="blog-link">
-                            <span>Read Article</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-                
-                <!-- Blog Post 1 -->
-                <article class="blog-card" data-category="tutorials">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="blog-overlay"></div>
-                        <div class="blog-category">Tutorial</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>May 28, 2023</span>
-                        </div>
-                        <h2 class="blog-title">Building Neural Networks from Scratch</h2>
-                        <p class="blog-excerpt">
-                            A step-by-step guide to understanding and implementing neural networks without relying on high-level frameworks like TensorFlow or PyTorch.
-                        </p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Neural Networks</span>
-                            <span class="blog-tag">Python</span>
-                            <span class="blog-tag">Tutorial</span>
-                        </div>
-                        <a href="blog-post.html" class="blog-link">
-                            <span>Read Article</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-                
-                <!-- Blog Post 2 -->
-                <article class="blog-card" data-category="applications">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="blog-overlay"></div>
-                        <div class="blog-category">Applications</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>April 12, 2023</span>
-                        </div>
-                        <h2 class="blog-title">AI in Drug Discovery: Current State</h2>
-                        <p class="blog-excerpt">
-                            How machine learning is accelerating pharmaceutical research and reducing the time-to-market for new medications.
-                        </p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Healthcare</span>
-                            <span class="blog-tag">Drug Discovery</span>
-                            <span class="blog-tag">Applications</span>
-                        </div>
-                        <a href="blog-post.html" class="blog-link">
-                            <span>Read Article</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-                
-                <!-- Blog Post 3 -->
-                <article class="blog-card" data-category="research">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="blog-overlay"></div>
-                        <div class="blog-category">Research</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>March 30, 2023</span>
-                        </div>
-                        <h2 class="blog-title">Transformers Beyond NLP</h2>
-                        <p class="blog-excerpt">
-                            Exploring how transformer architectures are being adapted for computer vision, time-series analysis, and other non-NLP tasks.
-                        </p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Transformers</span>
-                            <span class="blog-tag">Deep Learning</span>
-                            <span class="blog-tag">Research</span>
-                        </div>
-                        <a href="blog-post.html" class="blog-link">
-                            <span>Read Article</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-                
-                <!-- Blog Post 4 -->
-                <article class="blog-card" data-category="quantum">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="blog-overlay"></div>
-                        <div class="blog-category">Quantum AI</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>February 18, 2023</span>
-                        </div>
-                        <h2 class="blog-title">Quantum Neural Networks Explained</h2>
-                        <p class="blog-excerpt">
-                            A deep dive into the principles behind quantum neural networks and how they differ from classical architectures.
-                        </p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Quantum</span>
-                            <span class="blog-tag">Neural Networks</span>
-                            <span class="blog-tag">Research</span>
-                        </div>
-                        <a href="blog-post.html" class="blog-link">
-                            <span>Read Article</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-                
-                <!-- Blog Post 5 -->
-                <article class="blog-card" data-category="tutorials">
-                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1664575196412-ed801e8333a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="blog-overlay"></div>
-                        <div class="blog-category">Tutorial</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-date">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>January 5, 2023</span>
-                        </div>
-                        <h2 class="blog-title">Optimizing PyTorch Models</h2>
-                        <p class="blog-excerpt">
-                            Practical techniques for improving the performance and efficiency of your PyTorch models in production environments.
-                        </p>
-                        <div class="blog-tags">
-                            <span class="blog-tag">PyTorch</span>
-                            <span class="blog-tag">Optimization</span>
-                            <span class="blog-tag">Tutorial</span>
-                        </div>
-                        <a href="blog-post.html" class="blog-link">
-                            <span>Read Article</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
+            <div class="blog-grid" id="blogsContainer">
+                <!-- Blogs will be loaded dynamically here -->
             </div>
             
             <div class="load-more">
-                <button class="btn btn-outline">
+                <button class="btn btn-outline" id="loadMoreBlogs">
                     <i class="fas fa-sync-alt"></i>
                     <span>Load More Articles</span>
                 </button>
@@ -501,73 +342,139 @@
         </section>
     </main>
 
-   
-
     <!-- Scripts -->
     <script src="scripts.js"></script>
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+    
     <script>
-        // Blog filtering functionality
+        // Firebase configuration
+        const firebaseConfig = {
+    apiKey: "AIzaSyCWMMjn8zoqd9FBSLe8GU0kxzuvPtgd26o",
+    authDomain: "sajankumar-7fe56.firebaseapp.com",
+    projectId: "sajankumar-7fe56",
+    storageBucket: "sajankumar-7fe56.firebasestorage.app",
+    messagingSenderId: "530497965075",
+    appId: "1:530497965075:web:a29f682c663c1d13b283e6",
+    measurementId: "G-4HDJ9D9R32"
+  };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Load blogs from Firebase
         document.addEventListener('DOMContentLoaded', function() {
+            loadBlogs();
+            
+            // Blog filtering functionality
             const categoryChips = document.querySelectorAll('.category-chip');
-            const blogCards = document.querySelectorAll('.blog-card');
             
             categoryChips.forEach(chip => {
                 chip.addEventListener('click', function() {
-                    // Update active category chip
                     categoryChips.forEach(c => c.classList.remove('active'));
                     this.classList.add('active');
-                    
                     const category = this.getAttribute('data-category');
-                    
-                    // Filter blogs
-                    blogCards.forEach(card => {
-                        const cardCategory = card.getAttribute('data-category');
-                        
-                        if (category === 'all' || cardCategory === category) {
-                            card.style.display = 'block';
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, 10);
-                        } else {
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                card.style.display = 'none';
-                            }, 300);
-                        }
-                    });
+                    filterBlogs(category);
                 });
             });
             
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-            
-            // Back to top button
-            const backToTopBtn = document.querySelector('.back-to-top a');
-            backToTopBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+            // Load more blogs
+            document.getElementById('loadMoreBlogs').addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Loading...</span>';
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-sync-alt"></i><span>No More Articles</span>';
+                    this.disabled = true;
+                }, 1500);
             });
-            
-            // Load more button functionality
-            const loadMoreBtn = document.querySelector('.load-more button');
-            if (loadMoreBtn) {
-                loadMoreBtn.addEventListener('click', function() {
-                    // In a real implementation, this would load more posts from an API
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Loading...</span>';
-                    
-                    // Simulate loading
-                    setTimeout(() => {
-                        this.innerHTML = '<i class="fas fa-sync-alt"></i><span>No More Articles</span>';
-                        this.disabled = true;
-                    }, 1500);
-                });
-            }
         });
+        
+        function loadBlogs() {
+            const blogsContainer = document.getElementById('blogsContainer');
+            blogsContainer.innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i></div>';
+            
+            database.ref('blogs').once('value').then((snapshot) => {
+                const blogsData = snapshot.val() || {};
+                const blogs = Object.values(blogsData);
+                
+                if (blogs.length === 0) {
+                    blogsContainer.innerHTML = '<p class="no-blogs">No blogs found. Check back later!</p>';
+                    return;
+                }
+                
+                // Sort by date (newest first)
+                blogs.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+                
+                blogsContainer.innerHTML = '';
+                
+                blogs.forEach((blog, index) => {
+                    const categoryMap = {
+                        'research': 'Research',
+                        'tutorials': 'Tutorial',
+                        'quantum': 'Quantum AI',
+                        'applications': 'Application'
+                    };
+                    
+                    const blogCard = document.createElement('article');
+                    blogCard.className = index === 0 ? 'blog-card featured-post' : 'blog-card';
+                    blogCard.setAttribute('data-category', blog.category);
+                    
+                    blogCard.innerHTML = `
+                        <div class="blog-image" style="background-image: url('${blog.image}')">
+                            <div class="blog-overlay"></div>
+                            <div class="blog-category">${categoryMap[blog.category] || blog.category}</div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>${formatDate(blog.publishDate)}</span>
+                            </div>
+                            <h2 class="blog-title">${blog.title}</h2>
+                            <p class="blog-excerpt">${blog.excerpt}</p>
+                            <div class="blog-tags">
+                                ${blog.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
+                            </div>
+                            <a href="blog-post.html?id=${blog.id}" class="blog-link">
+                                <span>Read Article</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    `;
+                    
+                    blogsContainer.appendChild(blogCard);
+                });
+            }).catch(error => {
+                console.error("Error loading blogs:", error);
+                blogsContainer.innerHTML = '<p class="error-message">Failed to load blogs. Please try again later.</p>';
+            });
+        }
+        
+        function filterBlogs(category) {
+            const blogCards = document.querySelectorAll('.blog-card');
+            
+            blogCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                if (category === 'all' || cardCategory === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+        
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+{
+    "rules": {
+      "projects": {
+        ".read": true,
+        ".write": "auth !== null"
+      },
+      "blogs": {
+        ".read": true,
+        ".write": "auth !== null"
+      }
+    }
+  }

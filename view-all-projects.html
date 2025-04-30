@@ -99,6 +99,8 @@
             height: 200px;
             position: relative;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
         
         .project-image-extended::before {
@@ -232,7 +234,7 @@
                 <span class="link-icon"><i class="fas fa-rocket"></i></span>
                 <span class="link-text">Projects</span>
             </a>
-            <a href="index.html#blogs" class="nav-link">
+            <a href="blogs.html" class="nav-link">
                 <span class="link-icon"><i class="fas fa-blog"></i></span>
                 <span class="link-text">Blogs</span>
             </a>
@@ -255,7 +257,6 @@
                     <i class="fas fa-lock"></i>
                 </a>
             </div>
-            
         </div>
     </nav>
 
@@ -279,184 +280,12 @@
         
         <!-- Projects Grid -->
         <section class="container">
-            <div class="projects-grid-extended">
-                <!-- Project 1 -->
-                <div class="project-card-extended" data-category="ai quantum">
-                    <div class="project-image-extended" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="image-overlay-extended"></div>
-                        <div class="project-badge-extended">Quantum AI</div>
-                    </div>
-                    <div class="project-content-extended">
-                        <h3 class="project-title-extended">Quantum Neural Architecture Search</h3>
-                        <p class="project-description-extended">
-                            Developed a quantum-enhanced neural architecture search algorithm that reduces search time by 78% while improving model accuracy.
-                        </p>
-                        <div class="project-tech-extended">
-                            <span class="tech-tag-extended">Qiskit</span>
-                            <span class="tech-tag-extended">PyTorch</span>
-                            <span class="tech-tag-extended">TensorFlow</span>
-                        </div>
-                        <div class="project-links-extended">
-                            <a href="#" class="project-link-extended">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Live Demo</span>
-                            </a>
-                            <a href="#" class="project-link-extended">
-                                <i class="fab fa-github"></i>
-                                <span>Code</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card-extended" data-category="ml opensource">
-                    <div class="project-image-extended" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="image-overlay-extended"></div>
-                        <div class="project-badge-extended">Open Source</div>
-                    </div>
-                    <div class="project-content-extended">
-                        <h3 class="project-title-extended">NeuroEvolution Framework</h3>
-                        <p class="project-description-extended">
-                            A scalable framework for neuroevolution of augmenting topologies (NEAT) with GPU acceleration and distributed training support.
-                        </p>
-                        <div class="project-tech-extended">
-                            <span class="tech-tag-extended">Python</span>
-                            <span class="tech-tag-extended">CUDA</span>
-                            <span class="tech-tag-extended">Ray</span>
-                        </div>
-                        <div class="project-links-extended">
-                            <a href="#" class="project-link-extended">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Live Demo</span>
-                            </a>
-                            <a href="#" class="project-link-extended">
-                                <i class="fab fa-github"></i>
-                                <span>Code</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card-extended" data-category="ai ml">
-                    <div class="project-image-extended" style="background-image: url('https://images.unsplash.com/photo-1664575196412-ed801e8333a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="image-overlay-extended"></div>
-                        <div class="project-badge-extended">AI Research</div>
-                    </div>
-                    <div class="project-content-extended">
-                        <h3 class="project-title-extended">Meta-Learning for Few-Shot NLP</h3>
-                        <p class="project-description-extended">
-                            Developed a meta-learning approach that achieves state-of-the-art performance on few-shot text classification benchmarks.
-                        </p>
-                        <div class="project-tech-extended">
-                            <span class="tech-tag-extended">PyTorch</span>
-                            <span class="tech-tag-extended">HuggingFace</span>
-                            <span class="tech-tag-extended">Transformers</span>
-                        </div>
-                        <div class="project-links-extended">
-                            <a href="#" class="project-link-extended">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Live Demo</span>
-                            </a>
-                            <a href="#" class="project-link-extended">
-                                <i class="fab fa-github"></i>
-                                <span>Code</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 4 -->
-                <div class="project-card-extended" data-category="quantum">
-                    <div class="project-image-extended" style="background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="image-overlay-extended"></div>
-                        <div class="project-badge-extended">Quantum AI</div>
-                    </div>
-                    <div class="project-content-extended">
-                        <h3 class="project-title-extended">Quantum GAN for Drug Discovery</h3>
-                        <p class="project-description-extended">
-                            Implemented a quantum generative adversarial network for molecular generation with applications in drug discovery.
-                        </p>
-                        <div class="project-tech-extended">
-                            <span class="tech-tag-extended">Qiskit</span>
-                            <span class="tech-tag-extended">RDKit</span>
-                            <span class="tech-tag-extended">PennyLane</span>
-                        </div>
-                        <div class="project-links-extended">
-                            <a href="#" class="project-link-extended">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Live Demo</span>
-                            </a>
-                            <a href="#" class="project-link-extended">
-                                <i class="fab fa-github"></i>
-                                <span>Code</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 5 -->
-                <div class="project-card-extended" data-category="ml">
-                    <div class="project-image-extended" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="image-overlay-extended"></div>
-                        <div class="project-badge-extended">ML Application</div>
-                    </div>
-                    <div class="project-content-extended">
-                        <h3 class="project-title-extended">Autonomous Trading Agent</h3>
-                        <p class="project-description-extended">
-                            Deep reinforcement learning agent that learns optimal trading strategies through self-play in simulated markets.
-                        </p>
-                        <div class="project-tech-extended">
-                            <span class="tech-tag-extended">TensorFlow</span>
-                            <span class="tech-tag-extended">Gym</span>
-                            <span class="tech-tag-extended">Ray</span>
-                        </div>
-                        <div class="project-links-extended">
-                            <a href="#" class="project-link-extended">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Live Demo</span>
-                            </a>
-                            <a href="#" class="project-link-extended">
-                                <i class="fab fa-github"></i>
-                                <span>Code</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 6 -->
-                <div class="project-card-extended" data-category="ai opensource">
-                    <div class="project-image-extended" style="background-image: url('https://images.unsplash.com/photo-1655720828012-9bd9031b5211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');">
-                        <div class="image-overlay-extended"></div>
-                        <div class="project-badge-extended">Open Source</div>
-                    </div>
-                    <div class="project-content-extended">
-                        <h3 class="project-title-extended">Explainable AI Toolkit</h3>
-                        <p class="project-description-extended">
-                            Comprehensive library for model interpretability with novel visualization techniques for deep neural networks.
-                        </p>
-                        <div class="project-tech-extended">
-                            <span class="tech-tag-extended">Python</span>
-                            <span class="tech-tag-extended">Dash</span>
-                            <span class="tech-tag-extended">SHAP</span>
-                        </div>
-                        <div class="project-links-extended">
-                            <a href="#" class="project-link-extended">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Live Demo</span>
-                            </a>
-                            <a href="#" class="project-link-extended">
-                                <i class="fab fa-github"></i>
-                                <span>Code</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="projects-grid-extended" id="projectsContainer">
+                <!-- Projects will be loaded dynamically here -->
             </div>
             
             <div class="load-more">
-                <button class="btn btn-outline">
+                <button class="btn btn-outline" id="loadMoreProjects">
                     <i class="fas fa-sync-alt"></i>
                     <span>Load More Projects</span>
                 </button>
@@ -464,58 +293,134 @@
         </section>
     </main>
 
-    
-
-    <!-- Scripts -->
     <script src="scripts.js"></script>
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+    
     <script>
-        // Project filtering functionality
+        // Firebase configuration (same as in blogs.html)
+        const firebaseConfig = {
+    apiKey: "AIzaSyCWMMjn8zoqd9FBSLe8GU0kxzuvPtgd26o",
+    authDomain: "sajankumar-7fe56.firebaseapp.com",
+    projectId: "sajankumar-7fe56",
+    storageBucket: "sajankumar-7fe56.firebasestorage.app",
+    messagingSenderId: "530497965075",
+    appId: "1:530497965075:web:a29f682c663c1d13b283e6",
+    measurementId: "G-4HDJ9D9R32"
+  };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
         document.addEventListener('DOMContentLoaded', function() {
+            loadProjects();
+            
+            // Project filtering functionality
             const filterChips = document.querySelectorAll('.filter-chip');
-            const projectCards = document.querySelectorAll('.project-card-extended');
             
             filterChips.forEach(chip => {
                 chip.addEventListener('click', function() {
-                    // Update active filter chip
                     filterChips.forEach(c => c.classList.remove('active'));
                     this.classList.add('active');
-                    
                     const filter = this.getAttribute('data-filter');
-                    
-                    // Filter projects
-                    projectCards.forEach(card => {
-                        const categories = card.getAttribute('data-category').split(' ');
-                        
-                        if (filter === 'all' || categories.includes(filter)) {
-                            card.style.display = 'block';
-                            setTimeout(() => {
-                                card.style.opacity = '1';
-                                card.style.transform = 'translateY(0)';
-                            }, 10);
-                        } else {
-                            card.style.opacity = '0';
-                            card.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                card.style.display = 'none';
-                            }, 300);
-                        }
-                    });
+                    filterProjects(filter);
                 });
             });
             
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-            
-            // Back to top button
-            const backToTopBtn = document.querySelector('.back-to-top a');
-            backToTopBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+            // Load more projects
+            document.getElementById('loadMoreProjects').addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Loading...</span>';
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-sync-alt"></i><span>No More Projects</span>';
+                    this.disabled = true;
+                }, 1500);
             });
         });
+        
+        function loadProjects() {
+            const projectsContainer = document.getElementById('projectsContainer');
+            projectsContainer.innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i></div>';
+            
+            database.ref('projects').once('value').then((snapshot) => {
+                const projectsData = snapshot.val() || {};
+                const projects = Object.values(projectsData);
+                
+                if (projects.length === 0) {
+                    projectsContainer.innerHTML = '<p class="no-projects">No projects found. Check back later!</p>';
+                    return;
+                }
+                
+                projectsContainer.innerHTML = '';
+                
+                projects.forEach(project => {
+                    if (project.status !== 'active') return;
+                    
+                    const categoryMap = {
+                        'ai': 'AI Research',
+                        'ml': 'ML Application',
+                        'quantum': 'Quantum AI',
+                        'opensource': 'Open Source'
+                    };
+                    
+                    const projectCard = document.createElement('div');
+                    projectCard.className = 'project-card-extended';
+                    projectCard.setAttribute('data-category', project.category);
+                    
+                    projectCard.innerHTML = `
+                        <div class="project-image-extended" style="background-image: url('${project.image}')">
+                            <div class="image-overlay-extended"></div>
+                            <div class="project-badge-extended">${categoryMap[project.category] || project.category}</div>
+                        </div>
+                        <div class="project-content-extended">
+                            <h3 class="project-title-extended">${project.title}</h3>
+                            <p class="project-description-extended">${project.description}</p>
+                            <div class="project-tech-extended">
+                                ${project.tech.map(tech => `<span class="tech-tag-extended">${tech}</span>`).join('')}
+                            </div>
+                            <div class="project-links-extended">
+                                ${project.demoUrl ? `<a href="${project.demoUrl}" class="project-link-extended" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>Live Demo</span>
+                                </a>` : ''}
+                                ${project.codeUrl ? `<a href="${project.codeUrl}" class="project-link-extended" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                    <span>Code</span>
+                                </a>` : ''}
+                            </div>
+                        </div>
+                    `;
+                    
+                    projectsContainer.appendChild(projectCard);
+                });
+            }).catch(error => {
+                console.error("Error loading projects:", error);
+                projectsContainer.innerHTML = '<p class="error-message">Failed to load projects. Please try again later.</p>';
+            });
+        }
+        
+        function filterProjects(filter) {
+            const projectCards = document.querySelectorAll('.project-card-extended');
+            
+            projectCards.forEach(card => {
+                const categories = card.getAttribute('data-category').split(' ');
+                
+                if (filter === 'all' || categories.includes(filter)) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
     </script>
 </body>
 </html>

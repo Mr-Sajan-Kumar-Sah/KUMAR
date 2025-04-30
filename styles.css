@@ -1536,6 +1536,30 @@
 }
 
 
+/* Loading and error states */
+.loading-spinner {
+  text-align: center;
+  padding: 2rem;
+  grid-column: 1 / -1;
+}
+
+.loading-spinner i {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.no-projects, .no-blogs, .error-message {
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 2rem;
+  color: var(--text);
+}
+
+.error-message {
+  color: #ff4d4f;
+}
+
+
   .main-footer {
     background-color: var(--bg-light);
     padding: var(--space-xl) 0;

@@ -1,7 +1,17 @@
+// Admin Dashboard Main Script - Firebase Realtime DB Version
+import { db, ref, set, get, remove, push } from './firebase';
+
+// DOM Elements
+const projectsTableBody = document.getElementById('projectsTableBody');
+const blogsTableBody = document.getElementById('blogsTableBody');
+const adminNotification = document.getElementById('adminNotification');
+
 // Initialize admin dashboard
-document.addEventListener('DOMContentLoaded', function() {
-    // Check admin authentication
-    if (!checkAdminAuth()) return;
+document.addEventListener('DOMContentLoaded', async function() {
+    if (!checkAdminAuth()) {
+        window.location.href = 'admin-login.html';
+        return;
+    }
     
     // Initialize components
     initAdminUI();
@@ -9,405 +19,401 @@ document.addEventListener('DOMContentLoaded', function() {
     initModals();
     initDataTables();
     initCharts();
-    loadProjects();
-    loadBlogs();
+    
+    // Load data
+    await loadProjects();
+    await loadBlogs();
+    loadSettings();
     
     // Display admin email
-    document.getElementById('adminEmail').textContent = localStorage.getItem('adminEmail');
+    const adminEmail = localStorage.getItem('adminEmail');
+    document.getElementById('adminEmail').textContent = adminEmail;
+    document.getElementById('adminEmailInput').value = adminEmail;
 });
 
-// Initialize admin UI components
+// ====================== AUTHENTICATION ======================
+function checkAdminAuth() {
+    return localStorage.getItem('adminToken') !== null;
+}
+
+function adminLogout() {
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('adminEmail');
+    window.location.href = 'admin-login.html';
+}
+
+// ====================== PROJECT FUNCTIONS ======================
+async function loadProjects() {
+    try {
+        const snapshot = await get(ref(db, 'projects'));
+        const projects = snapshot.val() || {};
+        
+        projectsTableBody.innerHTML = Object.entries(projects)
+            .filter(([_, project]) => project.status === 'active')
+            .map(([id, project]) => `
+                <tr>
+                    <td>${project.title}</td>
+                    <td>${project.category}</td>
+                    <td>${project.date}</td>
+                    <td><span class="status-badge active">Active</span></td>
+                    <td class="actions">
+                        <button class="btn btn-icon btn-sm btn-edit" data-id="${id}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-icon btn-sm btn-delete" data-id="${id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        
+        // Update stats
+        document.getElementById('totalProjects').textContent = Object.keys(projects).length;
+        
+        // Add event listeners
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+            btn.addEventListener('click', () => showProjectModal(btn.getAttribute('data-id')));
+        });
+        
+        document.querySelectorAll('.btn-delete').forEach(btn => {
+            btn.addEventListener('click', () => confirmDelete('project', btn.getAttribute('data-id')));
+        });
+        
+    } catch (error) {
+        showNotification('Failed to load projects: ' + error.message, 'error');
+    }
+}
+
+async function saveProject(projectData) {
+    try {
+        if (projectData.id) {
+            // Update existing project
+            await set(ref(db, `projects/${projectData.id}`), projectData);
+        } else {
+            // Add new project
+            const newProjectRef = push(ref(db, 'projects'));
+            await set(newProjectRef, projectData);
+        }
+        showNotification('Project saved successfully!', 'success');
+        await loadProjects();
+    } catch (error) {
+        showNotification('Error saving project: ' + error.message, 'error');
+    }
+}
+
+// ====================== BLOG FUNCTIONS ======================
+async function loadBlogs() {
+    try {
+        const snapshot = await get(ref(db, 'blogs'));
+        const blogs = snapshot.val() || {};
+        
+        blogsTableBody.innerHTML = Object.entries(blogs)
+            .map(([id, blog]) => `
+                <tr>
+                    <td>${blog.title}</td>
+                    <td>${blog.category}</td>
+                    <td>${blog.publishDate}</td>
+                    <td>${blog.views || 0}</td>
+                    <td class="actions">
+                        <button class="btn btn-icon btn-sm btn-edit" data-id="${id}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-icon btn-sm btn-delete" data-id="${id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        
+        // Update stats
+        const totalViews = Object.values(blogs).reduce((sum, blog) => sum + (blog.views || 0), 0);
+        document.getElementById('totalBlogs').textContent = Object.keys(blogs).length;
+        document.getElementById('blogViews').textContent = totalViews;
+        
+        // Add event listeners
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+            btn.addEventListener('click', () => showBlogModal(btn.getAttribute('data-id')));
+        });
+        
+        document.querySelectorAll('.btn-delete').forEach(btn => {
+            btn.addEventListener('click', () => confirmDelete('blog', btn.getAttribute('data-id')));
+        });
+        
+    } catch (error) {
+        showNotification('Failed to load blogs: ' + error.message, 'error');
+    }
+}
+
+async function saveBlog(blogData) {
+    try {
+        if (blogData.id) {
+            // Update existing blog
+            await set(ref(db, `blogs/${blogData.id}`), blogData);
+        } else {
+            // Add new blog
+            const newBlogRef = push(ref(db, 'blogs'));
+            await set(newBlogRef, blogData);
+        }
+        showNotification('Blog saved successfully!', 'success');
+        await loadBlogs();
+    } catch (error) {
+        showNotification('Error saving blog: ' + error.message, 'error');
+    }
+}
+
+// ====================== SETTINGS FUNCTIONS ======================
+function loadSettings() {
+    const settings = {
+        websiteTitle: "Mr.Sajan Portfolio",
+        adminEmail: "sajansah205@gmail.com",
+        maintenanceMode: false,
+        themeColor: "#00f0ff"
+    };
+    
+    document.getElementById('websiteTitle').value = settings.websiteTitle;
+    document.getElementById('adminEmailInput').value = settings.adminEmail;
+    document.getElementById('maintenanceMode').checked = settings.maintenanceMode;
+    document.getElementById('themeColor').value = settings.themeColor;
+}
+
+function saveSettings() {
+    const settings = {
+        websiteTitle: document.getElementById('websiteTitle').value,
+        adminEmail: document.getElementById('adminEmailInput').value,
+        maintenanceMode: document.getElementById('maintenanceMode').checked,
+        themeColor: document.getElementById('themeColor').value
+    };
+    
+    // In a real app, you would save to Firebase
+    showNotification('Settings saved (demo)', 'success');
+    applyTheme(settings.themeColor);
+}
+
+function applyTheme(color) {
+    document.documentElement.style.setProperty('--primary', color);
+}
+
+// ====================== UTILITY FUNCTIONS ======================
+async function confirmDelete(type, id) {
+    try {
+        const snapshot = await get(ref(db, `${type}s/${id}`));
+        const item = snapshot.val();
+        
+        showConfirmation(
+            `Delete ${type}`,
+            `Are you sure you want to delete "${item.title}"?`,
+            async () => {
+                await remove(ref(db, `${type}s/${id}`));
+                showNotification(`${type.charAt(0).toUpperCase() + type.slice(1)} deleted!`, 'success');
+                if (type === 'project') await loadProjects();
+                else await loadBlogs();
+            }
+        );
+    } catch (error) {
+        showNotification(`Error deleting ${type}: ${error.message}`, 'error');
+    }
+}
+
+function showNotification(message, type = 'success') {
+    adminNotification.textContent = message;
+    adminNotification.className = `admin-notification ${type} active`;
+    setTimeout(() => adminNotification.classList.remove('active'), 3000);
+}
+
+// ====================== MODAL FUNCTIONS ======================
+async function showProjectModal(projectId = null) {
+    const form = document.getElementById('projectForm');
+    form.reset();
+    
+    if (projectId) {
+        document.getElementById('projectModalTitle').textContent = 'Edit Project';
+        document.getElementById('projectId').value = projectId;
+        
+        const snapshot = await get(ref(db, `projects/${projectId}`));
+        const project = snapshot.val();
+        
+        if (project) {
+            document.getElementById('projectTitle').value = project.title;
+            document.getElementById('projectCategory').value = project.category;
+            document.getElementById('projectDescription').value = project.description;
+            document.getElementById('projectTech').value = project.tech?.join(', ') || '';
+            document.getElementById('projectImage').value = project.image || '';
+            document.getElementById('projectDemoUrl').value = project.demoUrl || '';
+            document.getElementById('projectCodeUrl').value = project.codeUrl || '';
+            projectEditor.root.innerHTML = project.details || '';
+        }
+    } else {
+        document.getElementById('projectModalTitle').textContent = 'Add New Project';
+        projectEditor.root.innerHTML = '';
+    }
+    
+    showModal('projectModal');
+}
+
+async function showBlogModal(blogId = null) {
+    const form = document.getElementById('blogForm');
+    form.reset();
+    
+    if (blogId) {
+        document.getElementById('blogModalTitle').textContent = 'Edit Blog';
+        document.getElementById('blogId').value = blogId;
+        
+        const snapshot = await get(ref(db, `blogs/${blogId}`));
+        const blog = snapshot.val();
+        
+        if (blog) {
+            document.getElementById('blogTitle').value = blog.title;
+            document.getElementById('blogCategory').value = blog.category;
+            document.getElementById('blogImage').value = blog.image || '';
+            document.getElementById('blogExcerpt').value = blog.excerpt || '';
+            document.getElementById('blogTags').value = blog.tags?.join(', ') || '';
+            document.getElementById('blogPublishDate').value = blog.publishDate || '';
+            blogEditor.root.innerHTML = blog.content || '';
+        }
+    } else {
+        document.getElementById('blogModalTitle').textContent = 'Add New Blog';
+        document.getElementById('blogPublishDate').value = new Date().toISOString().split('T')[0];
+        blogEditor.root.innerHTML = '';
+    }
+    
+    showModal('blogModal');
+}
+
+// ====================== INITIALIZATION FUNCTIONS ======================
 function initAdminUI() {
     // Navigation tabs
-    const navLinks = document.querySelectorAll('.admin-nav-link');
-    const sections = document.querySelectorAll('.admin-section');
-    
-    navLinks.forEach(link => {
+    document.querySelectorAll('.admin-nav-link').forEach(link => {
         link.addEventListener('click', function() {
-            const sectionId = this.getAttribute('data-section');
-            
-            // Update active nav link
-            navLinks.forEach(navLink => navLink.classList.remove('active'));
+            document.querySelectorAll('.admin-nav-link').forEach(l => l.classList.remove('active'));
             this.classList.add('active');
             
-            // Show corresponding section
-            sections.forEach(section => {
+            document.querySelectorAll('.admin-section').forEach(section => {
                 section.classList.remove('active');
-                if (section.id === `${sectionId}Section`) {
+                if (section.id === `${this.dataset.section}Section`) {
                     section.classList.add('active');
                 }
             });
         });
     });
     
-    // Mobile menu toggle
-    const mobileMenuToggle = document.createElement('button');
-    mobileMenuToggle.className = 'mobile-menu-toggle';
-    mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    mobileMenuToggle.addEventListener('click', function() {
-        document.querySelector('.admin-sidebar').classList.toggle('mobile-open');
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
     });
-    
-    document.querySelector('.admin-header-left').prepend(mobileMenuToggle);
-    
-    // Mobile floating action button
-    const fab = document.createElement('button');
-    fab.className = 'admin-fab';
-    fab.innerHTML = '<i class="fas fa-plus"></i>';
-    fab.addEventListener('click', function() {
-        const activeSection = document.querySelector('.admin-section.active').id;
-        
-        if (activeSection === 'projectsSection') {
-            showProjectModal();
-        } else if (activeSection === 'blogsSection') {
-            showBlogModal();
-        }
-    });
-    
-    document.body.appendChild(fab);
 }
 
-// Initialize rich text editors
 function initEditors() {
-    // Project editor
-    const projectEditor = new Quill('#projectEditor', {
-        modules: {
-            toolbar: [
-                [{ 'header': [1, 2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike'],
-                [{ 'color': [] }, { 'background': [] }],
-                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                ['link', 'image', 'video'],
-                ['clean']
-            ]
-        },
-        placeholder: 'Write detailed project description...',
+    window.projectEditor = new Quill('#projectEditor', {
+        modules: { toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            ['link', 'image', 'video'],
+            ['clean']
+        ]},
+        placeholder: 'Write project details...',
         theme: 'snow'
     });
     
-    // Blog editor
-    const blogEditor = new Quill('#blogEditor', {
-        modules: {
-            toolbar: [
-                [{ 'header': [1, 2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-                [{ 'color': [] }, { 'background': [] }],
-                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                ['link', 'image', 'video', 'code-block'],
-                ['clean']
-            ]
-        },
-        placeholder: 'Write your blog content here...',
+    window.blogEditor = new Quill('#blogEditor', {
+        modules: { toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            ['link', 'image', 'video', 'code-block'],
+            ['clean']
+        ]},
+        placeholder: 'Write blog content...',
         theme: 'snow'
     });
-    
-    window.projectEditor = projectEditor;
-    window.blogEditor = blogEditor;
 }
 
-// Initialize modals
 function initModals() {
     // Project modal
-    const projectModal = document.getElementById('projectModal');
-    const addProjectBtn = document.getElementById('addProjectBtn');
-    
-    if (addProjectBtn) {
-        addProjectBtn.addEventListener('click', showProjectModal);
-    }
+    document.getElementById('addProjectBtn').addEventListener('click', () => showProjectModal());
     
     // Blog modal
-    const blogModal = document.getElementById('blogModal');
-    const addBlogBtn = document.getElementById('addBlogBtn');
+    document.getElementById('addBlogBtn').addEventListener('click', () => showBlogModal());
     
-    if (addBlogBtn) {
-        addBlogBtn.addEventListener('click', showBlogModal);
-    }
-    
-    // Upload modal
-    const uploadModal = document.getElementById('uploadModal');
-    const uploadImageBtn = document.getElementById('uploadImageBtn');
-    const uploadBlogImageBtn = document.getElementById('uploadBlogImageBtn');
-    const dropZone = document.getElementById('dropZone');
-    const fileInput = document.getElementById('fileInput');
-    const previewImage = document.getElementById('previewImage');
-    const uploadProgress = document.getElementById('uploadProgress');
-    const confirmUploadBtn = document.getElementById('confirmUploadBtn');
-    
-    // Open upload modal
-    function openUploadModal(targetField) {
-        uploadModal.dataset.target = targetField;
-        showModal(uploadModal);
-    }
-    
-    if (uploadImageBtn) {
-        uploadImageBtn.addEventListener('click', () => openUploadModal('projectImage'));
-    }
-    
-    if (uploadBlogImageBtn) {
-        uploadBlogImageBtn.addEventListener('click', () => openUploadModal('blogImage'));
-    }
-    
-    // Handle file selection
-    fileInput.addEventListener('change', handleFileSelect);
-    
-    // Handle drag and drop
-    dropZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropZone.classList.add('dragover');
-    });
-    
-    dropZone.addEventListener('dragleave', () => {
-        dropZone.classList.remove('dragover');
-    });
-    
-    dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropZone.classList.remove('dragover');
-        
-        if (e.dataTransfer.files.length) {
-            fileInput.files = e.dataTransfer.files;
-            handleFileSelect({ target: fileInput });
-        }
-    });
-    
-    // Click on drop zone to trigger file input
-    dropZone.addEventListener('click', () => fileInput.click());
-    
-    // Handle file upload
-    function handleFileSelect(e) {
-        const file = e.target.files[0];
-        if (!file) return;
-        
-        if (!file.type.match('image.*')) {
-            showNotification('Please select an image file', 'error');
-            return;
-        }
-        
-        // Show preview
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            previewImage.src = e.target.result;
-            previewImage.style.display = 'block';
-            document.getElementById('imagePreview').style.display = 'block';
-            uploadProgress.style.display = 'none';
-            confirmUploadBtn.disabled = false;
-        };
-        reader.readAsDataURL(file);
-    }
-    
-    // Confirm upload
-    confirmUploadBtn.addEventListener('click', () => {
-        const targetField = uploadModal.dataset.target;
-        const fileUrl = URL.createObjectURL(fileInput.files[0]);
-        
-        // Simulate upload progress
-        uploadProgress.style.display = 'block';
-        let progress = 0;
-        const progressInterval = setInterval(() => {
-            progress += 10;
-            uploadProgress.querySelector('.progress-bar').style.width = `${progress}%`;
-            uploadProgress.querySelector('.progress-text').textContent = `${progress}%`;
-            
-            if (progress >= 100) {
-                clearInterval(progressInterval);
-                
-                // Update the target field with the image URL
-                document.getElementById(targetField).value = fileUrl;
-                hideModal(uploadModal);
-                
-                // Reset upload modal
-                setTimeout(() => {
-                    previewImage.src = '';
-                    previewImage.style.display = 'none';
-                    uploadProgress.querySelector('.progress-bar').style.width = '0%';
-                    uploadProgress.querySelector('.progress-text').textContent = '0%';
-                    confirmUploadBtn.disabled = true;
-                    fileInput.value = '';
-                }, 300);
-            }
-        }, 100);
-    });
-    
-    // Close modal handlers
+    // Modal close handlers
     document.querySelectorAll('.admin-modal-close').forEach(btn => {
         btn.addEventListener('click', function() {
-            const modal = this.closest('.admin-modal');
-            hideModal(modal);
+            hideModal(this.closest('.admin-modal').id);
         });
     });
     
-    // Close modal when clicking outside
+    // Close when clicking outside
     document.querySelectorAll('.admin-modal').forEach(modal => {
         modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                hideModal(this);
-            }
+            if (e.target === this) hideModal(this.id);
         });
     });
-    
-    // Confirmation modal
-    const confirmModal = document.getElementById('confirmModal');
-    const confirmActionBtn = document.getElementById('confirmActionBtn');
-    
-    window.showConfirmation = function(title, message, callback) {
-        document.getElementById('confirmModalTitle').textContent = title;
-        document.getElementById('confirmModalMessage').textContent = message;
+}
+
+function initDataTables() {
+    // Project form
+    document.getElementById('projectForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
         
-        confirmActionBtn.onclick = function() {
-            callback();
-            hideModal(confirmModal);
+        const projectData = {
+            title: document.getElementById('projectTitle').value,
+            category: document.getElementById('projectCategory').value,
+            description: document.getElementById('projectDescription').value,
+            tech: document.getElementById('projectTech').value.split(',').map(t => t.trim()),
+            image: document.getElementById('projectImage').value,
+            details: projectEditor.root.innerHTML,
+            demoUrl: document.getElementById('projectDemoUrl').value,
+            codeUrl: document.getElementById('projectCodeUrl').value,
+            date: document.getElementById('projectId').value ? 
+                document.getElementById('projectDate').value : 
+                new Date().toISOString().split('T')[0],
+            status: 'active'
         };
         
-        showModal(confirmModal);
-    };
-}
-
-// Show modal function
-function showModal(modal) {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-// Hide modal function
-function hideModal(modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// Show project modal
-function showProjectModal(projectId) {
-    const modal = document.getElementById('projectModal');
-    const form = document.getElementById('projectForm');
-    
-    if (projectId) {
-        // Edit existing project
-        document.getElementById('projectModalTitle').textContent = 'Edit Project';
-        document.getElementById('projectId').value = projectId;
-        
-        // Load project data (in a real app, this would come from your database)
-        const project = getProjectById(projectId);
-        if (project) {
-            document.getElementById('projectTitle').value = project.title;
-            document.getElementById('projectCategory').value = project.category;
-            document.getElementById('projectDescription').value = project.description;
-            document.getElementById('projectTech').value = project.tech.join(', ');
-            document.getElementById('projectImage').value = project.image;
-            document.getElementById('projectDemoUrl').value = project.demoUrl;
-            document.getElementById('projectCodeUrl').value = project.codeUrl;
-            projectEditor.root.innerHTML = project.details;
+        if (document.getElementById('projectId').value) {
+            projectData.id = document.getElementById('projectId').value;
         }
-    } else {
-        // Add new project
-        document.getElementById('projectModalTitle').textContent = 'Add New Project';
-        form.reset();
-        projectEditor.root.innerHTML = '';
-    }
-    
-    showModal(modal);
-}
-
-// Show blog modal
-function showBlogModal(blogId) {
-    const modal = document.getElementById('blogModal');
-    const form = document.getElementById('blogForm');
-    
-    if (blogId) {
-        // Edit existing blog
-        document.getElementById('blogModalTitle').textContent = 'Edit Blog';
-        document.getElementById('blogId').value = blogId;
         
-        // Load blog data (in a real app, this would come from your database)
-        const blog = getBlogById(blogId);
-        if (blog) {
-            document.getElementById('blogTitle').value = blog.title;
-            document.getElementById('blogCategory').value = blog.category;
-            document.getElementById('blogImage').value = blog.image;
-            document.getElementById('blogExcerpt').value = blog.excerpt;
-            document.getElementById('blogTags').value = blog.tags.join(', ');
-            document.getElementById('blogPublishDate').value = blog.publishDate;
-            blogEditor.root.innerHTML = blog.content;
+        await saveProject(projectData);
+        hideModal('projectModal');
+    });
+    
+    // Blog form
+    document.getElementById('blogForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const blogData = {
+            title: document.getElementById('blogTitle').value,
+            category: document.getElementById('blogCategory').value,
+            image: document.getElementById('blogImage').value,
+            excerpt: document.getElementById('blogExcerpt').value,
+            content: blogEditor.root.innerHTML,
+            tags: document.getElementById('blogTags').value.split(',').map(t => t.trim()),
+            publishDate: document.getElementById('blogPublishDate').value || 
+                        new Date().toISOString().split('T')[0],
+            views: 0
+        };
+        
+        if (document.getElementById('blogId').value) {
+            blogData.id = document.getElementById('blogId').value;
         }
-    } else {
-        // Add new blog
-        document.getElementById('blogModalTitle').textContent = 'Add New Blog';
-        form.reset();
-        blogEditor.root.innerHTML = '';
-    }
+        
+        await saveBlog(blogData);
+        hideModal('blogModal');
+    });
     
-    showModal(modal);
+    // Settings form
+    document.getElementById('settingsForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        saveSettings();
+    });
 }
 
-// Initialize data tables
-function initDataTables() {
-    // Project form submission
-    const projectForm = document.getElementById('projectForm');
-    if (projectForm) {
-        projectForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const projectId = document.getElementById('projectId').value;
-            const projectData = {
-                title: document.getElementById('projectTitle').value,
-                category: document.getElementById('projectCategory').value,
-                description: document.getElementById('projectDescription').value,
-                tech: document.getElementById('projectTech').value.split(',').map(t => t.trim()),
-                image: document.getElementById('projectImage').value,
-                details: projectEditor.root.innerHTML,
-                demoUrl: document.getElementById('projectDemoUrl').value,
-                codeUrl: document.getElementById('projectCodeUrl').value,
-                date: new Date().toISOString().split('T')[0]
-            };
-            
-            if (projectId) {
-                // Update existing project
-                updateProject(projectId, projectData);
-                showNotification('Project updated successfully!');
-            } else {
-                // Add new project
-                addProject(projectData);
-                showNotification('Project added successfully!');
-            }
-            
-            hideModal(document.getElementById('projectModal'));
-            loadProjects();
-        });
-    }
-    
-    // Blog form submission
-    const blogForm = document.getElementById('blogForm');
-    if (blogForm) {
-        blogForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const blogId = document.getElementById('blogId').value;
-            const blogData = {
-                title: document.getElementById('blogTitle').value,
-                category: document.getElementById('blogCategory').value,
-                image: document.getElementById('blogImage').value,
-                excerpt: document.getElementById('blogExcerpt').value,
-                content: blogEditor.root.innerHTML,
-                tags: document.getElementById('blogTags').value.split(',').map(t => t.trim()),
-                publishDate: document.getElementById('blogPublishDate').value || new Date().toISOString().split('T')[0],
-                views: 0
-            };
-            
-            if (blogId) {
-                // Update existing blog
-                updateBlog(blogId, blogData);
-                showNotification('Blog updated successfully!');
-            } else {
-                // Add new blog
-                addBlog(blogData);
-                showNotification('Blog published successfully!');
-            }
-            
-            hideModal(document.getElementById('blogModal'));
-            loadBlogs();
-        });
-    }
-}
-
-// Initialize charts
 function initCharts() {
     const ctx = document.getElementById('visitorsChart');
     if (!ctx) return;
@@ -427,208 +433,30 @@ function initCharts() {
         },
         options: {
             responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+            plugins: { legend: { position: 'top' } },
+            scales: { y: { beginAtZero: true } }
         }
     });
 }
 
-// Project CRUD operations
-function loadProjects() {
-    // In a real app, this would fetch from your API
-    const projects = [
-        {
-            id: '1',
-            title: 'Quantum Neural Architecture Search',
-            category: 'quantum',
-            description: 'Developed a quantum-enhanced neural architecture search algorithm',
-            tech: ['Qiskit', 'PyTorch', 'TensorFlow'],
-            image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485',
-            details: '<p>Details about the project...</p>',
-            demoUrl: '#',
-            codeUrl: '#',
-            date: '2023-05-15'
-        },
-        // Add more sample projects
-    ];
-    
-    const tbody = document.getElementById('projectsTableBody');
-    tbody.innerHTML = '';
-    
-    projects.forEach(project => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${project.title}</td>
-            <td>${project.category}</td>
-            <td>${project.date}</td>
-            <td><span class="status-badge active">Active</span></td>
-            <td class="actions">
-                <button class="btn btn-icon btn-sm btn-edit" data-id="${project.id}">
-                    <i class="fas fa-edit"></i>
-                </button>
-                <button class="btn btn-icon btn-sm btn-delete" data-id="${project.id}">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </td>
-        `;
-        
-        tbody.appendChild(tr);
-    });
-    
-    // Add event listeners to action buttons
-    document.querySelectorAll('.btn-edit').forEach(btn => {
-        btn.addEventListener('click', function() {
-            showProjectModal(this.getAttribute('data-id'));
-        });
-    });
-    
-    document.querySelectorAll('.btn-delete').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const projectId = this.getAttribute('data-id');
-            
-            showConfirmation(
-                'Delete Project',
-                'Are you sure you want to delete this project? This action cannot be undone.',
-                function() {
-                    deleteProject(projectId);
-                    showNotification('Project deleted successfully!');
-                    loadProjects();
-                }
-            );
-        });
-    });
+function showModal(modalId) {
+    document.getElementById(modalId).classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
 
-function getProjectById(id) {
-    // In a real app, this would fetch from your API
-    return {
-        id: '1',
-        title: 'Quantum Neural Architecture Search',
-        category: 'quantum',
-        description: 'Developed a quantum-enhanced neural architecture search algorithm',
-        tech: ['Qiskit', 'PyTorch', 'TensorFlow'],
-        image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485',
-        details: '<p>Details about the project...</p>',
-        demoUrl: '#',
-        codeUrl: '#',
-        date: '2023-05-15'
+function hideModal(modalId) {
+    document.getElementById(modalId).classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function showConfirmation(title, message, callback) {
+    document.getElementById('confirmModalTitle').textContent = title;
+    document.getElementById('confirmModalMessage').textContent = message;
+    
+    document.getElementById('confirmActionBtn').onclick = function() {
+        callback();
+        hideModal('confirmModal');
     };
-}
-
-function addProject(project) {
-    // In a real app, this would send to your API
-    console.log('Adding project:', project);
-}
-
-function updateProject(id, project) {
-    // In a real app, this would send to your API
-    console.log('Updating project:', id, project);
-}
-
-function deleteProject(id) {
-    // In a real app, this would send to your API
-    console.log('Deleting project:', id);
-}
-
-// Blog CRUD operations
-function loadBlogs() {
-    // In a real app, this would fetch from your API
-    const blogs = [
-        {
-            id: '1',
-            title: 'Introduction to Quantum Machine Learning',
-            category: 'quantum',
-            image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485',
-            excerpt: 'An introduction to the exciting field of quantum machine learning',
-            content: '<p>Blog content goes here...</p>',
-            tags: ['quantum', 'machine-learning'],
-            publishDate: '2023-06-20',
-            views: 1248
-        },
-        // Add more sample blogs
-    ];
     
-    const tbody = document.getElementById('blogsTableBody');
-    tbody.innerHTML = '';
-    
-    blogs.forEach(blog => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${blog.title}</td>
-            <td>${blog.category}</td>
-            <td>${blog.publishDate}</td>
-            <td>${blog.views}</td>
-            <td class="actions">
-                <button class="btn btn-icon btn-sm btn-edit" data-id="${blog.id}">
-                    <i class="fas fa-edit"></i>
-                </button>
-                <button class="btn btn-icon btn-sm btn-delete" data-id="${blog.id}">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </td>
-        `;
-        
-        tbody.appendChild(tr);
-    });
-    
-    // Add event listeners to action buttons
-    document.querySelectorAll('.btn-edit').forEach(btn => {
-        btn.addEventListener('click', function() {
-            showBlogModal(this.getAttribute('data-id'));
-        });
-    });
-    
-    document.querySelectorAll('.btn-delete').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const blogId = this.getAttribute('data-id');
-            
-            showConfirmation(
-                'Delete Blog',
-                'Are you sure you want to delete this blog? This action cannot be undone.',
-                function() {
-                    deleteBlog(blogId);
-                    showNotification('Blog deleted successfully!');
-                    loadBlogs();
-                }
-            );
-        });
-    });
-}
-
-function getBlogById(id) {
-    // In a real app, this would fetch from your API
-    return {
-        id: '1',
-        title: 'Introduction to Quantum Machine Learning',
-        category: 'quantum',
-        image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485',
-        excerpt: 'An introduction to the exciting field of quantum machine learning',
-        content: '<p>Blog content goes here...</p>',
-        tags: ['quantum', 'machine-learning'],
-        publishDate: '2023-06-20',
-        views: 1248
-    };
-}
-
-function addBlog(blog) {
-    // In a real app, this would send to your API
-    console.log('Adding blog:', blog);
-}
-
-function updateBlog(id, blog) {
-    // In a real app, this would send to your API
-    console.log('Updating blog:', id, blog);
-}
-
-function deleteBlog(id) {
-    // In a real app, this would send to your API
-    console.log('Deleting blog:', id);
+    showModal('confirmModal');
 }
