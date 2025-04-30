@@ -11,13 +11,9 @@ const firebaseConfig = {
   };
 
 // Initialize Firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getDatabase, ref, set, push, remove, get } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const auth = getAuth(app);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const auth = firebase.auth();
 // DOM Elements
 const projectsTableBody = document.getElementById('projectsTableBody');
 const blogsTableBody = document.getElementById('blogsTableBody');
