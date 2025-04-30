@@ -1,10 +1,31 @@
-// Admin Dashboard Main Script - Firebase Realtime DB Version
-import { db, ref, set, get, remove, push } from './firebase';
+// Admin Dashboard Main Script - Complete Firebase Integration
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+import { getDatabase, ref, set, get, remove, push } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  databaseURL: "https://YOUR_PROJECT.firebaseio.com",
+  projectId: "YOUR_PROJECT",
+  storageBucket: "", // Leave empty
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
 // DOM Elements
 const projectsTableBody = document.getElementById('projectsTableBody');
 const blogsTableBody = document.getElementById('blogsTableBody');
 const adminNotification = document.getElementById('adminNotification');
+const themeToggle = document.getElementById('themeToggle');
+const logoutBtn = document.querySelector('.btn-logout');
+
+// Initialize Quill editors
+let projectEditor, blogEditor;
 
 // Initialize admin dashboard
 document.addEventListener('DOMContentLoaded', async function() {
@@ -14,21 +35,26 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
     
     // Initialize components
-    initAdminUI();
     initEditors();
+    initAdminUI();
     initModals();
     initDataTables();
     initCharts();
     
     // Load data
-    await loadProjects();
-    await loadBlogs();
-    loadSettings();
-    
-    // Display admin email
-    const adminEmail = localStorage.getItem('adminEmail');
-    document.getElementById('adminEmail').textContent = adminEmail;
-    document.getElementById('adminEmailInput').value = adminEmail;
+    try {
+        await loadProjects();
+        await loadBlogs();
+        loadSettings();
+        
+        // Display admin email
+        const adminEmail = localStorage.getItem('adminEmail');
+        document.getElementById('adminEmail').textContent = adminEmail;
+        document.getElementById('adminEmailInput').value = adminEmail;
+        
+    } catch (error) {
+        showNotification('Initialization error: ' + error.message, 'error');
+    }
 });
 
 // ====================== AUTHENTICATION ======================
@@ -162,31 +188,42 @@ async function saveBlog(blogData) {
 }
 
 // ====================== SETTINGS FUNCTIONS ======================
-function loadSettings() {
-    const settings = {
-        websiteTitle: "Mr.Sajan Portfolio",
-        adminEmail: "sajansah205@gmail.com",
-        maintenanceMode: false,
-        themeColor: "#00f0ff"
-    };
-    
-    document.getElementById('websiteTitle').value = settings.websiteTitle;
-    document.getElementById('adminEmailInput').value = settings.adminEmail;
-    document.getElementById('maintenanceMode').checked = settings.maintenanceMode;
-    document.getElementById('themeColor').value = settings.themeColor;
+async function loadSettings() {
+    try {
+        const snapshot = await get(ref(db, 'settings'));
+        const settings = snapshot.val() || {
+            websiteTitle: "Mr.Sajan Portfolio",
+            adminEmail: "sajansah205@gmail.com",
+            maintenanceMode: false,
+            themeColor: "#00f0ff"
+        };
+        
+        document.getElementById('websiteTitle').value = settings.websiteTitle;
+        document.getElementById('adminEmailInput').value = settings.adminEmail;
+        document.getElementById('maintenanceMode').checked = settings.maintenanceMode;
+        document.getElementById('themeColor').value = settings.themeColor;
+        
+        applyTheme(settings.themeColor);
+    } catch (error) {
+        showNotification('Error loading settings: ' + error.message, 'error');
+    }
 }
 
-function saveSettings() {
-    const settings = {
-        websiteTitle: document.getElementById('websiteTitle').value,
-        adminEmail: document.getElementById('adminEmailInput').value,
-        maintenanceMode: document.getElementById('maintenanceMode').checked,
-        themeColor: document.getElementById('themeColor').value
-    };
-    
-    // In a real app, you would save to Firebase
-    showNotification('Settings saved (demo)', 'success');
-    applyTheme(settings.themeColor);
+async function saveSettings() {
+    try {
+        const settings = {
+            websiteTitle: document.getElementById('websiteTitle').value,
+            adminEmail: document.getElementById('adminEmailInput').value,
+            maintenanceMode: document.getElementById('maintenanceMode').checked,
+            themeColor: document.getElementById('themeColor').value
+        };
+        
+        await set(ref(db, 'settings'), settings);
+        applyTheme(settings.themeColor);
+        showNotification('Settings saved successfully!', 'success');
+    } catch (error) {
+        showNotification('Error saving settings: ' + error.message, 'error');
+    }
 }
 
 function applyTheme(color) {
@@ -244,6 +281,7 @@ async function showProjectModal(projectId = null) {
         }
     } else {
         document.getElementById('projectModalTitle').textContent = 'Add New Project';
+        document.getElementById('projectId').value = '';
         projectEditor.root.innerHTML = '';
     }
     
@@ -272,6 +310,7 @@ async function showBlogModal(blogId = null) {
         }
     } else {
         document.getElementById('blogModalTitle').textContent = 'Add New Blog';
+        document.getElementById('blogId').value = '';
         document.getElementById('blogPublishDate').value = new Date().toISOString().split('T')[0];
         blogEditor.root.innerHTML = '';
     }
@@ -297,16 +336,22 @@ function initAdminUI() {
     });
     
     // Theme toggle
-    document.getElementById('themeToggle').addEventListener('click', () => {
+    themeToggle.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
     });
+    
+    // Logout button
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', adminLogout);
+    }
 }
 
 function initEditors() {
-    window.projectEditor = new Quill('#projectEditor', {
+    // Project editor
+    projectEditor = new Quill('#projectEditor', {
         modules: { toolbar: [
             [{ 'header': [1, 2, 3, false] }],
             ['bold', 'italic', 'underline', 'strike'],
@@ -319,7 +364,8 @@ function initEditors() {
         theme: 'snow'
     });
     
-    window.blogEditor = new Quill('#blogEditor', {
+    // Blog editor
+    blogEditor = new Quill('#blogEditor', {
         modules: { toolbar: [
             [{ 'header': [1, 2, 3, false] }],
             ['bold', 'italic', 'underline', 'strike', 'blockquote'],
@@ -460,3 +506,9 @@ function showConfirmation(title, message, callback) {
     
     showModal('confirmModal');
 }
+
+// Make functions available globally for HTML event handlers
+window.showProjectModal = showProjectModal;
+window.showBlogModal = showBlogModal;
+window.adminLogout = adminLogout;
+window.showConfirmation = showConfirmation;
