@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr.Sajan Sah| AI/ML Engineer</title>
+    <meta name="description" content="Pushing the boundaries of artificial intelligence and machine learning">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+     <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <!-- Particle Background Canvas -->
+    <canvas id="particleCanvas"></canvas>
+    
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="quantum-loader">
+            <div class="quantum-dot" style="--delay: 0"></div>
+            <div class="quantum-dot" style="--delay: 0.2"></div>
+            <div class="quantum-dot" style="--delay: 0.4"></div>
+            <div class="quantum-dot" style="--delay: 0.6"></div>
+            <div class="quantum-dot" style="--delay: 0.8"></div>
+        </div>
+        <div class="loading-text">Welcome To www.sajankumar.com.np</div>
+    </div>
+
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Floating Navigation -->
+        <nav class="floating-nav">
+            <div class="nav-brand">
+                <span class="nav-logo">SK</span>
+                <span class="nav-name">Mr.Sajan</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active" data-scroll>
+                    <span class="link-icon"><i class="fas fa-home"></i></span>
+                    <span class="link-text">Home</span>
+                </a>
+                <a href="#about" class="nav-link" data-scroll>
+                    <span class="link-icon"><i class="fas fa-user-astronaut"></i></span>
+                    <span class="link-text">About</span>
+                </a>
+                <a href="#skills" class="nav-link" data-scroll>
+                    <span class="link-icon"><i class="fas fa-brain"></i></span>
+                    <span class="link-text">Skills</span>
+                </a>
+                <a href="#projects" class="nav-link" data-scroll>
+                    <span class="link-icon"><i class="fas fa-rocket"></i></span>
+                    <span class="link-text">Projects</span>
+                </a>
+                <a href="#experience" class="nav-link" data-scroll>
+                    <span class="link-icon"><i class="fas fa-microchip"></i></span>
+                    <span class="link-text">Experience</span>
+                </a>
+                <a href="#contact" class="nav-link" data-scroll>
+                    <span class="link-icon"><i class="fas fa-satellite-dish"></i></span>
+                    <span class="link-text">Contact</span>
+                </a>
+            </div>
+            <div class="nav-footer">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+
+                <button id="adminLoginBtn" class="btn btn-icon" onclick="window.location.href='admin-login.html'">
+                    <i class="fas fa-lock"></i>
+                    <span class="link-text">Admin</span>
+                  </button>
+                  
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="Medium"><i class="fab fa-medium"></i></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content-wrapper">
+            <!-- Home Section -->
+            <section id="home" class="section home-section">
+                <div class="home-content">
+                    <div class="home-text">
+                        <h1 class="home-title">
+                            <span class="title-line">Hello, I'm</span>
+                            <span class="title-name">Mr.Sajan Sah</span>
+                            <span class="title-sub">AI/ML Engineer</span>
+                        </h1>
+                        <p class="home-description">
+                            Building intelligent systems that learn, adapt, and evolve. 
+                            Specializing in ML/DL, neural architecture search, generative Ai
+                            and artificial general intelligence.
+                        </p>
+                        <div class="home-buttons">
+                            <a href="#projects" class="btn btn-primary" data-scroll>
+                                <span>View My Work</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#contact" class="btn btn-secondary" data-scroll>
+                                <span>Contact Me</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="home-visual">
+                        <div class="holographic-display">
+                            <div class="hologram-base"></div>
+                            <div class="hologram-container">
+                                <div class="hologram-inner">
+                                    <div class="neural-network-visualization">
+                                        <div class="neuron-layer">
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                        </div>
+                                        <div class="neuron-layer">
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                        </div>
+                                        <div class="neuron-layer">
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                            <div class="neuron"></div>
+                                        </div>
+                                    </div>
+                                    <div class="data-stream">
+                                        <div class="data-particle"></div>
+                                        <div class="data-particle"></div>
+                                        <div class="data-particle"></div>
+                                        <div class="data-particle"></div>
+                                        <div class="data-particle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-indicator">
+                    <div class="scroll-line"></div>
+                    <span>Scroll Down</span>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="section about-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-number">01</span>
+                        <span class="title-text">About Me</span>
+                        <span class="title-line"></span>
+                    </h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-image">
+                        <div class="image-container">
+                            <div class="image-border"></div>
+                            <div class="image-main"></div>
+                            <div class="image-particles">
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <h3 class="about-subtitle">The Mind Behind the Machine</h3>
+                        <p class="about-description">
+                            I'm an AI/ML engineer fueled by a passion for building intelligent systems that go beyond conventional limits. With deep expertise in machine learning, deep learning, and reinforcement learning, I focus on crafting powerful solutions that tackle real-world problems with precision and creativity. My mission is to push the boundaries of AI through innovation, purposeful engineering, and a drive to make impactful contributions to the field.
+                        </p>
+                        <div class="about-details">
+                            <div class="detail-card">
+                                <div class="detail-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="detail-content">
+                                    <h4>Education</h4>
+                                    <p>B.Tech in CSE at KIIT university</p>
+                                    <p>+2 from GSS, KTM</p>
+                                </div>
+                            </div>
+                            <div class="detail-card">
+                                <div class="detail-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="detail-content">
+                                    <h4>Experience</h4>
+                                    <p>5+ Years in AI Research</p>
+                                    <p>12+ Major Projects</p>
+                                </div>
+                            </div>
+                            <div class="detail-card">
+                                <div class="detail-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="detail-content">
+                                    <h4>Achievements</h4>
+                                    <p>3 Patents in AI</p>
+                                    <p>Published in NeurIPS, ICML</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-buttons">
+                            <a href="#" class="btn btn-outline">
+                                <span>Download CV</span>
+                                <i class="fas fa-download"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="section skills-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-number">02</span>
+                        <span class="title-text">Technical Skills</span>
+                        <span class="title-line"></span>
+                    </h2>
+                </div>
+                <div class="skills-content">
+                    <div class="skills-categories">
+                        <div class="category-tabs">
+                            <button class="category-tab active" data-category="ai-ml">AI/ML</button>
+                            <button class="category-tab" data-category="programming">Programming</button>
+                            <button class="category-tab" data-category="data">Data</button>
+                            <button class="category-tab" data-category="devops">DevOps</button>
+                            <button class="category-tab" data-category="quantum">Quantum</button>
+                        </div>
+                        <div class="category-content active" data-category="ai-ml">
+                            <div class="skill-radar">
+                                <canvas id="radarChart"></canvas>
+                            </div>
+                            <div class="skill-items">
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Deep Learning</span>
+                                        <span class="skill-level">Expert</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Neural Networks</span>
+                                        <span class="skill-level">Expert</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Reinforcement Learning</span>
+                                        <span class="skill-level">Advanced</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Computer Vision</span>
+                                        <span class="skill-level">Advanced</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">NLP</span>
+                                        <span class="skill-level">Advanced</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 87%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="category-content active" data-category="programming">
+                            <!-- Programming skills content -->
+                             
+                             
+                        </div>
+                        <!-- Other categories content -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="section projects-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-number">03</span>
+                        <span class="title-text">Featured Projects</span>
+                        <span class="title-line"></span>
+                    </h2>
+                </div>
+                <div class="projects-content">
+                    <div class="project-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="ai">AI Research</button>
+                        <button class="filter-btn" data-filter="ml">ML Applications</button>
+                        <button class="filter-btn" data-filter="quantum">Quantum AI</button>
+                        <button class="filter-btn" data-filter="opensource">Open Source</button>
+                    </div>
+                    <div class="projects-grid">
+                        <div class="project-card" data-category="ai quantum">
+                            <div class="project-image">
+                                <div class="image-overlay"></div>
+                                <div class="project-badge">Quantum AI</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Quantum Neural Architecture Search</h3>
+                                <p class="project-description">
+                                    Developed a quantum-enhanced neural architecture search algorithm that reduces search time by 78% while improving model accuracy.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Qiskit</span>
+                                    <span class="tech-tag">PyTorch</span>
+                                    <span class="tech-tag">TensorFlow</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <span>Live Demo</span>
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                        <span>Code</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card" data-category="ml opensource">
+                            <div class="project-image">
+                                <div class="image-overlay"></div>
+                                <div class="project-badge">Open Source</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">NeuroEvolution Framework</h3>
+                                <p class="project-description">
+                                    A scalable framework for neuroevolution of augmenting topologies (NEAT) with GPU acceleration and distributed training support.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">CUDA</span>
+                                    <span class="tech-tag">Ray</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <span>Live Demo</span>
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                        <span>Code</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card" data-category="ai ml">
+                            <div class="project-image">
+                                <div class="image-overlay"></div>
+                                <div class="project-badge">AI Research</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Meta-Learning for Few-Shot NLP</h3>
+                                <p class="project-description">
+                                    Developed a meta-learning approach that achieves state-of-the-art performance on few-shot text classification benchmarks.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">PyTorch</span>
+                                    <span class="tech-tag">HuggingFace</span>
+                                    <span class="tech-tag">Transformers</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <span>Live Demo</span>
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                        <span>Code</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card" data-category="quantum">
+                            <div class="project-image">
+                                <div class="image-overlay"></div>
+                                <div class="project-badge">Quantum AI</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Quantum GAN for Drug Discovery</h3>
+                                <p class="project-description">
+                                    Implemented a quantum generative adversarial network for molecular generation with applications in drug discovery.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Qiskit</span>
+                                    <span class="tech-tag">RDKit</span>
+                                    <span class="tech-tag">PennyLane</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <span>Live Demo</span>
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                        <span>Code</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card" data-category="ml">
+                            <div class="project-image">
+                                <div class="image-overlay"></div>
+                                <div class="project-badge">ML Application</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Autonomous Trading Agent</h3>
+                                <p class="project-description">
+                                    Deep reinforcement learning agent that learns optimal trading strategies through self-play in simulated markets.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">TensorFlow</span>
+                                    <span class="tech-tag">Gym</span>
+                                    <span class="tech-tag">Ray</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <span>Live Demo</span>
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                        <span>Code</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card" data-category="ai opensource">
+                            <div class="project-image">
+                                <div class="image-overlay"></div>
+                                <div class="project-badge">Open Source</div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Explainable AI Toolkit</h3>
+                                <p class="project-description">
+                                    Comprehensive library for model interpretability with novel visualization techniques for deep neural networks.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Dash</span>
+                                    <span class="tech-tag">SHAP</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <span>Live Demo</span>
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                        <span>Code</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="projects-cta">
+                        <a href="#" class="btn btn-primary">
+                            <span>View All Projects</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="section experience-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-number">04</span>
+                        <span class="title-text">Professional Journey</span>
+                        <span class="title-line"></span>
+                    </h2>
+                </div>
+                <div class="experience-content">
+                    <div class="timeline">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-items">
+                            <div class="timeline-item">
+                                <div class="timeline-date">2022 - Present</div>
+                                <div class="timeline-card">
+                                    <div class="timeline-card-header">
+                                        <h3 class="timeline-title">Lead AI Researcher</h3>
+                                        <span class="timeline-company">Quantum AI Labs</span>
+                                    </div>
+                                    <div class="timeline-card-body">
+                                        <p>
+                                            Leading a team of researchers developing quantum machine learning algorithms.
+                                            Published 5 papers in top-tier conferences and filed 2 patents for novel QML architectures.
+                                        </p>
+                                        <div class="timeline-tech">
+                                            <span class="tech-tag">Quantum ML</span>
+                                            <span class="tech-tag">TensorFlow Quantum</span>
+                                            <span class="tech-tag">Qiskit</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2019 - 2022</div>
+                                <div class="timeline-card">
+                                    <div class="timeline-card-header">
+                                        <h3 class="timeline-title">Senior ML Engineer</h3>
+                                        <span class="timeline-company">NeuroTech Solutions</span>
+                                    </div>
+                                    <div class="timeline-card-body">
+                                        <p>
+                                            Developed state-of-the-art computer vision systems for medical imaging analysis.
+                                            Led the development of a federated learning framework for privacy-preserving AI.
+                                        </p>
+                                        <div class="timeline-tech">
+                                            <span class="tech-tag">PyTorch</span>
+                                            <span class="tech-tag">OpenCV</span>
+                                            <span class="tech-tag">Federated Learning</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2017 - 2019</div>
+                                <div class="timeline-card">
+                                    <div class="timeline-card-header">
+                                        <h3 class="timeline-title">AI Research Scientist</h3>
+                                        <span class="timeline-company">DeepMind Technologies</span>
+                                    </div>
+                                    <div class="timeline-card-body">
+                                        <p>
+                                            Researched reinforcement learning algorithms for game playing agents.
+                                            Contributed to the development of novel neural architecture search techniques.
+                                        </p>
+                                        <div class="timeline-tech">
+                                            <span class="tech-tag">Reinforcement Learning</span>
+                                            <span class="tech-tag">TensorFlow</span>
+                                            <span class="tech-tag">NAS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">2015 - 2017</div>
+                                <div class="timeline-card">
+                                    <div class="timeline-card-header">
+                                        <h3 class="timeline-title">Machine Learning Engineer</h3>
+                                        <span class="timeline-company">AI Nexus</span>
+                                    </div>
+                                    <div class="timeline-card-body">
+                                        <p>
+                                            Built and deployed machine learning models for natural language processing tasks.
+                                            Developed a novel attention mechanism for sequence-to-sequence models.
+                                        </p>
+                                        <div class="timeline-tech">
+                                            <span class="tech-tag">NLP</span>
+                                            <span class="tech-tag">Keras</span>
+                                            <span class="tech-tag">Attention Models</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section contact-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-number">05</span>
+                        <span class="title-text">Get In Touch</span>
+                        <span class="title-line"></span>
+                    </h2>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3 class="contact-subtitle">Let's Build the Future Together</h3>
+                        <p class="contact-description">
+                            Interested in collaborating on cutting-edge AI research or developing innovative machine learning solutions? 
+                            Feel free to reach out for consulting opportunities, research collaborations, or just to discuss the latest 
+                            advancements in AI.
+                        </p>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Email Me</h4>
+                                    <a href="mailto:quantum@flux.ai">sajansah205@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Location</h4>
+                                    <span>Janakpur, Nepal</span>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h4>Call Me</h4>
+                                    <a href="tel:+15551234567">+91 9337804460</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm" class="neon-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required>
+                                <label for="name">Your Name</label>
+                                <div class="form-border"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required>
+                                <label for="email">Your Email</label>
+                                <div class="form-border"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" required>
+                                <label for="subject">Subject</label>
+                                <div class="form-border"></div>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message">Your Message</label>
+                                <div class="form-border"></div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+    
+
+    <!-- Cursor Effects -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Notification -->
+    <div class="notification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <span class="notification-text">Message sent successfully!</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

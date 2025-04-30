@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Quantum Flux</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.snow.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <!-- Particle Background Canvas -->
+    <canvas id="particleCanvas"></canvas>
+    
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="admin-header-left">
+            <div class="admin-logo">
+                <span>SK</span>
+            </div>
+        </div>
+        <div class="admin-header-right">
+            <button class="btn btn-icon" id="themeToggle">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="admin-user">
+                <span id="adminEmail"></span>
+                <button class="btn btn-outline btn-sm" onclick="adminLogout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Admin Sidebar -->
+    <nav class="admin-sidebar">
+        <div class="admin-nav">
+            <button class="admin-nav-link active" data-section="projects">
+                <i class="fas fa-rocket"></i>
+                <span>Projects</span>
+            </button>
+            <button class="admin-nav-link" data-section="blogs">
+                <i class="fas fa-blog"></i>
+                <span>Blogs</span>
+            </button>
+            <button class="admin-nav-link" data-section="analytics">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics</span>
+            </button>
+            <button class="admin-nav-link" data-section="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Admin Main Content -->
+    <main class="admin-main">
+        <!-- Projects Section -->
+        <section class="admin-section active" id="projectsSection">
+            <div class="admin-section-header">
+                <h2><i class="fas fa-rocket"></i> Project Management</h2>
+                <button class="btn btn-primary" id="addProjectBtn">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Project</span>
+                </button>
+            </div>
+            
+            <div class="admin-section-body">
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBody">
+                            <!-- Projects will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Blogs Section -->
+        <section class="admin-section" id="blogsSection">
+            <div class="admin-section-header">
+                <h2><i class="fas fa-blog"></i> Blog Management</h2>
+                <button class="btn btn-primary" id="addBlogBtn">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Blog</span>
+                </button>
+            </div>
+            
+            <div class="admin-section-body">
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Views</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="blogsTableBody">
+                            <!-- Blogs will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Analytics Section -->
+        <section class="admin-section" id="analyticsSection">
+            <div class="admin-section-header">
+                <h2><i class="fas fa-chart-line"></i> Analytics Dashboard</h2>
+            </div>
+            
+            <div class="admin-section-body">
+                <div class="admin-cards">
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Visitors</h3>
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="admin-card-body">
+                            <div class="admin-stat">
+                                <span class="stat-value">1,248</span>
+                                <span class="stat-label">This Month</span>
+                            </div>
+                            <div class="admin-stat">
+                                <span class="stat-value">8,542</span>
+                                <span class="stat-label">All Time</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Projects</h3>
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="admin-card-body">
+                            <div class="admin-stat">
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Total</span>
+                            </div>
+                            <div class="admin-stat">
+                                <span class="stat-value">1,842</span>
+                                <span class="stat-label">Views</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Blogs</h3>
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <div class="admin-card-body">
+                            <div class="admin-stat">
+                                <span class="stat-value">8</span>
+                                <span class="stat-label">Total</span>
+                            </div>
+                            <div class="admin-stat">
+                                <span class="stat-value">3,456</span>
+                                <span class="stat-label">Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admin-chart-container">
+                    <canvas id="visitorsChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Settings Section -->
+        <section class="admin-section" id="settingsSection">
+            <div class="admin-section-header">
+                <h2><i class="fas fa-cog"></i> System Settings</h2>
+            </div>
+            
+            <div class="admin-section-body">
+                <form class="admin-form">
+                    <div class="form-group">
+                        <label>Website Title</label>
+                        <input type="text" value="Quantum Flux">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Admin Email</label>
+                        <input type="email" value="sajansah205@gmail.com" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Maintenance Mode</label>
+                        <div class="admin-toggle">
+                            <input type="checkbox" id="maintenanceMode">
+                            <label for="maintenanceMode"></label>
+                            <span>Enable maintenance mode</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Theme Color</label>
+                        <div class="admin-color-picker">
+                            <input type="color" value="#00f0ff">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            <span>Save Settings</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Project Modal -->
+    <div class="admin-modal" id="projectModal">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h3 id="projectModalTitle">Add New Project</h3>
+                <button class="admin-modal-close">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+                <form id="projectForm">
+                    <input type="hidden" id="projectId">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Project Title</label>
+                            <input type="text" id="projectTitle" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="projectCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="ai">AI Research</option>
+                                <option value="ml">ML Applications</option>
+                                <option value="quantum">Quantum AI</option>
+                                <option value="opensource">Open Source</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Short Description</label>
+                        <textarea id="projectDescription" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Technologies (comma separated)</label>
+                        <input type="text" id="projectTech" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Project Image URL</label>
+                        <input type="url" id="projectImage">
+                        <button type="button" class="btn btn-outline btn-sm" id="uploadImageBtn">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Upload Image</span>
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Project Details</label>
+                        <div id="projectEditor"></div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Demo URL</label>
+                            <input type="url" id="projectDemoUrl">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Code URL</label>
+                            <input type="url" id="projectCodeUrl">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary admin-modal-close">
+                            <i class="fas fa-times"></i>
+                            <span>Cancel</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            <span>Save Project</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Blog Modal -->
+    <div class="admin-modal" id="blogModal">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h3 id="blogModalTitle">Add New Blog</h3>
+                <button class="admin-modal-close">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+                <form id="blogForm">
+                    <input type="hidden" id="blogId">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Blog Title</label>
+                            <input type="text" id="blogTitle" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="blogCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="ai">AI Research</option>
+                                <option value="ml">Machine Learning</option>
+                                <option value="quantum">Quantum Computing</option>
+                                <option value="tutorials">Tutorials</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Featured Image URL</label>
+                        <input type="url" id="blogImage">
+                        <button type="button" class="btn btn-outline btn-sm" id="uploadBlogImageBtn">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Upload Image</span>
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Excerpt</label>
+                        <textarea id="blogExcerpt" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Blog Content</label>
+                        <div id="blogEditor"></div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tags (comma separated)</label>
+                            <input type="text" id="blogTags">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Publish Date</label>
+                            <input type="date" id="blogPublishDate">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary admin-modal-close">
+                            <i class="fas fa-times"></i>
+                            <span>Cancel</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            <span>Publish Blog</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Image Upload Modal -->
+    <div class="admin-modal" id="uploadModal">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h3>Upload Image</h3>
+                <button class="admin-modal-close">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+                <div class="admin-upload-area" id="dropZone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop your image here or click to browse</p>
+                    <input type="file" id="fileInput" accept="image/*">
+                </div>
+                
+                <div class="admin-upload-preview" id="imagePreview">
+                    <img id="previewImage" style="display: none;">
+                    <div class="admin-upload-progress" id="uploadProgress">
+                        <div class="progress-bar"></div>
+                        <span class="progress-text">0%</span>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary admin-modal-close">
+                        <i class="fas fa-times"></i>
+                        <span>Cancel</span>
+                    </button>
+                    <button type="button" class="btn btn-primary" id="confirmUploadBtn" disabled>
+                        <i class="fas fa-check"></i>
+                        <span>Use This Image</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Confirmation Modal -->
+    <div class="admin-modal" id="confirmModal">
+        <div class="admin-modal-content small">
+            <div class="admin-modal-header">
+                <h3 id="confirmModalTitle">Confirm Action</h3>
+                <button class="admin-modal-close">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+                <p id="confirmModalMessage">Are you sure you want to perform this action?</p>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary admin-modal-close">
+                        <i class="fas fa-times"></i>
+                        <span>Cancel</span>
+                    </button>
+                    <button type="button" class="btn btn-danger" id="confirmActionBtn">
+                        <i class="fas fa-check"></i>
+                        <span>Confirm</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.js"></script>
+    <script src="scripts.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
