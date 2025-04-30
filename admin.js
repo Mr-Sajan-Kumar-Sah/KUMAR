@@ -1,17 +1,14 @@
-// Admin Dashboard Main Script - Complete Firebase Integration
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getDatabase, ref, set, get, remove, push } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT.firebaseio.com",
-  projectId: "YOUR_PROJECT",
-  storageBucket: "", // Leave empty
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
+    apiKey: "AIzaSyCWMMjn8zoqd9FBSLe8GU0kxzuvPtgd26o",
+    authDomain: "sajankumar-7fe56.firebaseapp.com",
+    projectId: "sajankumar-7fe56",
+    storageBucket: "sajankumar-7fe56.firebasestorage.app",
+    messagingSenderId: "530497965075",
+    appId: "1:530497965075:web:a29f682c663c1d13b283e6",
+    measurementId: "G-4HDJ9D9R32"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
