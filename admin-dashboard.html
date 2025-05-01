@@ -4,17 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Mr.Sajan</title>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Quill Editor CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.snow.css">
-    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
+    
     <style>
+        /* Preloader Styles */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        .preloader.loaded {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #00f0ff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* Admin Dashboard Specific Styles */
         :root {
             --admin-sidebar-width: 280px;
             --admin-header-height: 70px;
             --admin-card-radius: 12px;
             --admin-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary: #00f0ff;
+            --secondary: #00ffa3;
+            --bg-dark: #121212;
+            --card-bg: #1e1e1e;
+            --card-border: #2e2e2e;
+            --text: #ffffff;
+            --text-light: #f0f0f0;
+            --text-dark: #aaaaaa;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --border-radius-md: 8px;
+            --border-radius-xl: 20px;
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-md: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-xxl: 2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text);
+            overflow-x: hidden;
         }
 
         /* Admin Layout */
@@ -115,6 +197,11 @@
             animation: fadeIn 0.3s ease-in-out;
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .admin-section-header {
             display: flex;
             justify-content: space-between;
@@ -189,6 +276,57 @@
         .actions {
             display: flex;
             gap: var(--space-xs);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--border-radius-md);
+            font-family: var(--font-heading);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--admin-transition);
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background: #00d8e6;
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text);
+            border-color: var(--card-border);
+        }
+
+        .btn-secondary:hover {
+            background: #2a2a2a;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        .btn-danger {
+            background: #ff4d4f;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ff7875;
         }
 
         .btn-icon {
@@ -581,6 +719,37 @@
             box-shadow: var(--shadow-xl);
         }
 
+        /* Notification */
+        .admin-notification {
+            position: fixed;
+            bottom: var(--space-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--bg-dark);
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--border-radius-xl);
+            font-weight: 500;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--admin-transition);
+        }
+
+        .admin-notification.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .admin-notification.error {
+            background: #ff4d4f;
+        }
+
+        .admin-notification.success {
+            background: #00ffa3;
+        }
+
         /* Mobile Styles */
         @media (max-width: 992px) {
             .admin-sidebar {
@@ -620,49 +789,14 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Notification */
-        .admin-notification {
-            position: fixed;
-            bottom: var(--space-xl);
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: var(--bg-dark);
-            padding: var(--space-md) var(--space-xl);
-            border-radius: var(--border-radius-xl);
-            font-weight: 500;
-            box-shadow: var(--shadow-lg);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--admin-transition);
-        }
-
-        .admin-notification.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .admin-notification.error {
-            background: #ff4d4f;
-        }
-
-        .admin-notification.success {
-            background: #00ffa3;
-        }
     </style>
 </head>
 <body>
-    <!-- Particle Background Canvas -->
-    <canvas id="particleCanvas"></canvas>
-    
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="loader"></div>
+    </div>
+
     <!-- Admin Header -->
     <header class="admin-header">
         <div class="admin-header-left">
@@ -675,7 +809,7 @@
             </button>
             <div class="admin-user">
                 <span id="adminEmail"></span>
-                <button class="btn btn-outline btn-sm" onclick="adminLogout()">
+                <button class="btn btn-outline btn-sm" id="logoutBtn">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </button>
@@ -1096,21 +1230,11 @@
     <!-- Notification -->
     <div class="admin-notification" id="adminNotification"></div>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
-    
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <!-- Quill Editor -->
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.js"></script>
-    
-    <!-- Custom Scripts -->
-    <script src="script.js"></script>
-    <script type="module" src="admin.js"></script>
     
     <!-- Initialize Firebase -->
     <script>
@@ -1126,10 +1250,469 @@
         };
 
         // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+        const app = firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
         const auth = firebase.auth();
         const storage = firebase.storage();
+    </script>
+    
+    <!-- Main Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    
+        // Preloader
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+            }, 1000);
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+
+        // Logout Button
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                auth.signOut().then(() => {
+                    localStorage.removeItem('adminToken');
+                    localStorage.removeItem('adminEmail');
+                    window.location.href = 'admin-login.html';
+                }).catch((error) => {
+                    console.error('Logout error:', error);
+                    showNotification('Logout failed: ' + error.message, 'error');
+                });
+            });
+        }
+
+        // Check authentication state
+        
+
+        // Initialize navigation
+        document.querySelectorAll('.admin-nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.admin-nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                document.querySelectorAll('.admin-section').forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === `${this.dataset.section}Section`) {
+                        section.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Initialize modals
+        document.getElementById('addProjectBtn').addEventListener('click', () => {
+            document.getElementById('projectModalTitle').textContent = 'Add New Project';
+            document.getElementById('projectId').value = '';
+            document.getElementById('projectForm').reset();
+            if (typeof projectEditor !== 'undefined') {
+                projectEditor.root.innerHTML = '';
+            }
+            showModal('projectModal');
+        });
+
+        document.getElementById('addBlogBtn').addEventListener('click', () => {
+            document.getElementById('blogModalTitle').textContent = 'Add New Blog';
+            document.getElementById('blogId').value = '';
+            document.getElementById('blogForm').reset();
+            if (typeof blogEditor !== 'undefined') {
+                blogEditor.root.innerHTML = '';
+            }
+            document.getElementById('blogPublishDate').value = new Date().toISOString().split('T')[0];
+            showModal('blogModal');
+        });
+
+        // Modal close handlers
+        document.querySelectorAll('.admin-modal-close').forEach(btn => {
+            btn.addEventListener('click', function() {
+                hideModal(this.closest('.admin-modal').id);
+            });
+        });
+
+        // Close when clicking outside
+        document.querySelectorAll('.admin-modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) hideModal(this.id);
+            });
+        });
+
+        // Initialize Quill editors
+        const projectEditor = new Quill('#projectEditor', {
+            modules: { toolbar: [
+                [{ 'header': [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                ['link', 'image', 'video'],
+                ['clean']
+            ]},
+            placeholder: 'Write project details...',
+            theme: 'snow'
+        });
+
+        const blogEditor = new Quill('#blogEditor', {
+            modules: { toolbar: [
+                [{ 'header': [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                [{ 'color': [] }, { 'background': [] }],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                ['link', 'image', 'video', 'code-block'],
+                ['clean']
+            ]},
+            placeholder: 'Write blog content...',
+            theme: 'snow'
+        });
+
+        // Initialize charts
+        const ctx = document.getElementById('visitorsChart');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Monthly Visitors',
+                        data: [120, 190, 170, 220, 250, 280, 310, 340, 280, 300, 350, 400],
+                        borderColor: 'var(--primary)',
+                        backgroundColor: 'rgba(0, 240, 255, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { position: 'top' } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        }
+
+        // Form submissions
+        document.getElementById('projectForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const projectData = {
+                title: document.getElementById('projectTitle').value,
+                category: document.getElementById('projectCategory').value,
+                description: document.getElementById('projectDescription').value,
+                tech: document.getElementById('projectTech').value.split(',').map(t => t.trim()),
+                image: document.getElementById('projectImage').value,
+                details: projectEditor.root.innerHTML,
+                demoUrl: document.getElementById('projectDemoUrl').value,
+                codeUrl: document.getElementById('projectCodeUrl').value,
+                date: document.getElementById('projectId').value ? 
+                    new Date().toISOString().split('T')[0] : 
+                    new Date().toISOString().split('T')[0],
+                status: 'active'
+            };
+            
+            if (document.getElementById('projectId').value) {
+                projectData.id = document.getElementById('projectId').value;
+            }
+            
+            try {
+                if (projectData.id) {
+                    await firebase.database().ref(`projects/${projectData.id}`).set(projectData);
+                } else {
+                    const newProjectRef = firebase.database().ref('projects').push();
+                    await newProjectRef.set(projectData);
+                }
+                showNotification('Project saved successfully!', 'success');
+                hideModal('projectModal');
+                await loadProjects();
+            } catch (error) {
+                showNotification('Error saving project: ' + error.message, 'error');
+            }
+        });
+
+        document.getElementById('blogForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const blogData = {
+                title: document.getElementById('blogTitle').value,
+                category: document.getElementById('blogCategory').value,
+                image: document.getElementById('blogImage').value,
+                excerpt: document.getElementById('blogExcerpt').value,
+                content: blogEditor.root.innerHTML,
+                tags: document.getElementById('blogTags').value.split(',').map(t => t.trim()),
+                publishDate: document.getElementById('blogPublishDate').value || 
+                            new Date().toISOString().split('T')[0],
+                views: 0
+            };
+            
+            if (document.getElementById('blogId').value) {
+                blogData.id = document.getElementById('blogId').value;
+            }
+            
+            try {
+                if (blogData.id) {
+                    await firebase.database().ref(`blogs/${blogData.id}`).set(blogData);
+                } else {
+                    const newBlogRef = firebase.database().ref('blogs').push();
+                    await newBlogRef.set(blogData);
+                }
+                showNotification('Blog saved successfully!', 'success');
+                hideModal('blogModal');
+                await loadBlogs();
+            } catch (error) {
+                showNotification('Error saving blog: ' + error.message, 'error');
+            }
+        });
+
+        document.getElementById('settingsForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const settings = {
+                websiteTitle: document.getElementById('websiteTitle').value,
+                adminEmail: document.getElementById('adminEmailInput').value,
+                maintenanceMode: document.getElementById('maintenanceMode').checked,
+                themeColor: document.getElementById('themeColor').value
+            };
+            
+            try {
+                await firebase.database().ref('settings').set(settings);
+                document.documentElement.style.setProperty('--primary', settings.themeColor);
+                showNotification('Settings saved successfully!', 'success');
+            } catch (error) {
+                showNotification('Error saving settings: ' + error.message, 'error');
+            }
+        });
+
+        // Load initial data
+        async function loadProjects() {
+            try {
+                const snapshot = await firebase.database().ref('projects').get();
+                const projects = snapshot.val() || {};
+                
+                document.getElementById('projectsTableBody').innerHTML = Object.entries(projects)
+                    .filter(([_, project]) => project.status === 'active')
+                    .map(([id, project]) => `
+                        <tr>
+                            <td>${project.title}</td>
+                            <td>${project.category}</td>
+                            <td>${project.date}</td>
+                            <td><span class="status-badge active">Active</span></td>
+                            <td class="actions">
+                                <button class="btn btn-icon btn-sm btn-edit" data-id="${id}">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-icon btn-sm btn-delete" data-id="${id}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `).join('');
+                
+                document.getElementById('totalProjects').textContent = Object.keys(projects).length;
+                
+                document.querySelectorAll('.btn-edit').forEach(btn => {
+                    btn.addEventListener('click', () => showEditProjectModal(btn.getAttribute('data-id')));
+                });
+                
+                document.querySelectorAll('.btn-delete').forEach(btn => {
+                    btn.addEventListener('click', () => confirmDelete('project', btn.getAttribute('data-id')));
+                });
+                
+            } catch (error) {
+                showNotification('Failed to load projects: ' + error.message, 'error');
+            }
+        }
+
+        async function loadBlogs() {
+            try {
+                const snapshot = await firebase.database().ref('blogs').get();
+                const blogs = snapshot.val() || {};
+                
+                document.getElementById('blogsTableBody').innerHTML = Object.entries(blogs)
+                    .map(([id, blog]) => `
+                        <tr>
+                            <td>${blog.title}</td>
+                            <td>${blog.category}</td>
+                            <td>${blog.publishDate}</td>
+                            <td>${blog.views || 0}</td>
+                            <td class="actions">
+                                <button class="btn btn-icon btn-sm btn-edit" data-id="${id}">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-icon btn-sm btn-delete" data-id="${id}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `).join('');
+                
+                const totalViews = Object.values(blogs).reduce((sum, blog) => sum + (blog.views || 0), 0);
+                document.getElementById('totalBlogs').textContent = Object.keys(blogs).length;
+                document.getElementById('blogViews').textContent = totalViews.toLocaleString();
+                
+                document.querySelectorAll('.btn-edit').forEach(btn => {
+                    btn.addEventListener('click', () => showEditBlogModal(btn.getAttribute('data-id')));
+                });
+                
+                document.querySelectorAll('.btn-delete').forEach(btn => {
+                    btn.addEventListener('click', () => confirmDelete('blog', btn.getAttribute('data-id')));
+                });
+                
+            } catch (error) {
+                showNotification('Failed to load blogs: ' + error.message, 'error');
+            }
+        }
+
+        async function loadSettings() {
+            try {
+                const snapshot = await firebase.database().ref('settings').get();
+                const settings = snapshot.val() || {
+                    websiteTitle: "Mr.Sajan Portfolio",
+                    adminEmail: "sajansah205@gmail.com",
+                    maintenanceMode: false,
+                    themeColor: "#00f0ff"
+                };
+                
+                document.getElementById('websiteTitle').value = settings.websiteTitle;
+                document.getElementById('adminEmailInput').value = settings.adminEmail;
+                document.getElementById('maintenanceMode').checked = settings.maintenanceMode;
+                document.getElementById('themeColor').value = settings.themeColor;
+                
+                document.documentElement.style.setProperty('--primary', settings.themeColor);
+            } catch (error) {
+                showNotification('Error loading settings: ' + error.message, 'error');
+            }
+        }
+
+        async function showEditProjectModal(projectId) {
+            try {
+                const snapshot = await firebase.database().ref(`projects/${projectId}`).get();
+                const project = snapshot.val();
+                
+                if (project) {
+                    document.getElementById('projectModalTitle').textContent = 'Edit Project';
+                    document.getElementById('projectId').value = projectId;
+                    document.getElementById('projectTitle').value = project.title;
+                    document.getElementById('projectCategory').value = project.category;
+                    document.getElementById('projectDescription').value = project.description;
+                    document.getElementById('projectTech').value = project.tech?.join(', ') || '';
+                    document.getElementById('projectImage').value = project.image || '';
+                    document.getElementById('projectDemoUrl').value = project.demoUrl || '';
+                    document.getElementById('projectCodeUrl').value = project.codeUrl || '';
+                    projectEditor.root.innerHTML = project.details || '';
+                    
+                    showModal('projectModal');
+                }
+            } catch (error) {
+                showNotification('Error loading project: ' + error.message, 'error');
+            }
+        }
+
+        async function showEditBlogModal(blogId) {
+            try {
+                const snapshot = await firebase.database().ref(`blogs/${blogId}`).get();
+                const blog = snapshot.val();
+                
+                if (blog) {
+                    document.getElementById('blogModalTitle').textContent = 'Edit Blog';
+                    document.getElementById('blogId').value = blogId;
+                    document.getElementById('blogTitle').value = blog.title;
+                    document.getElementById('blogCategory').value = blog.category;
+                    document.getElementById('blogImage').value = blog.image || '';
+                    document.getElementById('blogExcerpt').value = blog.excerpt || '';
+                    document.getElementById('blogTags').value = blog.tags?.join(', ') || '';
+                    document.getElementById('blogPublishDate').value = blog.publishDate || '';
+                    blogEditor.root.innerHTML = blog.content || '';
+                    
+                    showModal('blogModal');
+                }
+            } catch (error) {
+                showNotification('Error loading blog: ' + error.message, 'error');
+            }
+        }
+
+        async function confirmDelete(type, id) {
+            try {
+                const snapshot = await firebase.database().ref(`${type}s/${id}`).get();
+                const item = snapshot.val();
+                
+                showConfirmation(
+                    `Delete ${type}`,
+                    `Are you sure you want to delete "${item.title}"?`,
+                    async () => {
+                        await firebase.database().ref(`${type}s/${id}`).remove();
+                        showNotification(`${type.charAt(0).toUpperCase() + type.slice(1)} deleted!`, 'success');
+                        if (type === 'project') await loadProjects();
+                        else await loadBlogs();
+                    }
+                );
+            } catch (error) {
+                showNotification(`Error deleting ${type}: ${error.message}`, 'error');
+            }
+        }
+
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function hideModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function showConfirmation(title, message, callback) {
+            document.getElementById('confirmModalTitle').textContent = title;
+            document.getElementById('confirmModalMessage').textContent = message;
+            
+            const confirmBtn = document.getElementById('confirmActionBtn');
+            if (confirmBtn) {
+                confirmBtn.onclick = function() {
+                    callback();
+                    hideModal('confirmModal');
+                };
+            }
+            
+            showModal('confirmModal');
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('adminNotification');
+            if (notification) {
+                notification.textContent = message;
+                notification.className = `admin-notification ${type} active`;
+                setTimeout(() => notification.classList.remove('active'), 3000);
+            }
+        }
+
+        // Initial data load
+        loadProjects();
+        loadBlogs();
+        loadSettings();
+    });
+
+    // Make functions available globally
+    window.adminLogout = function() {
+        firebase.auth().signOut().then(() => {
+            localStorage.removeItem('adminToken');
+            localStorage.removeItem('adminEmail');
+            window.location.href = 'admin-login.html';
+        }).catch((error) => {
+            console.error('Logout error:', error);
+        });
+    };
     </script>
 </body>
 </html>
