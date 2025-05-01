@@ -1699,19 +1699,6 @@
     });
 
 
-   /* auth.onAuthStateChanged((user) => {
-            if (!user) {
-                window.location.href = 'admin-login.html';
-            } else {
-                // Load admin email
-                const adminEmail = user.email || localStorage.getItem('adminEmail');
-                if (adminEmail) {
-                    document.getElementById('adminEmail').textContent = adminEmail;
-                    document.getElementById('adminEmailInput').value = adminEmail;
-                    localStorage.setItem('adminEmail', adminEmail);
-                }
-            }
-        });*/
 
     // Make functions available globally
     window.adminLogout = function() {
