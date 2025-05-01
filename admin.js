@@ -1,44 +1,39 @@
-// Firebase imports
 import { getDatabase, ref, set, push, remove, get } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js";
 import { getStorage, ref as storageRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js";
 
-// Initialize Firebase services
 const db = getDatabase();
 const auth = getAuth();
 const storage = getStorage();
 
-// DOM Elements
+
 const projectsTableBody = document.getElementById('projectsTableBody');
 const blogsTableBody = document.getElementById('blogsTableBody');
 const adminNotification = document.getElementById('adminNotification');
 const themeToggle = document.getElementById('themeToggle');
 const logoutBtn = document.querySelector('.btn-outline');
 
-// Initialize Quill editors
+
 let projectEditor, blogEditor;
 
-// Initialize admin dashboard
 document.addEventListener('DOMContentLoaded', async function() {
     if (!checkAdminAuth()) {
         window.location.href = 'admin-login.html';
         return;
     }
     
-    // Initialize components
+
     initEditors();
     initAdminUI();
     initModals();
     initDataTables();
     initCharts();
     
-    // Load data
     try {
         await loadProjects();
         await loadBlogs();
         loadSettings();
         
-        // Display admin email
         const adminEmail = localStorage.getItem('adminEmail');
         document.getElementById('adminEmail').textContent = adminEmail;
         document.getElementById('adminEmailInput').value = adminEmail;
@@ -48,7 +43,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 
-// ====================== AUTHENTICATION ======================
 function checkAdminAuth() {
     const token = localStorage.getItem('adminToken');
     return token !== null && token !== undefined;
@@ -64,7 +58,6 @@ function adminLogout() {
     });
 }
 
-// ====================== PROJECT FUNCTIONS ======================
 async function loadProjects() {
     try {
         const snapshot = await get(ref(db, 'projects'));
@@ -89,10 +82,10 @@ async function loadProjects() {
                 </tr>
             `).join('');
         
-        // Update stats
+        
         document.getElementById('totalProjects').textContent = Object.keys(projects).length;
         
-        // Add event listeners
+      
         document.querySelectorAll('.btn-edit').forEach(btn => {
             btn.addEventListener('click', () => showProjectModal(btn.getAttribute('data-id')));
         });
@@ -109,10 +102,10 @@ async function loadProjects() {
 async function saveProject(projectData) {
     try {
         if (projectData.id) {
-            // Update existing project
+            
             await set(ref(db, `projects/${projectData.id}`), projectData);
         } else {
-            // Add new project
+           
             const newProjectRef = push(ref(db, 'projects'));
             await set(newProjectRef, projectData);
         }
@@ -123,7 +116,6 @@ async function saveProject(projectData) {
     }
 }
 
-// ====================== BLOG FUNCTIONS ======================
 async function loadBlogs() {
     try {
         const snapshot = await get(ref(db, 'blogs'));
@@ -147,12 +139,12 @@ async function loadBlogs() {
                 </tr>
             `).join('');
         
-        // Update stats
+        
         const totalViews = Object.values(blogs).reduce((sum, blog) => sum + (blog.views || 0), 0);
         document.getElementById('totalBlogs').textContent = Object.keys(blogs).length;
         document.getElementById('blogViews').textContent = totalViews.toLocaleString();
         
-        // Add event listeners
+        
         document.querySelectorAll('.btn-edit').forEach(btn => {
             btn.addEventListener('click', () => showBlogModal(btn.getAttribute('data-id')));
         });
@@ -169,10 +161,10 @@ async function loadBlogs() {
 async function saveBlog(blogData) {
     try {
         if (blogData.id) {
-            // Update existing blog
+            
             await set(ref(db, `blogs/${blogData.id}`), blogData);
         } else {
-            // Add new blog
+            
             const newBlogRef = push(ref(db, 'blogs'));
             await set(newBlogRef, blogData);
         }
@@ -183,7 +175,7 @@ async function saveBlog(blogData) {
     }
 }
 
-// ====================== SETTINGS FUNCTIONS ======================
+
 async function loadSettings() {
     try {
         const snapshot = await get(ref(db, 'settings'));
@@ -226,7 +218,7 @@ function applyTheme(color) {
     document.documentElement.style.setProperty('--primary', color);
 }
 
-// ====================== UTILITY FUNCTIONS ======================
+
 async function confirmDelete(type, id) {
     try {
         const snapshot = await get(ref(db, `${type}s/${id}`));
@@ -253,7 +245,7 @@ function showNotification(message, type = 'success') {
     setTimeout(() => adminNotification.classList.remove('active'), 3000);
 }
 
-// ====================== MODAL FUNCTIONS ======================
+
 async function showProjectModal(projectId = null) {
     const form = document.getElementById('projectForm');
     form.reset();
@@ -314,9 +306,9 @@ async function showBlogModal(blogId = null) {
     showModal('blogModal');
 }
 
-// ====================== INITIALIZATION FUNCTIONS ======================
+
 function initAdminUI() {
-    // Navigation tabs
+ 
     document.querySelectorAll('.admin-nav-link').forEach(link => {
         link.addEventListener('click', function() {
             document.querySelectorAll('.admin-nav-link').forEach(l => l.classList.remove('active'));
@@ -331,7 +323,7 @@ function initAdminUI() {
         });
     });
     
-    // Theme toggle
+   
     themeToggle.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -339,14 +331,14 @@ function initAdminUI() {
         localStorage.setItem('theme', newTheme);
     });
     
-    // Logout button
+
     if (logoutBtn) {
         logoutBtn.addEventListener('click', adminLogout);
     }
 }
 
 function initEditors() {
-    // Project editor
+    
     projectEditor = new Quill('#projectEditor', {
         modules: { toolbar: [
             [{ 'header': [1, 2, 3, false] }],
@@ -360,7 +352,7 @@ function initEditors() {
         theme: 'snow'
     });
     
-    // Blog editor
+   
     blogEditor = new Quill('#blogEditor', {
         modules: { toolbar: [
             [{ 'header': [1, 2, 3, false] }],

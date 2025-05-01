@@ -1,6 +1,4 @@
-// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize all components with null checks
   const initializers = [
       initPreloader,
       initThemeToggle,
@@ -28,34 +26,25 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-/**
-* Initialize and animate the preloader with null checks
-*/
+
 function initPreloader() {
   const preloader = document.querySelector('.preloader');
   if (!preloader) return;
 
-  // Simulate loading delay
   setTimeout(() => {
       preloader.classList.add('loaded');
       
-      // Remove preloader from DOM after animation completes
       setTimeout(() => {
           preloader.remove();
       }, 500);
   }, 2000);
 }
 
-/**
-* Initialize theme toggle functionality with null checks
-*/
 function initThemeToggle() {
   const themeToggle = document.querySelector('.theme-toggle');
   const html = document.documentElement;
   
   if (!themeToggle) return;
-
-  // Check for saved theme preference or use preferred color scheme
   const savedTheme = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   
@@ -65,7 +54,6 @@ function initThemeToggle() {
       html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
   }
   
-  // Toggle theme on button click
   themeToggle.addEventListener('click', () => {
       const currentTheme = html.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -73,14 +61,10 @@ function initThemeToggle() {
       html.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       
-      // Dispatch custom event for other components to react to theme changes
       document.dispatchEvent(new CustomEvent('themeChanged', { detail: newTheme }));
   });
 }
 
-/**
-* Initialize and animate the particle background with null checks
-*/
 function initParticleBackground() {
   const canvas = document.getElementById('particleCanvas');
   if (!canvas) return;
@@ -94,12 +78,10 @@ function initParticleBackground() {
   }
   setupCanvas();
   
-  // Particle system configuration
   const particles = [];
   const particleCount = window.innerWidth < 768 ? 50 : 100;
   const colors = ['#00f0ff', '#ff00e4', '#00ff88', '#ffffff'];
   
-  // Particle class
   class Particle {
       constructor() {
           this.reset();
@@ -120,12 +102,11 @@ function initParticleBackground() {
           this.x += this.speedX;
           this.y += this.speedY;
           
-          // Bounce off edges or reset if out of bounds
+          
           if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
               this.reset();
           }
           
-          // Fade in and out
           this.life += 0.1;
           this.opacity = 0.1 + Math.abs(Math.sin(this.life * 0.05)) * 0.4;
       }
@@ -140,16 +121,13 @@ function initParticleBackground() {
       }
   }
   
-  // Create particles
   for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
   }
   
-  // Animation loop
   function animateParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Draw connecting lines between particles
       for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j++) {
               const dx = particles[i].x - particles[j].x;
@@ -166,8 +144,7 @@ function initParticleBackground() {
               }
           }
       }
-      
-      // Update and draw particles
+    
       particles.forEach(particle => {
           particle.update();
           particle.draw();
@@ -178,15 +155,11 @@ function initParticleBackground() {
   
   animateParticles();
   
-  // Handle window resize
   window.addEventListener('resize', () => {
       setupCanvas();
   });
 }
 
-/**
-* Initialize smooth scrolling for anchor links with null checks
-*/
 function initSmoothScrolling() {
   const links = document.querySelectorAll('a[href^="#"]');
   if (!links.length) return;
@@ -221,9 +194,7 @@ function initSmoothScrolling() {
   window.addEventListener('scroll', debounce(handleScroll, 100));
 }
 
-/**
-* Update active navigation link based on scroll position
-*/
+
 function updateActiveNavLink(targetId) {
   const navLinks = document.querySelectorAll('.nav-link');
   if (!navLinks.length) return;
@@ -256,9 +227,7 @@ function handleScroll() {
   });
 }
 
-/**
-* Initialize scroll animations for elements with null checks
-*/
+
 function initScrollAnimations() {
   const animateElements = document.querySelectorAll('[data-animate]');
   if (!animateElements.length) return;
@@ -279,9 +248,7 @@ function initScrollAnimations() {
   });
 }
 
-/**
-* Initialize skill radar chart with null checks
-*/
+
 function initSkillRadarChart() {
   const canvas = document.getElementById('radarChart');
   if (!canvas) return;
@@ -389,9 +356,7 @@ function initSkillRadarChart() {
   document.addEventListener('themeChanged', drawRadar);
 }
 
-/**
-* Initialize project filtering functionality with null checks
-*/
+
 function initProjectFiltering() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
@@ -428,9 +393,7 @@ function initProjectFiltering() {
   });
 }
 
-/**
-* Initialize timeline animations with null checks
-*/
+
 function initTimelineAnimation() {
   const timelineItems = document.querySelectorAll('.timeline-item');
   if (!timelineItems.length) return;
@@ -455,9 +418,7 @@ function initTimelineAnimation() {
   });
 }
 
-/**
-* Initialize contact form functionality with null checks
-*/
+
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
@@ -474,17 +435,11 @@ function initContactForm() {
       submitButton.disabled = true;
       
       try {
-          // In a real implementation, you would send the form data to a server
-          // For this demo, we'll simulate a network request
           await new Promise(resolve => setTimeout(resolve, 1500));
           
-          // Show success notification
           showNotification('Message sent successfully!', 'success');
-          
-          // Reset form
           form.reset();
       } catch (error) {
-          // Show error notification
           showNotification('Failed to send message. Please try again.', 'error');
       } finally {
           submitButton.innerHTML = originalButtonText;
@@ -493,9 +448,6 @@ function initContactForm() {
   });
 }
 
-/**
-* Initialize custom cursor effects with null checks
-*/
 function initCustomCursor() {
   const cursor = document.querySelector('.custom-cursor');
   const follower = document.querySelector('.cursor-follower');
@@ -507,7 +459,6 @@ function initCustomCursor() {
   let posX = 0;
   let posY = 0;
   
-  // Update cursor position
   function updateCursor() {
       const dx = mouseX - posX;
       const dy = mouseY - posY;
@@ -555,9 +506,7 @@ function initCustomCursor() {
   updateCursor();
 }
 
-/**
-* Initialize holographic display animation with null checks
-*/
+
 function initHolographicDisplay() {
   const hologram = document.querySelector('.hologram-container');
   if (!hologram) return;
@@ -573,9 +522,7 @@ function initHolographicDisplay() {
   animateHologram();
 }
 
-/**
-* Initialize neural network animation with null checks
-*/
+
 function initNeuralNetworkAnimation() {
   const neurons = document.querySelectorAll('.neuron');
   if (!neurons.length) return;
@@ -585,19 +532,15 @@ function initNeuralNetworkAnimation() {
   });
 }
 
-/**
-* Initialize data stream animation with null checks
-*/
+
 function initDataStreamAnimation() {
   const dataStream = document.querySelector('.data-stream');
   if (!dataStream) return;
   
-  // Create data particles
   for (let i = 0; i < 20; i++) {
       const particle = document.createElement('div');
       particle.classList.add('data-particle');
       
-      // Random start and end positions
       const startX = Math.random() * 100;
       const startY = Math.random() * 100;
       const endX = Math.random() * 200 - 100;
@@ -613,9 +556,6 @@ function initDataStreamAnimation() {
   }
 }
 
-/**
-* Initialize notification system with null checks
-*/
 function initNotificationSystem() {
   const notification = document.querySelector('.notification');
   if (!notification) return;
@@ -634,13 +574,9 @@ function initNotificationSystem() {
       }, 3000);
   }
   
-  // Expose to global scope for other functions to use
   window.showNotification = showNotification;
 }
 
-/**
-* Initialize current year in footer with null check
-*/
 function initCurrentYear() {
   const yearElement = document.getElementById('currentYear');
   if (yearElement) {
@@ -648,9 +584,6 @@ function initCurrentYear() {
   }
 }
 
-/**
-* Debounce function to limit the rate of execution
-*/
 function debounce(func, wait) {
   let timeout;
   return function() {
