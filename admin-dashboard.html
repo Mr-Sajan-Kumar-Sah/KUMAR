@@ -1252,7 +1252,10 @@
     
     <!-- Main Script -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', async function() {
+
+        const isAuthenticated = await checkAdminAuth();
+        if (!isAuthenticated) return;
     
         // Preloader
         const preloader = document.getElementById('preloader');
@@ -1703,12 +1706,11 @@
                 window.location.href = 'admin-login.html';
             } else {
                 // Load admin email
-                const adminEmail = user.email || localStorage.getItem('adminEmail');
-                if (adminEmail) {
-                    document.getElementById('adminEmail').textContent = adminEmail;
-                    document.getElementById('adminEmailInput').value = adminEmail;
-                    localStorage.setItem('adminEmail', adminEmail);
-                }
+                const adminEmail = localStorage.getItem('adminEmail');
+    if (adminEmail) {
+        document.getElementById('adminEmail').textContent = adminEmail;
+        document.getElementById('adminEmailInput').value = adminEmail;
+    }
             }
         });
 

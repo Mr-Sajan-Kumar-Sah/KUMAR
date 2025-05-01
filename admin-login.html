@@ -52,6 +52,62 @@
         </div>
     </div>
 
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCWMMjn8zoqd9FBSLe8GU0kxzuvPtgd26o",
+            authDomain: "sajankumar-7fe56.firebaseapp.com",
+            projectId: "sajankumar-7fe56",
+            storageBucket: "sajankumar-7fe56.appspot.com",
+            messagingSenderId: "530497965075",
+            appId: "1:530497965075:web:a29f682c663c1d13b283e6",
+            measurementId: "G-4HDJ9D9R32"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+        // Check if user is already logged in
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user && user.email === 'sajansah205@gmail.com') {
+                window.location.href = 'admin-dashboard.html';
+            }
+        });
+        
+        function handleGoogleSignIn(response) {
+            const ADMIN_EMAIL = 'sajansah205@gmail.com';
+            
+            verifyGoogleToken(response.credential)
+                .then(data => {
+                    if (data.email === ADMIN_EMAIL) {
+                        const credential = firebase.auth.GoogleAuthProvider.credential(response.credential);
+                        return firebase.auth().signInWithCredential(credential);
+                    } else {
+                        throw new Error('You are not authorized to access this portal.');
+                    }
+                })
+                .then(() => {
+                    window.location.href = 'admin-dashboard.html';
+                })
+                .catch(error => {
+                    console.error('Authentication error:', error);
+                    document.getElementById('loginError').textContent = 
+                        error.message || 'Authentication failed. Please try again.';
+                    document.getElementById('loginError').style.display = 'block';
+                    google.accounts.id.disableAutoSelect();
+                });
+        }
+        
+        async function verifyGoogleToken(token) {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            return {
+                email: payload.email,
+                name: payload.name,
+                token: token
+            };
+        }
+        </script>
+
     <script src="scripts.js"></script>
     <script src="admin-auth.js"></script>
 </body>
