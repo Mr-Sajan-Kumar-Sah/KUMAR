@@ -1,0 +1,1972 @@
+[
+  {
+    "id": "q001",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q002",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q003",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q004",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q005",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q006",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q007",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q008",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q009",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q010",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q011",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q012",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q013",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q014",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q015",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q016",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q017",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q018",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q019",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q020",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q021",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q022",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q023",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q024",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q025",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q026",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q027",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q028",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q029",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q030",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q031",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q032",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q033",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q034",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q035",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q036",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q037",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q038",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q039",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q040",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q041",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q042",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q043",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q044",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q045",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q046",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q047",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q048",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q049",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q050",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q051",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q052",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q053",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q054",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q055",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q056",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q057",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q058",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q059",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q060",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q061",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q062",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q063",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q064",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q065",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q066",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q067",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q068",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q069",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q070",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q071",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q072",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q073",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q074",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q075",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q076",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q077",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q078",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q079",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q080",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q081",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q082",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q083",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q084",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q085",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q086",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q087",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q088",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q089",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q090",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q091",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q092",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q093",
+    "question": "What does ReLU stand for in deep learning?",
+    "type": "single",
+    "options": [
+      "Relative Linear Unit",
+      "Rectified Linear Unit",
+      "Random Linear Update",
+      "Recurrent Linear Unit"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "ReLU stands for Rectified Linear Unit and is a commonly used activation function.",
+    "tags": [
+      "DL",
+      "Activation Functions"
+    ]
+  },
+  {
+    "id": "q094",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  },
+  {
+    "id": "q095",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q096",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q097",
+    "question": "What is the output of `print(type(lambda x: x))` in Python?",
+    "type": "single",
+    "options": [
+      "<class 'function'>",
+      "<class 'lambda'>",
+      "<class 'method'>",
+      "Syntax Error"
+    ],
+    "answers": [
+      0
+    ],
+    "explanation": "Lambda functions in Python are of type 'function'.",
+    "tags": [
+      "Python",
+      "Functions"
+    ]
+  },
+  {
+    "id": "q098",
+    "question": "Which of the following are supervised learning algorithms?",
+    "type": "multiple",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Tree",
+      "DBSCAN"
+    ],
+    "answers": [
+      0,
+      2
+    ],
+    "explanation": "Linear Regression and Decision Tree are supervised; K-Means and DBSCAN are unsupervised.",
+    "tags": [
+      "ML",
+      "Supervised Learning"
+    ]
+  },
+  {
+    "id": "q099",
+    "question": "Which of the following are evaluation metrics for classification problems?",
+    "type": "multiple",
+    "options": [
+      "Accuracy",
+      "MSE",
+      "Precision",
+      "Recall"
+    ],
+    "answers": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Accuracy, Precision, and Recall are classification metrics; MSE is for regression.",
+    "tags": [
+      "ML",
+      "Evaluation"
+    ]
+  },
+  {
+    "id": "q100",
+    "question": "Which layer in a neural network performs feature extraction?",
+    "type": "single",
+    "options": [
+      "Input Layer",
+      "Hidden Layer",
+      "Output Layer",
+      "Dropout Layer"
+    ],
+    "answers": [
+      1
+    ],
+    "explanation": "Hidden layers learn and extract features from the input.",
+    "tags": [
+      "DL",
+      "Neural Networks"
+    ]
+  }
+]
