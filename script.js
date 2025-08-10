@@ -51,12 +51,12 @@ function initThemeToggle() {
   if (savedTheme) {
       html.setAttribute('data-theme', savedTheme);
   } else {
-      html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      html.setAttribute('data-theme', prefersDark ? 'dark' : 'dark');
   }
   
   themeToggle.addEventListener('click', () => {
       const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      const newTheme = currentTheme === 'dark' ? 'dark' : 'dark';
       
       html.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
@@ -594,4 +594,5 @@ function debounce(func, wait) {
           func.apply(context, args);
       }, wait);
   }; 
+
 }
