@@ -40,30 +40,35 @@ function initPreloader() {
   }, 2000);
 }
 
+
 function initThemeToggle() {
   const themeToggle = document.querySelector('.theme-toggle');
   const html = document.documentElement;
-  
+
   if (!themeToggle) return;
+
   const savedTheme = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
+
   if (savedTheme) {
-      html.setAttribute('data-theme', savedTheme);
+    html.setAttribute('data-theme', savedTheme);
   } else {
-      html.setAttribute('data-theme', prefersDark ? 'dark' : 'dark');
+    // Default to dark if no saved preference
+    html.setAttribute('data-theme', 'dark');
   }
-  
+
   themeToggle.addEventListener('click', () => {
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'dark' : 'dark';
-      
-      html.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      
-      document.dispatchEvent(new CustomEvent('themeChanged', { detail: newTheme }));
+    const currentTheme = html.getAttribute('data-theme');
+    // Toggle between dark and light
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+
+    document.dispatchEvent(new CustomEvent('themeChanged', { detail: newTheme }));
   });
 }
+
 
 function initParticleBackground() {
   const canvas = document.getElementById('particleCanvas');
@@ -596,3 +601,4 @@ function debounce(func, wait) {
   }; 
 
 }
+
