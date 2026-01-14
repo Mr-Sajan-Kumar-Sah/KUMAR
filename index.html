@@ -390,6 +390,10 @@
             font-size: 1.6rem;
         }
 
+        .title-text {
+            margin-right: 15px;
+        }
+
         .title-line {
             flex: 1;
             height: 2px;
@@ -815,7 +819,7 @@
             transform: translateY(-2px);
         }
 
-        /* Skills Section - German Professional Style */
+        /* Skills Section - German Professional Style - UPDATED */
         .skills-section {
             padding: 60px 0;
         }
@@ -823,7 +827,7 @@
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -831,7 +835,7 @@
         .skill-category-card {
             background: var(--surface-dark);
             border-radius: 12px;
-            padding: 25px;
+            padding: 30px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition-fast);
         }
@@ -846,8 +850,8 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -864,71 +868,66 @@
         }
 
         .skill-category-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--text-primary);
             font-weight: 700;
         }
 
-        .skill-items-compact {
+        .skill-items-german {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 18px;
         }
 
-        .skill-item-compact {
+        .skill-item-german {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .skill-header {
+        .skill-name-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 5px;
         }
 
-        .skill-name {
-            font-size: 1rem;
+        .skill-name-german {
+            font-size: 1.05rem;
             color: var(--text-primary);
             font-weight: 600;
         }
 
-        .skill-level {
-            font-size: 0.85rem;
+        .skill-evidence {
+            font-size: 0.8rem;
             color: var(--primary-color);
             font-weight: 600;
             background: rgba(0, 240, 255, 0.1);
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 10px;
+            white-space: nowrap;
         }
 
-        .skill-bar-compact {
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
+        .skill-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
         }
 
-        .skill-progress-compact {
-            height: 100%;
-            background: var(--gradient-primary);
-            border-radius: 3px;
-            transition: width 1s ease-in-out;
-        }
-
-        .skill-metrics {
+        .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 5px;
+            gap: 6px;
         }
 
-        .skill-metric {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
+        .skill-tag {
             background: rgba(255, 255, 255, 0.05);
-            padding: 2px 8px;
+            color: var(--text-secondary);
+            padding: 3px 8px;
             border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
 
         /* Projects Section - German Professional Style */
@@ -1000,6 +999,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
+            margin-bottom: 10px;
         }
 
         .tech-tag-german {
@@ -1042,6 +1042,34 @@
         .stat-value {
             font-size: 0.95rem;
             color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .project-skills-used {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .skills-used-title {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .skills-used-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-used-tag {
+            background: rgba(255, 42, 109, 0.1);
+            color: var(--secondary-color);
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
             font-weight: 600;
         }
 
@@ -1754,10 +1782,7 @@
                             <span class="title-sub">AI/ML Engineer</span>
                         </h1>
                         <p class="home-description">
-                            Production-focused AI/ML Engineer building scalable machine learning systems.
-                            Specializing in Python, PyTorch, and end-to-end ML deployment. 
-                            Delivered 4+ projects with live demos and >90% accuracy metrics.
-                            Seeking opportunities to apply systematic AI engineering in real-world applications.
+                            Production-focused AI/ML Engineer with experience building end-to-end machine learning systems using Python and PyTorch. Strong background in data preprocessing, model training, evaluation, and deployment. Developed multiple applied ML projects with live demos and reproducible pipelines. Seeking opportunities to contribute to real-world, engineering-driven AI solutions.
                         </p>
                         <div class="home-buttons">
                             <a href="#projects" class="btn btn-primary" data-scroll>
@@ -1868,17 +1893,17 @@
                 </div>
             </section>
 
-            <!-- Skills Section - German Style -->
+            <!-- Skills Section - German Professional Style - COMPLETELY UPDATED -->
             <section id="skills" class="section skills-section">
                 <div class="section-header">
                     <h2 class="section-title">
                         <span class="title-number">02</span>
-                        <span class="title-text">Technical Skills</span>
+                        <span class="title-text">Technical Competencies</span>
                         <span class="title-line"></span>
                     </h2>
                 </div>
                 <div class="skills-grid">
-                    <!-- AI/ML Skills -->
+                    <!-- AI/ML Core -->
                     <div class="skill-category-card">
                         <div class="skill-category-header">
                             <div class="skill-category-icon">
@@ -1886,189 +1911,221 @@
                             </div>
                             <h3 class="skill-category-title">AI/ML Engineering</h3>
                         </div>
-                        <div class="skill-items-compact">
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">Machine Learning</span>
-                                    <span class="skill-level">Expert</span>
+                        <div class="skill-items-german">
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">Machine Learning</span>
+                                    <span class="skill-evidence">4+ Projects</span>
                                 </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="95"></div>
-                                </div>
-                                <div class="skill-metrics">
-                                    <span class="skill-metric">4+ Projects</span>
-                                    <span class="skill-metric">95% Accuracy</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">Deep Learning</span>
-                                    <span class="skill-level">Expert</span>
-                                </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="95"></div>
-                                </div>
-                                <div class="skill-metrics">
-                                    <span class="skill-metric">PyTorch Specialist</span>
-                                    <span class="skill-metric">Neural Networks</span>
+                                <p class="skill-description">
+                                    Building end-to-end ML pipelines with 90%+ accuracy across projects. Experience with classification, regression, and recommendation systems.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Scikit-learn</span>
+                                    <span class="skill-tag">Model Evaluation</span>
+                                    <span class="skill-tag">Feature Engineering</span>
+                                    <span class="skill-tag">Cross-validation</span>
                                 </div>
                             </div>
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">NLP</span>
-                                    <span class="skill-level">Advanced</span>
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">Deep Learning</span>
+                                    <span class="skill-evidence">PyTorch Specialist</span>
                                 </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="90"></div>
+                                <p class="skill-description">
+                                    Developed CNN models achieving 92% accuracy on CIFAR-10. Experience with neural architecture design and optimization.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">PyTorch</span>
+                                    <span class="skill-tag">Neural Networks</span>
+                                    <span class="skill-tag">CNN</span>
+                                    <span class="skill-tag">Model Training</span>
                                 </div>
-                                <div class="skill-metrics">
-                                    <span class="skill-metric">RAG Systems</span>
-                                    <span class="skill-metric">Text Classification</span>
+                            </div>
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">Natural Language Processing</span>
+                                    <span class="skill-evidence">RAG Systems</span>
+                                </div>
+                                <p class="skill-description">
+                                    Built real-time transcription (95% accuracy) and RAG-based chatbot systems. Experience with transformer models and text processing.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Transformers</span>
+                                    <span class="skill-tag">BART</span>
+                                    <span class="skill-tag">Text Classification</span>
+                                    <span class="skill-tag">Whisper API</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Programming Languages -->
+                    <!-- Programming & Development -->
                     <div class="skill-category-card">
                         <div class="skill-category-header">
                             <div class="skill-category-icon">
                                 <i class="fas fa-code"></i>
                             </div>
-                            <h3 class="skill-category-title">Programming</h3>
+                            <h3 class="skill-category-title">Programming & Development</h3>
                         </div>
-                        <div class="skill-items-compact">
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">Python</span>
-                                    <span class="skill-level">Expert</span>
+                        <div class="skill-items-german">
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">Python Development</span>
+                                    <span class="skill-evidence">4+ Years Experience</span>
                                 </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="95"></div>
-                                </div>
-                                <div class="skill-metrics">
-                                    <span class="skill-metric">4+ Years</span>
-                                    <span class="skill-metric">ML Development</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">C++</span>
-                                    <span class="skill-level">Advanced</span>
-                                </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="80"></div>
-                                </div>
-                                <div class="skill-metrics">
-                                    <span class="skill-metric">Algorithms</span>
-                                    <span class="skill-metric">Data Structures</span>
+                                <p class="skill-description">
+                                    Production-grade Python development for ML applications. Focus on clean code, testing, and maintainable architectures.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">OOP</span>
+                                    <span class="skill-tag">API Development</span>
+                                    <span class="skill-tag">Testing</span>
+                                    <span class="skill-tag">Code Quality</span>
                                 </div>
                             </div>
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">Java</span>
-                                    <span class="skill-level">Intermediate</span>
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">Web Development</span>
+                                    <span class="skill-evidence">Flask Applications</span>
                                 </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="70"></div>
+                                <p class="skill-description">
+                                    Built and deployed web applications with Flask for ML model serving. Experience with frontend integration and API design.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Flask</span>
+                                    <span class="skill-tag">REST APIs</span>
+                                    <span class="skill-tag">HTML/CSS</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                </div>
+                            </div>
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">System Design</span>
+                                    <span class="skill-evidence">End-to-end Solutions</span>
+                                </div>
+                                <p class="skill-description">
+                                    Designed complete ML systems from data ingestion to deployment. Focus on scalability, maintainability, and performance.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Architecture</span>
+                                    <span class="skill-tag">Design Patterns</span>
+                                    <span class="skill-tag">Scalability</span>
+                                    <span class="skill-tag">Performance</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tools & Frameworks -->
+                    <!-- Tools & Infrastructure -->
                     <div class="skill-category-card">
                         <div class="skill-category-header">
                             <div class="skill-category-icon">
                                 <i class="fas fa-tools"></i>
                             </div>
-                            <h3 class="skill-category-title">Tools & Frameworks</h3>
+                            <h3 class="skill-category-title">Tools & Infrastructure</h3>
                         </div>
-                        <div class="skill-items-compact">
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">PyTorch</span>
-                                    <span class="skill-level">Expert</span>
+                        <div class="skill-items-german">
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">Version Control</span>
+                                    <span class="skill-evidence">Git & GitHub</span>
                                 </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="94"></div>
-                                </div>
-                                <div class="skill-metrics">
-                                    <span class="skill-metric">Custom Models</span>
-                                    <span class="skill-metric">Production</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">Git & GitHub</span>
-                                    <span class="skill-level">Expert</span>
-                                </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="93"></div>
-                                </div>
-                                <div class="skill-metrics">
-                                    <span class="skill-metric">Version Control</span>
-                                    <span class="skill-metric">CI/CD</span>
+                                <p class="skill-description">
+                                    Professional Git workflow with branching strategies, code reviews, and collaborative development on GitHub.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Git</span>
+                                    <span class="skill-tag">GitHub</span>
+                                    <span class="skill-tag">Version Control</span>
+                                    <span class="skill-tag">Collaboration</span>
                                 </div>
                             </div>
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">Docker</span>
-                                    <span class="skill-level">Advanced</span>
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">Containerization</span>
+                                    <span class="skill-evidence">Docker Deployment</span>
                                 </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="85"></div>
+                                <p class="skill-description">
+                                    Containerized ML applications using Docker for consistent deployment across environments.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Docker</span>
+                                    <span class="skill-tag">Containerization</span>
+                                    <span class="skill-tag">Deployment</span>
+                                    <span class="skill-tag">Environment</span>
                                 </div>
-                                <div class="skill-metrics">
-                                    <span class="skill-metric">Containerization</span>
-                                    <span class="skill-metric">Deployment</span>
+                            </div>
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">Cloud Deployment</span>
+                                    <span class="skill-evidence">AWS & Render</span>
+                                </div>
+                                <p class="skill-description">
+                                    Deployed ML applications to cloud platforms with monitoring, scaling, and maintenance.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">AWS</span>
+                                    <span class="skill-tag">Render</span>
+                                    <span class="skill-tag">Cloud Computing</span>
+                                    <span class="skill-tag">Deployment</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Data & Analysis -->
+                    <!-- Data Engineering -->
                     <div class="skill-category-card">
                         <div class="skill-category-header">
                             <div class="skill-category-icon">
-                                <i class="fas fa-chart-line"></i>
+                                <i class="fas fa-database"></i>
                             </div>
-                            <h3 class="skill-category-title">Data & Analysis</h3>
+                            <h3 class="skill-category-title">Data Engineering</h3>
                         </div>
-                        <div class="skill-items-compact">
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">NumPy/Pandas</span>
-                                    <span class="skill-level">Expert</span>
+                        <div class="skill-items-german">
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">Data Processing</span>
+                                    <span class="skill-evidence">NumPy & Pandas</span>
                                 </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="92"></div>
-                                </div>
-                                <div class="skill-metrics">
-                                    <span class="skill-metric">Data Processing</span>
-                                    <span class="skill-metric">Analysis</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">SQL</span>
-                                    <span class="skill-level">Advanced</span>
-                                </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="88"></div>
-                                </div>
-                                <div class="skill-metrics">
-                                    <span class="skill-metric">Database Design</span>
-                                    <span class="skill-metric">Queries</span>
+                                <p class="skill-description">
+                                    Efficient data manipulation, cleaning, and preprocessing for ML pipelines using Python data science stack.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">NumPy</span>
+                                    <span class="skill-tag">Pandas</span>
+                                    <span class="skill-tag">Data Cleaning</span>
+                                    <span class="skill-tag">ETL</span>
                                 </div>
                             </div>
-                            <div class="skill-item-compact">
-                                <div class="skill-header">
-                                    <span class="skill-name">Data Visualization</span>
-                                    <span class="skill-level">Intermediate</span>
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">Database Systems</span>
+                                    <span class="skill-evidence">SQL & Vector DB</span>
                                 </div>
-                                <div class="skill-bar-compact">
-                                    <div class="skill-progress-compact" data-width="75"></div>
+                                <p class="skill-description">
+                                    Experience with relational databases for application data and vector databases for semantic search in RAG systems.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">SQL</span>
+                                    <span class="skill-tag">Vector Databases</span>
+                                    <span class="skill-tag">Data Modeling</span>
+                                    <span class="skill-tag">Queries</span>
+                                </div>
+                            </div>
+                            <div class="skill-item-german">
+                                <div class="skill-name-row">
+                                    <span class="skill-name-german">MLOps Practices</span>
+                                    <span class="skill-evidence">CI/CD Implementation</span>
+                                </div>
+                                <p class="skill-description">
+                                    Implemented CI/CD pipelines for automated testing and deployment of ML models.
+                                </p>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">CI/CD</span>
+                                    <span class="skill-tag">Automation</span>
+                                    <span class="skill-tag">Testing</span>
+                                    <span class="skill-tag">Monitoring</span>
                                 </div>
                             </div>
                         </div>
@@ -2122,6 +2179,16 @@
                                     <span class="stat-value">Live</span>
                                 </div>
                             </div>
+                            <div class="project-skills-used">
+                                <div class="skills-used-title">Skills Demonstrated:</div>
+                                <div class="skills-used-list">
+                                    <span class="skill-used-tag">Transformers</span>
+                                    <span class="skill-used-tag">Speech Recognition</span>
+                                    <span class="skill-used-tag">Real-time Processing</span>
+                                    <span class="skill-used-tag">Text Summarization</span>
+                                    <span class="skill-used-tag">Web Deployment</span>
+                                </div>
+                            </div>
                             <div class="project-actions">
                                 <a href="https://github.com/MR-SAJAN-SAH/Note_Ninza" class="project-link-german">
                                     <i class="fas fa-external-link-alt"></i>
@@ -2169,6 +2236,16 @@
                                 <div class="stat-item">
                                     <span class="stat-label">Status</span>
                                     <span class="stat-value">Live</span>
+                                </div>
+                            </div>
+                            <div class="project-skills-used">
+                                <div class="skills-used-title">Skills Demonstrated:</div>
+                                <div class="skills-used-list">
+                                    <span class="skill-used-tag">Retrieval-Augmented Generation</span>
+                                    <span class="skill-used-tag">Vector Databases</span>
+                                    <span class="skill-used-tag">Document Processing</span>
+                                    <span class="skill-used-tag">Semantic Search</span>
+                                    <span class="skill-used-tag">API Integration</span>
                                 </div>
                             </div>
                             <div class="project-actions">
@@ -2220,6 +2297,16 @@
                                     <span class="stat-value">Live</span>
                                 </div>
                             </div>
+                            <div class="project-skills-used">
+                                <div class="skills-used-title">Skills Demonstrated:</div>
+                                <div class="skills-used-list">
+                                    <span class="skill-used-tag">Recommendation Systems</span>
+                                    <span class="skill-used-tag">Cosine Similarity</span>
+                                    <span class="skill-used-tag">Feature Engineering</span>
+                                    <span class="skill-used-tag">Data Preprocessing</span>
+                                    <span class="skill-used-tag">Web Application</span>
+                                </div>
+                            </div>
                             <div class="project-actions">
                                 <a href="https://github.com/MR-SAJAN-SAH/Movie-Recommendation-System" class="project-link-german">
                                     <i class="fas fa-external-link-alt"></i>
@@ -2267,6 +2354,16 @@
                                 <div class="stat-item">
                                     <span class="stat-label">Status</span>
                                     <span class="stat-value">Live</span>
+                                </div>
+                            </div>
+                            <div class="project-skills-used">
+                                <div class="skills-used-title">Skills Demonstrated:</div>
+                                <div class="skills-used-list">
+                                    <span class="skill-used-tag">Convolutional Neural Networks</span>
+                                    <span class="skill-used-tag">Image Classification</span>
+                                    <span class="skill-used-tag">Model Optimization</span>
+                                    <span class="skill-used-tag">Transfer Learning</span>
+                                    <span class="skill-used-tag">Model Deployment</span>
                                 </div>
                             </div>
                             <div class="project-actions">
@@ -2593,24 +2690,6 @@
             }
             
             window.addEventListener('scroll', updateActiveNav);
-
-            // Animate Skill Bars on Scroll
-            const skillProgressBars = document.querySelectorAll('.skill-progress-compact');
-            
-            function animateSkillBars() {
-                skillProgressBars.forEach(bar => {
-                    const barPosition = bar.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.3;
-                    
-                    if (barPosition < screenPosition) {
-                        const width = bar.getAttribute('data-width') || '0';
-                        bar.style.width = width + '%';
-                    }
-                });
-            }
-            
-            window.addEventListener('scroll', animateSkillBars);
-            animateSkillBars(); // Initial check
 
             // Custom Cursor
             const cursor = document.querySelector('.custom-cursor');
