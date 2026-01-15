@@ -1711,7 +1711,68 @@
                 --text-secondary: #cccccc;
             }
         }
+
+
+        /* Clean Skills Section Styles */
+.skills-grid-clean {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-category-card-clean {
+    background: var(--surface-dark);
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition-fast);
+}
+
+.skill-category-card-clean:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 240, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.skill-category-header-clean {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-tags-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.skill-tag-clean {
+    display: inline-block;
+    padding: 10px 15px;
+    background: rgba(0, 240, 255, 0.08);
+    color: var(--primary-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    transition: var(--transition-fast);
+    border: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.skill-tag-clean:hover {
+    background: rgba(0, 240, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
+}
+
+
     </style>
+    
 </head>
 
 <body>
@@ -1894,245 +1955,76 @@
             </section>
 
             <!-- Skills Section - German Professional Style - COMPLETELY UPDATED -->
-            <section id="skills" class="section skills-section">
-                <div class="section-header">
-                    <h2 class="section-title">
-                        <span class="title-number">02</span>
-                        <span class="title-text">Technical Competencies</span>
-                        <span class="title-line"></span>
-                    </h2>
+            <!-- Skills Section - Clean German Professional Style -->
+<section id="skills" class="section skills-section">
+    <div class="section-header">
+        <h2 class="section-title">
+            <span class="title-number">02</span>
+            <span class="title-text">Technical Skills</span>
+            <span class="title-line"></span>
+        </h2>
+    </div>
+    <div class="skills-grid-clean">
+        <!-- AI/ML Core Skills -->
+        <div class="skill-category-card-clean">
+            <div class="skill-category-header-clean">
+                <div class="skill-category-icon">
+                    <i class="fas fa-brain"></i>
                 </div>
-                <div class="skills-grid">
-                    <!-- AI/ML Core -->
-                    <div class="skill-category-card">
-                        <div class="skill-category-header">
-                            <div class="skill-category-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h3 class="skill-category-title">AI/ML Engineering</h3>
-                        </div>
-                        <div class="skill-items-german">
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">Machine Learning</span>
-                                    <span class="skill-evidence">4+ Projects</span>
-                                </div>
-                                <p class="skill-description">
-                                    Building end-to-end ML pipelines with 90%+ accuracy across projects. Experience with classification, regression, and recommendation systems.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Scikit-learn</span>
-                                    <span class="skill-tag">Model Evaluation</span>
-                                    <span class="skill-tag">Feature Engineering</span>
-                                    <span class="skill-tag">Cross-validation</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">Deep Learning</span>
-                                    <span class="skill-evidence">PyTorch Specialist</span>
-                                </div>
-                                <p class="skill-description">
-                                    Developed CNN models achieving 92% accuracy on CIFAR-10. Experience with neural architecture design and optimization.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">PyTorch</span>
-                                    <span class="skill-tag">Neural Networks</span>
-                                    <span class="skill-tag">CNN</span>
-                                    <span class="skill-tag">Model Training</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">Natural Language Processing</span>
-                                    <span class="skill-evidence">RAG Systems</span>
-                                </div>
-                                <p class="skill-description">
-                                    Built real-time transcription (95% accuracy) and RAG-based chatbot systems. Experience with transformer models and text processing.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Transformers</span>
-                                    <span class="skill-tag">BART</span>
-                                    <span class="skill-tag">Text Classification</span>
-                                    <span class="skill-tag">Whisper API</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <h3 class="skill-category-title">Machine Learning & AI</h3>
+            </div>
+            <div class="skill-tags-grid">
+                <span class="skill-tag-clean">Machine Learning</span>
+                <span class="skill-tag-clean">Deep Learning</span>
+                <span class="skill-tag-clean">Transformers & LLMs</span>
+                <span class="skill-tag-clean">PyTorch</span>
+                <span class="skill-tag-clean">Scikit-learn</span>
+                <span class="skill-tag-clean">Feature Engineering</span>
+                <span class="skill-tag-clean">Model Evaluation</span>
+            </div>
+        </div>
 
-                    <!-- Programming & Development -->
-                    <div class="skill-category-card">
-                        <div class="skill-category-header">
-                            <div class="skill-category-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3 class="skill-category-title">Programming & Development</h3>
-                        </div>
-                        <div class="skill-items-german">
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">Python Development</span>
-                                    <span class="skill-evidence">4+ Years Experience</span>
-                                </div>
-                                <p class="skill-description">
-                                    Production-grade Python development for ML applications. Focus on clean code, testing, and maintainable architectures.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">OOP</span>
-                                    <span class="skill-tag">API Development</span>
-                                    <span class="skill-tag">Testing</span>
-                                    <span class="skill-tag">Code Quality</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">Web Development</span>
-                                    <span class="skill-evidence">Flask Applications</span>
-                                </div>
-                                <p class="skill-description">
-                                    Built and deployed web applications with Flask for ML model serving. Experience with frontend integration and API design.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Flask</span>
-                                    <span class="skill-tag">REST APIs</span>
-                                    <span class="skill-tag">HTML/CSS</span>
-                                    <span class="skill-tag">JavaScript</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">System Design</span>
-                                    <span class="skill-evidence">End-to-end Solutions</span>
-                                </div>
-                                <p class="skill-description">
-                                    Designed complete ML systems from data ingestion to deployment. Focus on scalability, maintainability, and performance.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Architecture</span>
-                                    <span class="skill-tag">Design Patterns</span>
-                                    <span class="skill-tag">Scalability</span>
-                                    <span class="skill-tag">Performance</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tools & Infrastructure -->
-                    <div class="skill-category-card">
-                        <div class="skill-category-header">
-                            <div class="skill-category-icon">
-                                <i class="fas fa-tools"></i>
-                            </div>
-                            <h3 class="skill-category-title">Tools & Infrastructure</h3>
-                        </div>
-                        <div class="skill-items-german">
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">Version Control</span>
-                                    <span class="skill-evidence">Git & GitHub</span>
-                                </div>
-                                <p class="skill-description">
-                                    Professional Git workflow with branching strategies, code reviews, and collaborative development on GitHub.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Git</span>
-                                    <span class="skill-tag">GitHub</span>
-                                    <span class="skill-tag">Version Control</span>
-                                    <span class="skill-tag">Collaboration</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">Containerization</span>
-                                    <span class="skill-evidence">Docker Deployment</span>
-                                </div>
-                                <p class="skill-description">
-                                    Containerized ML applications using Docker for consistent deployment across environments.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Docker</span>
-                                    <span class="skill-tag">Containerization</span>
-                                    <span class="skill-tag">Deployment</span>
-                                    <span class="skill-tag">Environment</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">Cloud Deployment</span>
-                                    <span class="skill-evidence">AWS & Render</span>
-                                </div>
-                                <p class="skill-description">
-                                    Deployed ML applications to cloud platforms with monitoring, scaling, and maintenance.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">AWS</span>
-                                    <span class="skill-tag">Render</span>
-                                    <span class="skill-tag">Cloud Computing</span>
-                                    <span class="skill-tag">Deployment</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Data Engineering -->
-                    <div class="skill-category-card">
-                        <div class="skill-category-header">
-                            <div class="skill-category-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <h3 class="skill-category-title">Data Engineering</h3>
-                        </div>
-                        <div class="skill-items-german">
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">Data Processing</span>
-                                    <span class="skill-evidence">NumPy & Pandas</span>
-                                </div>
-                                <p class="skill-description">
-                                    Efficient data manipulation, cleaning, and preprocessing for ML pipelines using Python data science stack.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">NumPy</span>
-                                    <span class="skill-tag">Pandas</span>
-                                    <span class="skill-tag">Data Cleaning</span>
-                                    <span class="skill-tag">ETL</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">Database Systems</span>
-                                    <span class="skill-evidence">SQL & Vector DB</span>
-                                </div>
-                                <p class="skill-description">
-                                    Experience with relational databases for application data and vector databases for semantic search in RAG systems.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">SQL</span>
-                                    <span class="skill-tag">Vector Databases</span>
-                                    <span class="skill-tag">Data Modeling</span>
-                                    <span class="skill-tag">Queries</span>
-                                </div>
-                            </div>
-                            <div class="skill-item-german">
-                                <div class="skill-name-row">
-                                    <span class="skill-name-german">MLOps Practices</span>
-                                    <span class="skill-evidence">CI/CD Implementation</span>
-                                </div>
-                                <p class="skill-description">
-                                    Implemented CI/CD pipelines for automated testing and deployment of ML models.
-                                </p>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">CI/CD</span>
-                                    <span class="skill-tag">Automation</span>
-                                    <span class="skill-tag">Testing</span>
-                                    <span class="skill-tag">Monitoring</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Programming & Development -->
+        <div class="skill-category-card-clean">
+            <div class="skill-category-header-clean">
+                <div class="skill-category-icon">
+                    <i class="fas fa-code"></i>
                 </div>
-            </section>
+                <h3 class="skill-category-title">Backend & ML Engineering</h3>
+            </div>
+            <div class="skill-tags-grid">
+                <span class="skill-tag-clean">Python</span>
+                <span class="skill-tag-clean">FastAPI / Flask</span>
+                <span class="skill-tag-clean">REST APIs</span>
+                <span class="skill-tag-clean">ML Pipeline</span>
+                <span class="skill-tag-clean">ML Deployment</span>
+                <span class="skill-tag-clean">Docker</span>
+                <span class="skill-tag-clean">Linux</span>
+            </div>
+        </div>
 
+        <!-- Tools & Infrastructure -->
+        <div class="skill-category-card-clean">
+            <div class="skill-category-header-clean">
+                <div class="skill-category-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="skill-category-title">Data Engineering & Tooling</h3>
+            </div>
+            <div class="skill-tags-grid">
+                <span class="skill-tag-clean">SQL</span>
+                <span class="skill-tag-clean">Pandas</span>
+                <span class="skill-tag-clean">Numpy</span>
+                <span class="skill-tag-clean">ETL Pipelines</span>
+                <span class="skill-tag-clean">Data Validation</span>
+                <span class="skill-tag-clean">Data Cleaning</span>
+                <span class="skill-tag-clean">Vector Databases</span>
+                <span class="skill-tag-clean">Git & GitHub</span>
+            </div>
+        </div>
+
+    </div>
+</section>
             <!-- Projects Section - German Style -->
             <section id="projects" class="section projects-section">
                 <div class="section-header">
