@@ -10,21 +10,52 @@
     <!-- SEO Meta Tags -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="author" content="Sajan Sah">
-    <meta name="keywords" content="AI Engineer, Machine Learning Engineer, Deep Learning, NLP, Computer Vision, Generative AI, PyTorch, TensorFlow, Python, Data Science">
+    <meta name="keywords" content="AI Engineer, Machine Learning Engineer, Deep Learning, NLP, Computer Vision, Generative AI, PyTorch, TensorFlow, Python, Data Science, Sajan, Sajan Kumar, Sajan Sah, Sajan Kumar Sah, Sajan KIIT, Sajan ML Engineer, Sajan Kumar KIIT, Sajan Kumar Sah KIIT, Sajan Sah ML Engineer, Sajan Sah AI Engineer, Sajan Sah AI/ML Engineer, Sajan from Nepal, Sajan from Janakpur, Sajan Kumar from Nepal, Sajan Kumar from Janakpur, Sajan Sah Portfolio, Sajan Kumar Sah Portfolio">
+    
+    <!-- SEO Keywords for better ranking -->
+    <meta name="keywords" content="
+        Sajan,
+        Sajan Kumar,
+        Sajan Sah,
+        Sajan Kumar Sah,
+        Sajan KIIT,
+        Sajan ML Engineer,
+        Sajan Kumar KIIT,
+        Sajan Kumar Sah KIIT,
+        Sajan Sah ML Engineer,
+        Sajan Sah AI Engineer,
+        Sajan Sah AI/ML Engineer,
+        Sajan from Nepal,
+        Sajan from Janakpur,
+        Sajan Kumar from Nepal,
+        Sajan Kumar from Janakpur,
+        AI Engineer Nepal,
+        Machine Learning Engineer Nepal,
+        KIIT University AI Engineer,
+        Janakpur AI Developer,
+        Nepal Machine Learning Specialist,
+        PyTorch Developer Nepal,
+        Python AI Developer,
+        Deep Learning Engineer,
+        Computer Vision Engineer,
+        NLP Specialist
+    ">
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Mr. Sajan Sah | AI/ML Engineer">
-    <meta property="og:description" content="Expert AI/ML Engineer specializing in Machine Learning, Deep Learning, NLP, Computer Vision, and Generative AI.">
+    <meta property="og:title" content="Mr. Sajan Sah | AI/ML Engineer | Portfolio">
+    <meta property="og:description" content="Sajan Sah - Expert AI/ML Engineer specializing in Machine Learning, Deep Learning, NLP, Computer Vision, and Generative AI. KIIT University student from Janakpur, Nepal.">
     <meta property="og:image" content="https://www.sajankumar.com.np/sajan-og-image.jpg">
     <meta property="og:url" content="https://www.sajankumar.com.np">
     <meta property="og:site_name" content="Sajan Sah Portfolio">
+    <meta property="og:locale" content="en_US">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mr. Sajan Sah | AI/ML Engineer">
     <meta name="twitter:description" content="Expert AI/ML Engineer specializing in Machine Learning, Deep Learning, NLP, Computer Vision, and Generative AI.">
     <meta name="twitter:image" content="https://www.sajankumar.com.np/sajan-twitter-image.jpg">
+    <meta name="twitter:creator" content="@Sajan9898">
     
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
@@ -32,6 +63,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Sajan Sah",
+      "alternateName": ["Sajan Kumar", "Sajan Kumar Sah"],
       "jobTitle": "AI/ML Engineer",
       "url": "https://www.sajankumar.com.np",
       "sameAs": [
@@ -47,6 +79,31 @@
       "alumniOf": {
         "@type": "EducationalOrganization",
         "name": "KIIT University"
+      },
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Janakpur, Nepal"
+      },
+      "description": "AI/ML Engineer specializing in Machine Learning, Deep Learning, NLP, Computer Vision, and Generative AI. Student at KIIT University from Janakpur, Nepal.",
+      "knowsAbout": ["Machine Learning", "Deep Learning", "Artificial Intelligence", "Python", "PyTorch", "Computer Vision", "Natural Language Processing"]
+    }
+    </script>
+    
+    <!-- Additional Schema for Local SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Sajan Sah Portfolio",
+      "url": "https://www.sajankumar.com.np",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.sajankumar.com.np/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Sajan Sah"
       }
     }
     </script>
@@ -117,6 +174,99 @@
             height: 100%;
             z-index: -1;
             opacity: 0.6;
+        }
+
+        /* Theme Toggle Button - Fixed in Top Right Corner */
+        .theme-toggle-fixed {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            background: rgba(21, 21, 43, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            z-index: 9999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-toggle-fixed:hover {
+            background: rgba(0, 240, 255, 0.2);
+            transform: rotate(15deg);
+            box-shadow: 0 8px 20px rgba(0, 240, 255, 0.3);
+        }
+
+        .theme-toggle-fixed .fa-moon {
+            position: absolute;
+            transition: var(--transition-fast);
+        }
+
+        .theme-toggle-fixed .fa-sun {
+            opacity: 0;
+            transform: rotate(-90deg);
+            transition: var(--transition-fast);
+        }
+
+        [data-theme="light"] .theme-toggle-fixed .fa-moon {
+            opacity: 0;
+            transform: rotate(90deg);
+        }
+
+        [data-theme="light"] .theme-toggle-fixed .fa-sun {
+            opacity: 1;
+            transform: rotate(0);
+        }
+
+        /* Dropdown Menu for Resume Options */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--surface-dark);
+            border-radius: 12px;
+            padding: 10px 0;
+            min-width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition-fast);
+            z-index: 1000;
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .dropdown-item:hover {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--primary-color);
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            font-size: 1.1rem;
         }
 
         /* Improved Preloader */
@@ -288,48 +438,6 @@
             gap: 15px;
         }
 
-        .theme-toggle {
-            background: rgba(0, 240, 255, 0.1);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--primary-color);
-            cursor: pointer;
-            transition: var(--transition-fast);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(0, 240, 255, 0.2);
-            transform: rotate(15deg);
-        }
-
-        .theme-toggle .fa-moon {
-            position: absolute;
-            transition: var(--transition-fast);
-        }
-
-        .theme-toggle .fa-sun {
-            opacity: 0;
-            transform: rotate(-90deg);
-            transition: var(--transition-fast);
-        }
-
-        [data-theme="light"] .theme-toggle .fa-moon {
-            opacity: 0;
-            transform: rotate(90deg);
-        }
-
-        [data-theme="light"] .theme-toggle .fa-sun {
-            opacity: 1;
-            transform: rotate(0);
-        }
-
         .social-links {
             display: flex;
             flex-direction: column;
@@ -415,7 +523,7 @@
             box-shadow: var(--shadow-glow);
         }
 
-        /* Home Section - Unchanged */
+        /* Home Section */
         .home-section {
             padding-top: 120px;
             min-height: 100vh;
@@ -474,6 +582,12 @@
         .home-buttons {
             display: flex;
             gap: 20px;
+            position: relative;
+        }
+
+        /* Button with dropdown */
+        .btn-dropdown {
+            position: relative;
         }
 
         .btn {
@@ -488,6 +602,10 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            border: none;
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
         }
 
         .btn::before {
@@ -539,7 +657,7 @@
             color: var(--background-darker);
         }
 
-        /* Home Profile Image - Unchanged */
+        /* Home Profile Image */
         .home-profile {
             display: flex;
             justify-content: center;
@@ -819,12 +937,12 @@
             transform: translateY(-2px);
         }
 
-        /* Skills Section - German Professional Style - UPDATED */
+        /* Skills Section - Clean German Professional Style */
         .skills-section {
             padding: 60px 0;
         }
 
-        .skills-grid {
+        .skills-grid-clean {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
@@ -832,7 +950,7 @@
             margin: 0 auto;
         }
 
-        .skill-category-card {
+        .skill-category-card-clean {
             background: var(--surface-dark);
             border-radius: 12px;
             padding: 30px;
@@ -840,13 +958,13 @@
             transition: var(--transition-fast);
         }
 
-        .skill-category-card:hover {
+        .skill-category-card-clean:hover {
             transform: translateY(-5px);
             border-color: rgba(0, 240, 255, 0.2);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .skill-category-header {
+        .skill-category-header-clean {
             display: flex;
             align-items: center;
             gap: 15px;
@@ -855,79 +973,29 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .skill-category-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: rgba(0, 240, 255, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.3rem;
+        .skill-tags-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .skill-tag-clean {
+            display: inline-block;
+            padding: 10px 15px;
+            background: rgba(0, 240, 255, 0.08);
             color: var(--primary-color);
-        }
-
-        .skill-category-title {
-            font-size: 1.4rem;
-            color: var(--text-primary);
-            font-weight: 700;
-        }
-
-        .skill-items-german {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .skill-item-german {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .skill-name-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-
-        .skill-name-german {
-            font-size: 1.05rem;
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .skill-evidence {
-            font-size: 0.8rem;
-            color: var(--primary-color);
-            font-weight: 600;
-            background: rgba(0, 240, 255, 0.1);
-            padding: 3px 10px;
-            border-radius: 10px;
-            white-space: nowrap;
-        }
-
-        .skill-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 8px;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .skill-tag {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-secondary);
-            padding: 3px 8px;
             border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition-fast);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        .skill-tag-clean:hover {
+            background: rgba(0, 240, 255, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
         }
 
         /* Projects Section - German Professional Style */
@@ -1422,6 +1490,31 @@
             background: rgba(0, 240, 255, 0.05);
         }
 
+        /* Custom Cursor Styles */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            pointer-events: none;
+            z-index: 9998;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            pointer-events: none;
+            z-index: 9997;
+            mix-blend-mode: difference;
+            transition: transform 0.3s ease;
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .content-wrapper {
@@ -1447,7 +1540,7 @@
             }
             
             .education-grid,
-            .skills-grid,
+            .skills-grid-clean,
             .projects-grid-german,
             .experience-grid,
             .github-stats-german {
@@ -1506,6 +1599,13 @@
             
             .project-stats {
                 grid-template-columns: 1fr;
+            }
+            
+            .theme-toggle-fixed {
+                top: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
             }
         }
 
@@ -1578,7 +1678,7 @@
             }
             
             .education-grid,
-            .skills-grid,
+            .skills-grid-clean,
             .projects-grid-german,
             .experience-grid {
                 grid-template-columns: 1fr;
@@ -1587,6 +1687,18 @@
             
             .github-stats-german {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .theme-toggle-fixed {
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .custom-cursor,
+            .cursor-follower {
+                display: none; /* Hide custom cursor on mobile */
             }
         }
 
@@ -1631,14 +1743,14 @@
             }
             
             .education-grid,
-            .skills-grid,
+            .skills-grid-clean,
             .projects-grid-german,
             .experience-grid {
                 grid-template-columns: 1fr;
             }
             
             .education-card,
-            .skill-category-card,
+            .skill-category-card-clean,
             .project-card-german,
             .experience-card-german,
             .contact-card {
@@ -1665,11 +1777,23 @@
             .experience-tech-german {
                 justify-content: flex-start;
             }
+            
+            .theme-toggle-fixed {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
         }
 
         /* Print Styles */
         @media print {
-            .floating-nav, .preloader, .scroll-indicator, .custom-cursor, .cursor-follower, .notification {
+            .floating-nav, .preloader, .scroll-indicator, .custom-cursor, .cursor-follower, .notification, .theme-toggle-fixed {
                 display: none;
             }
             
@@ -1695,6 +1819,13 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
+            
+            .scroll-indicator,
+            .profile-border,
+            .quantum-dot,
+            .loading-text {
+                animation: none !important;
+            }
         }
 
         /* High Contrast Mode Support */
@@ -1712,71 +1843,35 @@
             }
         }
 
-
-        /* Clean Skills Section Styles */
-.skills-grid-clean {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.skill-category-card-clean {
-    background: var(--surface-dark);
-    border-radius: 12px;
-    padding: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: var(--transition-fast);
-}
-
-.skill-category-card-clean:hover {
-    transform: translateY(-5px);
-    border-color: rgba(0, 240, 255, 0.2);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.skill-category-header-clean {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.skill-tags-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 12px;
-}
-
-.skill-tag-clean {
-    display: inline-block;
-    padding: 10px 15px;
-    background: rgba(0, 240, 255, 0.08);
-    color: var(--primary-color);
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-align: center;
-    transition: var(--transition-fast);
-    border: 1px solid rgba(0, 240, 255, 0.1);
-}
-
-.skill-tag-clean:hover {
-    background: rgba(0, 240, 255, 0.15);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
-}
-
-
+        /* Hidden content for SEO purposes (not visible to users) */
+        .seo-content {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
     </style>
     
 </head>
 
 <body>
     <canvas id="particleCanvas"></canvas>
+
+    <!-- SEO Hidden Content for better ranking -->
+    <div class="seo-content">
+        Sajan Sah - Sajan Kumar - Sajan Kumar Sah - AI ML Engineer - Machine Learning Engineer - Deep Learning Engineer - Computer Vision Engineer - NLP Specialist - KIIT University - Janakpur Nepal - Nepal AI Developer - Python Developer - PyTorch Developer - TensorFlow Developer - Data Scientist - Artificial Intelligence Engineer
+    </div>
+
+    <!-- Fixed Theme Toggle Button -->
+    <button class="theme-toggle-fixed" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
 
     <div class="preloader">
         <div class="quantum-loader">
@@ -1816,24 +1911,15 @@
                     <span class="link-icon"><i class="fas fa-briefcase"></i></span>
                     <span class="link-text">Experience</span>
                 </a>
-                
                 <a href="#contact" class="nav-link" data-scroll>
                     <span class="link-icon"><i class="fas fa-envelope"></i></span>
                     <span class="link-text">Contact</span>
                 </a>
             </div>
-            <div class="nav-footer">
-                <button class="theme-toggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-sun"></i>
-                </button>
-
-            
-            </div>
         </nav>
 
         <main class="content-wrapper">
-            <!-- Home Section - Unchanged -->
+            <!-- Home Section -->
             <section id="home" class="section home-section">
                 <div class="home-content">
                     <div class="home-text">
@@ -1846,10 +1932,27 @@
                             Production-focused AI/ML Engineer with experience building end-to-end machine learning systems using Python and PyTorch. Strong background in data preprocessing, model training, evaluation, and deployment. Developed multiple applied ML projects with live demos and reproducible pipelines. Seeking opportunities to contribute to real-world, engineering-driven AI solutions.
                         </p>
                         <div class="home-buttons">
-                            <a href="#projects" class="btn btn-primary" data-scroll>
-                                <span>View My Work</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+                            <!-- Updated Resume Button with Dropdown -->
+                            <div class="btn-dropdown">
+                                <button class="btn btn-primary" id="resumeDropdownBtn">
+                                    <span>View My Resume</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-menu" id="resumeDropdown">
+                                    <a href="sajan_resume.pdf" target="_blank" class="dropdown-item">
+                                        <i class="fas fa-file-pdf"></i>
+                                        <span>See the Resume</span>
+                                    </a>
+                                    <a href="certificates.html" class="dropdown-item">
+                                        <i class="fas fa-award"></i>
+                                        <span>See Certificates</span>
+                                    </a>
+                                    <a href="photos.html" class="dropdown-item">
+                                        <i class="fas fa-images"></i>
+                                        <span>Photos</span>
+                                    </a>
+                                </div>
+                            </div>
                             <a href="#contact" class="btn btn-secondary" data-scroll>
                                 <span>Contact Me</span>
                                 <i class="fas fa-paper-plane"></i>
@@ -1860,7 +1963,7 @@
                         <div class="profile-container">
                             <div class="profile-border"></div>
                             <div class="profile-main">
-                                <img src="sajan.jpg" alt="Sajan Kumar Sah" />
+                                <img src="sajan.jpg" alt="Sajan Kumar Sah - AI/ML Engineer from Janakpur, Nepal studying at KIIT University" />
                                 <div class="profile-overlay"></div>
                             </div>
                             <div class="profile-tag">AI/ML Engineer</div>
@@ -1954,78 +2057,77 @@
                 </div>
             </section>
 
-            <!-- Skills Section - German Professional Style - COMPLETELY UPDATED -->
-            <!-- Skills Section - Clean German Professional Style -->
-<section id="skills" class="section skills-section">
-    <div class="section-header">
-        <h2 class="section-title">
-            <span class="title-number">02</span>
-            <span class="title-text">Technical Skills</span>
-            <span class="title-line"></span>
-        </h2>
-    </div>
-    <div class="skills-grid-clean">
-        <!-- AI/ML Core Skills -->
-        <div class="skill-category-card-clean">
-            <div class="skill-category-header-clean">
-                <div class="skill-category-icon">
-                    <i class="fas fa-brain"></i>
+            <!-- Skills Section -->
+            <section id="skills" class="section skills-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-number">02</span>
+                        <span class="title-text">Technical Skills</span>
+                        <span class="title-line"></span>
+                    </h2>
                 </div>
-                <h3 class="skill-category-title">Machine Learning & AI</h3>
-            </div>
-            <div class="skill-tags-grid">
-                <span class="skill-tag-clean">Machine Learning</span>
-                <span class="skill-tag-clean">Deep Learning</span>
-                <span class="skill-tag-clean">Transformers & LLMs</span>
-                <span class="skill-tag-clean">PyTorch</span>
-                <span class="skill-tag-clean">Scikit-learn</span>
-                <span class="skill-tag-clean">Feature Engineering</span>
-                <span class="skill-tag-clean">Model Evaluation</span>
-            </div>
-        </div>
+                <div class="skills-grid-clean">
+                    <!-- AI/ML Core Skills -->
+                    <div class="skill-category-card-clean">
+                        <div class="skill-category-header-clean">
+                            <div class="skill-category-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="skill-category-title">Machine Learning & AI</h3>
+                        </div>
+                        <div class="skill-tags-grid">
+                            <span class="skill-tag-clean">Machine Learning</span>
+                            <span class="skill-tag-clean">Deep Learning</span>
+                            <span class="skill-tag-clean">Transformers & LLMs</span>
+                            <span class="skill-tag-clean">PyTorch</span>
+                            <span class="skill-tag-clean">Scikit-learn</span>
+                            <span class="skill-tag-clean">Feature Engineering</span>
+                            <span class="skill-tag-clean">Model Evaluation</span>
+                        </div>
+                    </div>
 
-        <!-- Programming & Development -->
-        <div class="skill-category-card-clean">
-            <div class="skill-category-header-clean">
-                <div class="skill-category-icon">
-                    <i class="fas fa-code"></i>
+                    <!-- Programming & Development -->
+                    <div class="skill-category-card-clean">
+                        <div class="skill-category-header-clean">
+                            <div class="skill-category-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="skill-category-title">Backend & ML Engineering</h3>
+                        </div>
+                        <div class="skill-tags-grid">
+                            <span class="skill-tag-clean">Python</span>
+                            <span class="skill-tag-clean">FastAPI / Flask</span>
+                            <span class="skill-tag-clean">REST APIs</span>
+                            <span class="skill-tag-clean">ML Pipeline</span>
+                            <span class="skill-tag-clean">ML Deployment</span>
+                            <span class="skill-tag-clean">Docker</span>
+                            <span class="skill-tag-clean">Linux</span>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Infrastructure -->
+                    <div class="skill-category-card-clean">
+                        <div class="skill-category-header-clean">
+                            <div class="skill-category-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="skill-category-title">Data Engineering & Tooling</h3>
+                        </div>
+                        <div class="skill-tags-grid">
+                            <span class="skill-tag-clean">SQL</span>
+                            <span class="skill-tag-clean">Pandas</span>
+                            <span class="skill-tag-clean">Numpy</span>
+                            <span class="skill-tag-clean">ETL Pipelines</span>
+                            <span class="skill-tag-clean">Data Validation</span>
+                            <span class="skill-tag-clean">Data Cleaning</span>
+                            <span class="skill-tag-clean">Vector Databases</span>
+                            <span class="skill-tag-clean">Git & GitHub</span>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="skill-category-title">Backend & ML Engineering</h3>
-            </div>
-            <div class="skill-tags-grid">
-                <span class="skill-tag-clean">Python</span>
-                <span class="skill-tag-clean">FastAPI / Flask</span>
-                <span class="skill-tag-clean">REST APIs</span>
-                <span class="skill-tag-clean">ML Pipeline</span>
-                <span class="skill-tag-clean">ML Deployment</span>
-                <span class="skill-tag-clean">Docker</span>
-                <span class="skill-tag-clean">Linux</span>
-            </div>
-        </div>
+            </section>
 
-        <!-- Tools & Infrastructure -->
-        <div class="skill-category-card-clean">
-            <div class="skill-category-header-clean">
-                <div class="skill-category-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <h3 class="skill-category-title">Data Engineering & Tooling</h3>
-            </div>
-            <div class="skill-tags-grid">
-                <span class="skill-tag-clean">SQL</span>
-                <span class="skill-tag-clean">Pandas</span>
-                <span class="skill-tag-clean">Numpy</span>
-                <span class="skill-tag-clean">ETL Pipelines</span>
-                <span class="skill-tag-clean">Data Validation</span>
-                <span class="skill-tag-clean">Data Cleaning</span>
-                <span class="skill-tag-clean">Vector Databases</span>
-                <span class="skill-tag-clean">Git & GitHub</span>
-            </div>
-        </div>
-
-    </div>
-</section>
-            <!-- Projects Section - German Style -->
+            <!-- Projects Section -->
             <section id="projects" class="section projects-section">
                 <div class="section-header">
                     <h2 class="section-title">
@@ -2279,7 +2381,7 @@
                 </div>
             </section>
 
-            <!-- Experience Section - German Style -->
+            <!-- Experience Section -->
             <section id="experience" class="section experience-section">
                 <div class="section-header">
                     <h2 class="section-title">
@@ -2339,7 +2441,7 @@
                 </div>
             </section>
 
-            <!-- GitHub Section - German Style -->
+            <!-- GitHub Section -->
             <section id="github" class="section github-section">
                 <div class="section-header">
                     <h2 class="section-title">
@@ -2386,7 +2488,7 @@
                 </div>
             </section>
 
-            <!-- Contact Section - German Style -->
+            <!-- Contact Section -->
             <section id="contact" class="section contact-section">
                 <div class="section-header">
                     <h2 class="section-title">
@@ -2501,9 +2603,9 @@
         </main>
     </div>
 
+    <!-- Custom Cursor Elements -->
     <div class="custom-cursor"></div>
     <div class="cursor-follower"></div>
-
 
     <script>
         // Enhanced JavaScript with modern features
@@ -2516,8 +2618,8 @@
                 }, 1000);
             });
 
-            // Theme Toggle
-            const themeToggle = document.querySelector('.theme-toggle');
+            // Theme Toggle - Fixed Button
+            const themeToggle = document.querySelector('.theme-toggle-fixed');
             const currentTheme = localStorage.getItem('theme') || 'dark';
             
             document.documentElement.setAttribute('data-theme', currentTheme);
@@ -2528,7 +2630,51 @@
                 
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
+                
+                // Add click animation
+                themeToggle.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    themeToggle.style.transform = '';
+                }, 300);
             });
+
+            // Resume Dropdown Functionality
+            const resumeDropdownBtn = document.getElementById('resumeDropdownBtn');
+            const resumeDropdown = document.getElementById('resumeDropdown');
+            
+            if (resumeDropdownBtn && resumeDropdown) {
+                // Toggle dropdown
+                resumeDropdownBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    resumeDropdown.classList.toggle('show');
+                    
+                    // Rotate chevron
+                    const chevron = this.querySelector('.fa-chevron-down');
+                    if (resumeDropdown.classList.contains('show')) {
+                        chevron.style.transform = 'rotate(180deg)';
+                    } else {
+                        chevron.style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!resumeDropdown.contains(e.target) && !resumeDropdownBtn.contains(e.target)) {
+                        resumeDropdown.classList.remove('show');
+                        const chevron = resumeDropdownBtn.querySelector('.fa-chevron-down');
+                        chevron.style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // Close dropdown on mobile when option is selected
+                resumeDropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        this.classList.remove('show');
+                        const chevron = resumeDropdownBtn.querySelector('.fa-chevron-down');
+                        chevron.style.transform = 'rotate(0deg)';
+                    }
+                });
+            }
 
             // Smooth Scrolling
             const scrollLinks = document.querySelectorAll('a[data-scroll]');
@@ -2552,6 +2698,13 @@
                             navLink.classList.remove('active');
                         });
                         this.classList.add('active');
+                        
+                        // Close dropdown if open
+                        if (resumeDropdown && resumeDropdown.classList.contains('show')) {
+                            resumeDropdown.classList.remove('show');
+                            const chevron = resumeDropdownBtn.querySelector('.fa-chevron-down');
+                            if (chevron) chevron.style.transform = 'rotate(0deg)';
+                        }
                     }
                 });
             });
@@ -2583,122 +2736,120 @@
             
             window.addEventListener('scroll', updateActiveNav);
 
-            // Custom Cursor
-            const cursor = document.querySelector('.custom-cursor');
-            const cursorFollower = document.querySelector('.cursor-follower');
-            
-            document.addEventListener('mousemove', function(e) {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
+            // Custom Cursor (Desktop only)
+            if (window.innerWidth > 768) {
+                const cursor = document.querySelector('.custom-cursor');
+                const cursorFollower = document.querySelector('.cursor-follower');
                 
-                setTimeout(() => {
-                    cursorFollower.style.left = e.clientX + 'px';
-                    cursorFollower.style.top = e.clientY + 'px';
-                }, 100);
-            });
-            
-            // Cursor effects on interactive elements
-            const interactiveElements = document.querySelectorAll('a, button, .nav-link, .project-card-german, .skill-category-card, .experience-card-german, .contact-card');
-            
-            interactiveElements.forEach(element => {
-                element.addEventListener('mouseenter', function() {
-                    cursor.style.transform = 'scale(1.5)';
-                    cursorFollower.style.transform = 'scale(1.5)';
+                document.addEventListener('mousemove', function(e) {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                    
+                    setTimeout(() => {
+                        cursorFollower.style.left = e.clientX + 'px';
+                        cursorFollower.style.top = e.clientY + 'px';
+                    }, 100);
                 });
                 
-                element.addEventListener('mouseleave', function() {
-                    cursor.style.transform = 'scale(1)';
-                    cursorFollower.style.transform = 'scale(1)';
+                // Cursor effects on interactive elements
+                const interactiveElements = document.querySelectorAll('a, button, .nav-link, .project-card-german, .skill-category-card-clean, .experience-card-german, .contact-card, .theme-toggle-fixed, .dropdown-item');
+                
+                interactiveElements.forEach(element => {
+                    element.addEventListener('mouseenter', function() {
+                        cursor.style.transform = 'scale(1.5)';
+                        cursorFollower.style.transform = 'scale(1.5)';
+                    });
+                    
+                    element.addEventListener('mouseleave', function() {
+                        cursor.style.transform = 'scale(1)';
+                        cursorFollower.style.transform = 'scale(1)';
+                    });
                 });
-            });
+            }
 
             // Contact Form Submission
             const contactForm = document.getElementById('contactFormGerman');
             
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form values
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value;
-                
-                // Create mailto link
-                const mailtoLink = `mailto:sajansah205@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-                    `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-                )}`;
-                
-                // Open email client
-                window.location.href = mailtoLink;
-                
-                // Show notification
-                const notification = document.querySelector('.notification');
-                notification.classList.add('show');
-                
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 5000);
-            });
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Create mailto link
+                    const mailtoLink = `mailto:sajansah205@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+                        `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+                    )}`;
+                    
+                    // Open email client
+                    window.location.href = mailtoLink;
+                });
+            }
 
             // Particle Canvas
             const canvas = document.getElementById('particleCanvas');
-            const ctx = canvas.getContext('2d');
-            
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-            
-            // Particle system
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 2 + 0.5;
-                    this.speedX = Math.random() * 1 - 0.5;
-                    this.speedY = Math.random() * 1 - 0.5;
-                    this.color = `rgba(0, 240, 255, ${Math.random() * 0.5})`;
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                
+                function resizeCanvas() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
                 }
                 
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
+                
+                // Particle system
+                class Particle {
+                    constructor() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * canvas.height;
+                        this.size = Math.random() * 2 + 0.5;
+                        this.speedX = Math.random() * 1 - 0.5;
+                        this.speedY = Math.random() * 1 - 0.5;
+                        this.color = `rgba(0, 240, 255, ${Math.random() * 0.5})`;
+                    }
                     
-                    if (this.x > canvas.width) this.x = 0;
-                    if (this.x < 0) this.x = canvas.width;
-                    if (this.y > canvas.height) this.y = 0;
-                    if (this.y < 0) this.y = canvas.height;
+                    update() {
+                        this.x += this.speedX;
+                        this.y += this.speedY;
+                        
+                        if (this.x > canvas.width) this.x = 0;
+                        if (this.x < 0) this.x = canvas.width;
+                        if (this.y > canvas.height) this.y = 0;
+                        if (this.y < 0) this.y = canvas.height;
+                    }
+                    
+                    draw() {
+                        ctx.fillStyle = this.color;
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
                 }
                 
-                draw() {
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
+                const particles = [];
+                for (let i = 0; i < 100; i++) {
+                    particles.push(new Particle());
                 }
-            }
-            
-            const particles = [];
-            for (let i = 0; i < 100; i++) {
-                particles.push(new Particle());
-            }
-            
-            function animateParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
-                particles.forEach(particle => {
-                    particle.update();
-                    particle.draw();
-                });
+                function animateParticles() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    particles.forEach(particle => {
+                        particle.update();
+                        particle.draw();
+                    });
+                    
+                    requestAnimationFrame(animateParticles);
+                }
                 
-                requestAnimationFrame(animateParticles);
+                animateParticles();
             }
-            
-            animateParticles();
 
             // Intersection Observer for animations
             const observerOptions = {
@@ -2715,17 +2866,30 @@
             }, observerOptions);
             
             // Observe elements for animation
-            const animateElements = document.querySelectorAll('.section-title, .home-title, .education-card, .skill-category-card, .project-card-german, .experience-card-german, .github-stat-card, .contact-card');
+            const animateElements = document.querySelectorAll('.section-title, .home-title, .education-card, .skill-category-card-clean, .project-card-german, .experience-card-german, .github-stat-card, .contact-card');
             animateElements.forEach(el => observer.observe(el));
 
-            // Initialize GitHub Stats
-            function updateGitHubStats() {
-                // These are placeholder values
-                // In production, you would fetch from GitHub API
-                console.log('GitHub stats loaded');
+            // Mobile menu improvements
+            function handleMobileMenu() {
+                const floatingNav = document.querySelector('.floating-nav');
+                if (window.innerWidth <= 768) {
+                    // Add padding to bottom of content for mobile nav
+                    document.querySelector('.content-wrapper').style.paddingBottom = '80px';
+                    
+                    // Improve touch targets for mobile
+                    const navLinks = document.querySelectorAll('.nav-link');
+                    navLinks.forEach(link => {
+                        link.style.padding = '12px 15px';
+                        link.style.minHeight = '50px';
+                    });
+                }
             }
             
-            updateGitHubStats();
+            // Initial call
+            handleMobileMenu();
+            
+            // Update on resize
+            window.addEventListener('resize', handleMobileMenu);
         });
     </script>
 </body>
