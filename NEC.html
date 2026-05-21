@@ -1819,8 +1819,9 @@
                     setTimeout(() => initAntiDownloadProtections(), 200);
                 }).catch(function(error) {
                     console.error('Error loading PDF:', error);
+                    console.error('PDF Path attempted:', pdfPath);
                     document.getElementById('pdfLoading').classList.remove('show');
-                    alert('Error loading PDF. Please check if the file exists.');
+                    alert(`Error loading PDF: ${filename}\n\nPlease ensure the file exists on GitHub at:\n${pdfPath}\n\nError: ${error.message}`);
                 });
             }
         }
