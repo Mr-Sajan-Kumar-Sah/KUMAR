@@ -1728,8 +1728,8 @@
             // Show loading indicator
             document.getElementById('pdfLoading').classList.add('show');
             
-            // Load the PDF and show the viewer
-            const pdfPath = `https://cdn.jsdelivr.net/gh/Mr-Sajan-Kumar-Sah/KUMAR@main/pdfs/${filename}.pdf`;
+            // Load the PDF and show the viewer - use direct GitHub raw URL
+            const pdfPath = `https://raw.githubusercontent.com/Mr-Sajan-Kumar-Sah/KUMAR/main/pdfs/${filename}.pdf`;
             currentFileName = filename;
             currentPage = 1;
             zoomLevel = 0.4; // Lower initial quality for faster first render
@@ -2016,7 +2016,7 @@
         function preloadPDF(filename) {
             // Preload PDF in background if not already cached
             if (!pdfCache[filename]) {
-                const pdfPath = `https://cdn.jsdelivr.net/gh/Mr-Sajan-Kumar-Sah/KUMAR@main/pdfs/${filename}.pdf`;
+                const pdfPath = `https://raw.githubusercontent.com/Mr-Sajan-Kumar-Sah/KUMAR/main/pdfs/${filename}.pdf`;
                 pdfjsLib.getDocument(pdfPath).promise.then(function(pdf) {
                     pdfCache[filename] = pdf;
                 }).catch(function(err) {
