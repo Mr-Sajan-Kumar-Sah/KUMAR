@@ -17,6 +17,107 @@
             background: linear-gradient(135deg, #1a1a3e 0%, #16213e 100%);
             color: #e0e0e0;
             min-height: 100vh;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Light Mode */
+        body.light-mode {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            color: #333;
+        }
+
+        body.light-mode .sidebar {
+            background: rgba(240, 240, 245, 0.95);
+            border-right-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .nav-item {
+            color: #555;
+        }
+
+        body.light-mode .nav-item:hover {
+            background: rgba(157, 78, 221, 0.1);
+            color: #333;
+        }
+
+        body.light-mode .nav-item.active {
+            background: rgba(157, 78, 221, 0.2);
+            color: #9d4edd;
+        }
+
+        body.light-mode .main-content {
+            background: transparent;
+        }
+
+        body.light-mode .search-bar {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .search-bar input {
+            color: #333;
+        }
+
+        body.light-mode .search-bar input::placeholder {
+            color: #999;
+        }
+
+        body.light-mode .icon-btn {
+            background: rgba(0, 0, 0, 0.05);
+            color: #333;
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .icon-btn:hover {
+            background: rgba(157, 78, 221, 0.1);
+        }
+
+        body.light-mode .welcome-section {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.1) 0%, rgba(80, 120, 200, 0.05) 100%);
+            border-color: rgba(157, 78, 221, 0.2);
+        }
+
+        body.light-mode .welcome-content h1 {
+            color: #1a1a3e;
+        }
+
+        body.light-mode .welcome-content p {
+            color: #666;
+        }
+
+        body.light-mode .card {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        body.light-mode .card:hover {
+            background: rgba(157, 78, 221, 0.1);
+            border-color: rgba(157, 78, 221, 0.3);
+        }
+
+        body.light-mode .card-title {
+            color: #1a1a3e;
+        }
+
+        body.light-mode .table-container {
+            background: rgba(255, 255, 255, 0.6);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode table th {
+            background: rgba(0, 0, 0, 0.05);
+            color: #666;
+            border-bottom-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode table td {
+            border-bottom-color: rgba(0, 0, 0, 0.05);
+            color: #333;
+        }
+
+        body.light-mode tr:hover {
+            background: rgba(157, 78, 221, 0.08);
         }
 
         .container {
@@ -86,6 +187,28 @@
             text-transform: uppercase;
             color: #888;
             letter-spacing: 1px;
+        }
+
+        .nav-section-title.toggle-section {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #888;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .nav-section-title.toggle-section:hover {
+            background: rgba(157, 78, 221, 0.1);
+            color: #999;
+        }
+
+        .nav-section-title .section-toggle-icon {
+            display: inline-block;
+            transition: transform 0.3s;
+            font-size: 12px;
         }
 
         .nav-submenu {
@@ -370,6 +493,16 @@
             background: rgba(157, 78, 221, 0.1);
         }
 
+        .chapter-row.hidden,
+        .set-row.hidden {
+            display: none;
+        }
+
+        .chapter-row.hidden.show,
+        .set-row.hidden.show {
+            display: table-row;
+        }
+
         .table-chapter-num {
             font-weight: 600;
             color: #9d4edd;
@@ -430,6 +563,117 @@
             }
         }
 
+        /* Contact Modal Styles */
+        .contact-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .contact-modal.show {
+            display: flex;
+        }
+
+        .contact-modal-content {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.15) 0%, rgba(80, 120, 200, 0.1) 100%);
+            border: 1px solid rgba(157, 78, 221, 0.4);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-modal-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .contact-modal-content h2 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact-modal-content p {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .contact-email {
+            display: inline-block;
+            background: rgba(157, 78, 221, 0.2);
+            border: 1px solid rgba(157, 78, 221, 0.4);
+            color: #9d4edd;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .contact-email:hover {
+            background: rgba(157, 78, 221, 0.3);
+            color: #b565ff;
+        }
+
+        .contact-modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .contact-modal-btn {
+            padding: 10px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .contact-modal-btn:hover {
+            background: rgba(157, 78, 221, 0.2);
+            border-color: rgba(157, 78, 221, 0.4);
+            color: #9d4edd;
+        }
+
+        .contact-modal-btn.primary {
+            background: rgba(157, 78, 221, 0.3);
+            border-color: rgba(157, 78, 221, 0.6);
+            color: #9d4edd;
+        }
+
+        .contact-modal-btn.primary:hover {
+            background: rgba(157, 78, 221, 0.4);
+        }
+
         /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -478,7 +722,7 @@
         }
 
         .pdf-viewer-container.active .pdf-viewer-header {
-            display: flex;
+            display: none;
         }
 
         .pdf-viewer-title {
@@ -536,19 +780,31 @@
         .pdf-canvas-container {
             flex: 1;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
             overflow: auto;
             background: rgba(10, 10, 30, 0.8);
             padding: 20px;
+            gap: 15px;
         }
 
-        #pdfCanvas {
+        .pdf-page-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #pdfCanvas, #pdfCanvas2 {
             max-width: 100%;
             height: auto;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
             border-radius: 4px;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         .pdf-thumbnails {
@@ -597,12 +853,47 @@
         .pdf-viewer-footer {
             background: rgba(15, 15, 40, 0.95);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 15px 30px;
+            padding: 12px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .pdf-viewer-footer .pdf-title-section {
+            display: flex;
+            align-items: center;
             gap: 15px;
+            font-size: 14px;
+            color: #e0e0e0;
+            min-width: 150px;
+        }
+
+        .pdf-viewer-footer .pdf-title-section .back-btn {
+            background: none;
+            border: none;
+            color: #9d4edd;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .pdf-viewer-footer .pdf-title-section .back-btn:hover {
+            color: #b565ff;
+        }
+
+        .pdf-viewer-footer .search-box {
+            flex: 0 0 auto;
+            min-width: 200px;
+        }
+
+        .pdf-viewer-footer .page-navigation,
+        .pdf-viewer-footer .zoom-controls,
+        .pdf-viewer-footer .pdf-viewer-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .page-navigation {
@@ -719,8 +1010,12 @@
             </div>
 
             <div class="nav-section">
-                <div class="nav-section-title">Chapters (1 - 15)</div>
+                <div class="nav-section-title toggle-section" onclick="toggleSection(this)">
+                    <span>Chapters (1 - 15)</span>
+                    <span class="section-toggle-icon" style="transform: rotate(180deg);">▼</span>
+                </div>
                 
+                <div class="chapters-container" style="display: none;">
                 <div class="nav-item toggle-submenu" onclick="toggleSubmenu(this)">
                     <span>📚 Chapter 1</span>
                     <span class="toggle-icon">▶</span>
@@ -855,10 +1150,15 @@
                     <div class="nav-item" onclick="openPDF('chapter15-theory')">📖 Theory</div>
                     <div class="nav-item" onclick="openPDF('chapter15-mcq')">❓ MCQ</div>
                 </div>
+                </div>
             </div>
 
             <div class="nav-section">
-                <div class="nav-section-title">Solved Question Sets</div>
+                <div class="nav-section-title toggle-section" onclick="toggleSection(this)">
+                    <span>Solved Question Sets (1 - 13)</span>
+                    <span class="section-toggle-icon" style="transform: rotate(180deg);">▼</span>
+                </div>
+                <div class="sets-container" style="display: none;">
                 <div class="nav-item" onclick="openPDF('solved-set-1')">📝 Set 1</div>
                 <div class="nav-item" onclick="openPDF('solved-set-2')">📝 Set 2</div>
                 <div class="nav-item" onclick="openPDF('solved-set-3')">📝 Set 3</div>
@@ -871,6 +1171,8 @@
                 <div class="nav-item" onclick="openPDF('solved-set-10')">📝 Set 10</div>
                 <div class="nav-item" onclick="openPDF('solved-set-11')">📝 Set 11</div>
                 <div class="nav-item" onclick="openPDF('solved-set-12')">📝 Set 12</div>
+                <div class="nav-item" onclick="openPDF('solved-set-13')">📝 Set 13</div>
+                </div>
             </div>
 
             <div class="nav-section">
@@ -891,6 +1193,9 @@
             <div style="padding: 20px; margin-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 12px; color: #777;">
                 ❤️ Best of luck with your preparation!<br>
                 <span style="font-size: 11px;">Stay consistent and achieve success.</span>
+                <div style="border-top: 1px solid rgba(255, 255, 255, 0.2); margin-top: 15px; padding-top: 15px; text-align: center; color: #888; font-size: 12px; font-weight: 500;">
+                    MR. Sajan Sah
+                </div>
             </div>
         </div>
 
@@ -906,7 +1211,7 @@
                     <input type="text" placeholder="Search chapters, sets, topics...">
                 </div>
                 <div class="header-icons">
-                    <button class="icon-btn">🌙</button>
+                    <button class="icon-btn" onclick="toggleDarkMode()" id="darkModeBtn">🌙</button>
                     <button class="icon-btn">⚙️</button>
                 </div>
             </div>
@@ -930,14 +1235,14 @@
                         <div class="stat-item">
                             <div class="stat-icon mcq">✓</div>
                             <div class="stat-text">
-                                <h3>3000+</h3>
-                                <p>Practice Questions</p>
+                                <h3>10000+</h3>
+                                <p>MCQs with Solutions</p>
                             </div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-icon solved">📋</div>
                             <div class="stat-text">
-                                <h3>12</h3>
+                                <h3>13</h3>
                                 <p>Detailed Solutions</p>
                             </div>
                         </div>
@@ -972,7 +1277,7 @@
                     <div class="card card-solved" onclick="navigateTo('solved')">
                         <div class="card-icon">📝</div>
                         <div class="card-title">Solved Sets</div>
-                        <div class="card-subtitle">12 Question Sets</div>
+                        <div class="card-subtitle">13 Question Sets</div>
                         <div class="card-meta">→</div>
                     </div>
                     <div class="card card-models" onclick="navigateTo('models')">
@@ -981,25 +1286,13 @@
                         <div class="card-subtitle">Full Length Paper</div>
                         <div class="card-meta">→</div>
                     </div>
-                    <div class="card card-memory" onclick="navigateTo('memory')">
-                        <div class="card-icon">🧠</div>
-                        <div class="card-title">Memory Based</div>
-                        <div class="card-subtitle">Important Questions</div>
-                        <div class="card-meta">→</div>
-                    </div>
-                    <div class="card card-reference" onclick="navigateTo('reference')">
-                        <div class="card-icon">📚</div>
-                        <div class="card-title">References</div>
-                        <div class="card-subtitle">Helpful Resources</div>
-                        <div class="card-meta">→</div>
-                    </div>
                 </div>
             </div>
 
             <!-- Chapters Section -->
             <div class="section-header">
                 <h2 class="section-title">Chapters</h2>
-                <a class="view-all-link">View All</a>
+                <a class="view-all-link" onclick="toggleViewAll('chapters')">View All</a>
             </div>
             <div class="table-container">
                 <table>
@@ -1012,50 +1305,140 @@
                         </tr>
                     </thead>
                     <tbody id="chaptersTable">
-                        <tr>
+                        <tr class="chapter-row">
                             <td><span class="table-chapter-num">01</span></td>
-                            <td><span class="table-chapter-name">Chapter 1: Computer Fundamentals</span></td>
+                            <td><span class="table-chapter-name">Chapter 1: Concepts of Basic Electrical & Electronics Engineering</span></td>
                             <td>
                                 <span class="table-tag">Theory</span>
                                 <span class="table-tag">MCQ</span>
                             </td>
-                            <td><span class="table-action" onclick="openPDF('chapter1-theory')">📖</span></td>
+                            <td><span class="table-action" onclick="openPDF('chapter1-theory')">📖</span><span class="table-action" onclick="openPDF('chapter1-mcq')">📖</span></td>
                         </tr>
-                        <tr>
+                        <tr class="chapter-row">
                             <td><span class="table-chapter-num">02</span></td>
-                            <td><span class="table-chapter-name">Chapter 2: Digital Logic</span></td>
+                            <td><span class="table-chapter-name">Chapter 2: Digital Logic & Microprocessor</span></td>
                             <td>
                                 <span class="table-tag">Theory</span>
                                 <span class="table-tag">MCQ</span>
                             </td>
-                            <td><span class="table-action" onclick="openPDF('chapter2-theory')">📖</span></td>
+                            <td><span class="table-action" onclick="openPDF('chapter2-theory')">📖</span><span class="table-action" onclick="openPDF('chapter2-mcq')">📖</span></td>
                         </tr>
-                        <tr>
+                        <tr class="chapter-row">
                             <td><span class="table-chapter-num">03</span></td>
-                            <td><span class="table-chapter-name">Chapter 3: Data Structures</span></td>
+                            <td><span class="table-chapter-name">Chapter 3: Programming Language & Its Applications</span></td>
                             <td>
                                 <span class="table-tag">Theory</span>
                                 <span class="table-tag">MCQ</span>
                             </td>
-                            <td><span class="table-action" onclick="openPDF('chapter3-theory')">📖</span></td>
+                            <td><span class="table-action" onclick="openPDF('chapter3-theory')">📖</span><span class="table-action" onclick="openPDF('chapter3-mcq')">📖</span></td>
                         </tr>
-                        <tr>
+                        <tr class="chapter-row">
                             <td><span class="table-chapter-num">04</span></td>
-                            <td><span class="table-chapter-name">Chapter 4: Algorithms</span></td>
+                            <td><span class="table-chapter-name">Chapter 4: Computer Organization & Embedded Systems</span></td>
                             <td>
                                 <span class="table-tag">Theory</span>
                                 <span class="table-tag">MCQ</span>
                             </td>
-                            <td><span class="table-action" onclick="openPDF('chapter4-theory')">📖</span></td>
+                            <td><span class="table-action" onclick="openPDF('chapter4-theory')">📖</span><span class="table-action" onclick="openPDF('chapter4-mcq')">📖</span></td>
                         </tr>
-                        <tr>
-                            <td><span class="table-chapter-num">15</span></td>
-                            <td><span class="table-chapter-name">Chapter 15: Professional Practice</span></td>
+                        <tr class="chapter-row hidden">
+                            <td><span class="table-chapter-num">05</span></td>
+                            <td><span class="table-chapter-name">Chapter 5: Concept of Computer Network and Network Security System </span></td>
                             <td>
                                 <span class="table-tag">Theory</span>
                                 <span class="table-tag">MCQ</span>
                             </td>
-                            <td><span class="table-action" onclick="openPDF('chapter15-theory')">📖</span></td>
+                            <td><span class="table-action" onclick="openPDF('chapter5-theory')">📖</span><span class="table-action" onclick="openPDF('chapter5-mcq')">📖</span></td>
+                        </tr>
+                        <tr class="chapter-row hidden">
+                            <td><span class="table-chapter-num">06</span></td>
+                            <td><span class="table-chapter-name">Chapter 6: Theory of Computation & Computer Graphics</span></td>
+                            <td>
+                                <span class="table-tag">Theory</span>
+                                <span class="table-tag">MCQ</span>
+                            </td>
+                            <td><span class="table-action" onclick="openPDF('chapter6-theory')">📖</span><span class="table-action" onclick="openPDF('chapter6-mcq')">📖</span></td>
+                        </tr>
+                        <tr class="chapter-row hidden">
+                            <td><span class="table-chapter-num">07</span></td>
+                            <td><span class="table-chapter-name">Chapter 7: DSA & Database System & OS</span></td>
+                            <td>
+                                <span class="table-tag">Theory</span>
+                                <span class="table-tag">MCQ</span>
+                            </td>
+                            <td><span class="table-action" onclick="openPDF('chapter7-theory')">📖</span><span class="table-action" onclick="openPDF('chapter7-mcq')">📖</span></td>
+                        </tr>
+                        <tr class="chapter-row hidden">
+                            <td><span class="table-chapter-num">08</span></td>
+                            <td><span class="table-chapter-name">Chapter 8: Software Engineering & Object-Oriented Analysis and Design</span></td>
+                            <td>
+                                <span class="table-tag">Theory</span>
+                                <span class="table-tag">MCQ</span>
+                            </td>
+                            <td><span class="table-action" onclick="openPDF('chapter8-theory')">📖</span><span class="table-action" onclick="openPDF('chapter8-mcq')">📖</span></td>
+                        </tr>
+                        <tr class="chapter-row hidden">
+                            <td><span class="table-chapter-num">09</span></td>
+                            <td><span class="table-chapter-name">Chapter 9: Artificial Intelligence & Neural Networks</span></td>
+                            <td>
+                                <span class="table-tag">Theory</span>
+                                <span class="table-tag">MCQ</span>
+                            </td>
+                            <td><span class="table-action" onclick="openPDF('chapter9-theory')">📖</span><span class="table-action" onclick="openPDF('chapter9-mcq')">📖</span></td>
+                        </tr>
+                        <tr class="chapter-row hidden">
+                            <td><span class="table-chapter-num">10</span></td>
+                            <td><span class="table-chapter-name">Chapter 10: Project Planning, Design and Implementation</span></td>
+                            <td>
+                                <span class="table-tag">Theory</span>
+                                <span class="table-tag">MCQ</span>
+                            </td>
+                            <td><span class="table-action" onclick="openPDF('chapter10-theory')">📖</span><span class="table-action" onclick="openPDF('chapter10-mcq')">📖</span></td>
+                        </tr>
+                        <tr class="chapter-row hidden">
+                            <td><span class="table-chapter-num">11</span></td>
+                            <td><span class="table-chapter-name">Chapter 11: Fundamental of Information Technology</span></td>
+                            <td>
+                                <span class="table-tag">Theory</span>
+                                <span class="table-tag">MCQ</span>
+                            </td>
+                            <td><span class="table-action" onclick="openPDF('chapter11-theory')">📖</span><span class="table-action" onclick="openPDF('chapter11-mcq')">📖</span></td>
+                        </tr>
+                        <tr class="chapter-row hidden">
+                            <td><span class="table-chapter-num">12</span></td>
+                            <td><span class="table-chapter-name">Chapter 12: Analysis and Design of Algorithms & Programming</span></td>
+                            <td>
+                                <span class="table-tag">Theory</span>
+                                <span class="table-tag">MCQ</span>
+                            </td>
+                            <td><span class="table-action" onclick="openPDF('chapter12-theory')">📖</span><span class="table-action" onclick="openPDF('chapter12-mcq')">📖</span></td>
+                        </tr>
+                        <tr class="chapter-row hidden">
+                            <td><span class="table-chapter-num">13</span></td>
+                            <td><span class="table-chapter-name">Chapter 13: Java Programming & Web Technology</span></td>
+                            <td>
+                                <span class="table-tag">Theory</span>
+                                <span class="table-tag">MCQ</span>
+                            </td>
+                            <td><span class="table-action" onclick="openPDF('chapter13-theory')">📖</span><span class="table-action" onclick="openPDF('chapter13-mcq')">📖</span></td>
+                        </tr>
+                        <tr class="chapter-row hidden">
+                            <td><span class="table-chapter-num">14</span></td>
+                            <td><span class="table-chapter-name">Chapter 14: Real Time Systems. Distributed Systems, Cloud Computing</span></td>
+                            <td>
+                                <span class="table-tag">Theory</span>
+                                <span class="table-tag">MCQ</span>
+                            </td>
+                            <td><span class="table-action" onclick="openPDF('chapter14-theory')">📖</span><span class="table-action" onclick="openPDF('chapter14-mcq')">📖</span></td>
+                        </tr>
+                        <tr class="chapter-row hidden">
+                            <td><span class="table-chapter-num">15</span></td>
+                            <td><span class="table-chapter-name">Chapter 15: Information Theory & System Coding</span></td>
+                            <td>
+                                <span class="table-tag">Theory</span>
+                                <span class="table-tag">MCQ</span>
+                            </td>
+                            <td><span class="table-action" onclick="openPDF('chapter15-theory')">📖</span><span class="table-action" onclick="openPDF('chapter15-mcq')">📖</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1064,7 +1447,7 @@
             <!-- Solved Question Sets Section -->
             <div class="section-header">
                 <h2 class="section-title">Solved Question Sets</h2>
-                <a class="view-all-link">View All</a>
+                <a class="view-all-link" onclick="toggleViewAll('sets')">View All</a>
             </div>
             <div class="table-container">
                 <table>
@@ -1077,29 +1460,83 @@
                         </tr>
                     </thead>
                     <tbody id="solvedSetsTable">
-                        <tr>
+                        <tr class="set-row">
                             <td><span class="table-chapter-num">01</span></td>
                             <td><span class="table-chapter-name">Solved Question Set 1</span></td>
                             <td><span class="table-tag">With Solutions</span></td>
                             <td><span class="table-action" onclick="openPDF('solved-set-1')">📋</span></td>
                         </tr>
-                        <tr>
+                        <tr class="set-row">
                             <td><span class="table-chapter-num">02</span></td>
                             <td><span class="table-chapter-name">Solved Question Set 2</span></td>
                             <td><span class="table-tag">With Solutions</span></td>
                             <td><span class="table-action" onclick="openPDF('solved-set-2')">📋</span></td>
                         </tr>
-                        <tr>
+                        <tr class="set-row">
                             <td><span class="table-chapter-num">03</span></td>
                             <td><span class="table-chapter-name">Solved Question Set 3</span></td>
                             <td><span class="table-tag">With Solutions</span></td>
                             <td><span class="table-action" onclick="openPDF('solved-set-3')">📋</span></td>
                         </tr>
-                        <tr>
+                        <tr class="set-row">
+                            <td><span class="table-chapter-num">04</span></td>
+                            <td><span class="table-chapter-name">Solved Question Set 4</span></td>
+                            <td><span class="table-tag">With Solutions</span></td>
+                            <td><span class="table-action" onclick="openPDF('solved-set-4')">📋</span></td>
+                        </tr>
+                        <tr class="set-row hidden">
+                            <td><span class="table-chapter-num">05</span></td>
+                            <td><span class="table-chapter-name">Solved Question Set 5</span></td>
+                            <td><span class="table-tag">With Solutions</span></td>
+                            <td><span class="table-action" onclick="openPDF('solved-set-5')">📋</span></td>
+                        </tr>
+                        <tr class="set-row hidden">
+                            <td><span class="table-chapter-num">06</span></td>
+                            <td><span class="table-chapter-name">Solved Question Set 6</span></td>
+                            <td><span class="table-tag">With Solutions</span></td>
+                            <td><span class="table-action" onclick="openPDF('solved-set-6')">📋</span></td>
+                        </tr>
+                        <tr class="set-row hidden">
+                            <td><span class="table-chapter-num">07</span></td>
+                            <td><span class="table-chapter-name">Solved Question Set 7</span></td>
+                            <td><span class="table-tag">With Solutions</span></td>
+                            <td><span class="table-action" onclick="openPDF('solved-set-7')">📋</span></td>
+                        </tr>
+                        <tr class="set-row hidden">
+                            <td><span class="table-chapter-num">08</span></td>
+                            <td><span class="table-chapter-name">Solved Question Set 8</span></td>
+                            <td><span class="table-tag">With Solutions</span></td>
+                            <td><span class="table-action" onclick="openPDF('solved-set-8')">📋</span></td>
+                        </tr>
+                        <tr class="set-row hidden">
+                            <td><span class="table-chapter-num">09</span></td>
+                            <td><span class="table-chapter-name">Solved Question Set 9</span></td>
+                            <td><span class="table-tag">With Solutions</span></td>
+                            <td><span class="table-action" onclick="openPDF('solved-set-9')">📋</span></td>
+                        </tr>
+                        <tr class="set-row hidden">
+                            <td><span class="table-chapter-num">10</span></td>
+                            <td><span class="table-chapter-name">Solved Question Set 10</span></td>
+                            <td><span class="table-tag">With Solutions</span></td>
+                            <td><span class="table-action" onclick="openPDF('solved-set-10')">📋</span></td>
+                        </tr>
+                        <tr class="set-row hidden">
+                            <td><span class="table-chapter-num">11</span></td>
+                            <td><span class="table-chapter-name">Solved Question Set 11</span></td>
+                            <td><span class="table-tag">With Solutions</span></td>
+                            <td><span class="table-action" onclick="openPDF('solved-set-11')">📋</span></td>
+                        </tr>
+                        <tr class="set-row hidden">
                             <td><span class="table-chapter-num">12</span></td>
                             <td><span class="table-chapter-name">Solved Question Set 12</span></td>
                             <td><span class="table-tag">With Solutions</span></td>
                             <td><span class="table-action" onclick="openPDF('solved-set-12')">📋</span></td>
+                        </tr>
+                        <tr class="set-row hidden">
+                            <td><span class="table-chapter-num">13</span></td>
+                            <td><span class="table-chapter-name">Solved Question Set 13</span></td>
+                            <td><span class="table-tag">With Solutions</span></td>
+                            <td><span class="table-action" onclick="openPDF('solved-set-13')">📋</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -1114,27 +1551,27 @@
                     <button class="back-btn" onclick="closePDFViewer()">←</button>
                     <span id="pdfTitle">Document</span>
                 </div>
-                <div class="pdf-viewer-controls">
-                    <button class="control-btn" onclick="openInNewTab()">
-                        📤 Open in new tab
-                    </button>
-                    <button class="control-btn" onclick="downloadPDF()">
-                        ⬇️ Download
-                    </button>
-                    <button class="control-btn">⚙️</button>
-                </div>
             </div>
 
             <!-- PDF Viewer Content -->
             <div class="pdf-viewer-content">
                 <div class="pdf-canvas-container">
-                    <canvas id="pdfCanvas"></canvas>
+                    <div class="pdf-page-wrapper">
+                        <canvas id="pdfCanvas"></canvas>
+                    </div>
+                    <div class="pdf-page-wrapper">
+                        <canvas id="pdfCanvas2"></canvas>
+                    </div>
                 </div>
                 <div class="pdf-thumbnails" id="thumbnailsContainer"></div>
             </div>
 
             <!-- PDF Viewer Footer -->
             <div class="pdf-viewer-footer">
+                <div class="pdf-title-section">
+                    <button class="back-btn" onclick="closePDFViewer()">←</button>
+                    <span id="pdfFooterTitle">Document</span>
+                </div>
                 <div class="search-box">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -1151,12 +1588,35 @@
                 </div>
                 <div class="zoom-controls">
                     <button class="page-nav-btn" onclick="zoomOut()">−</button>
-                    <span style="min-width: 40px; text-align: center; color: #b0b0b0; font-size: 12px;" id="zoomLevel">100%</span>
+                    <span style="min-width: 40px; text-align: center; color: #b0b0b0; font-size: 12px;" id="zoomLevel">50%</span>
                     <button class="page-nav-btn" onclick="zoomIn()">+</button>
+                </div>
+                <div class="pdf-viewer-controls">
+                    <button class="control-btn" onclick="downloadPDF()">
+                        ⬇️ Download
+                    </button>
+                    <button class="control-btn">⚙️</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Modal -->
+        <div class="contact-modal" id="contactModal" onclick="if(event.target === this) closeContactModal()">
+            <div class="contact-modal-content">
+                <div class="contact-modal-icon">📧</div>
+                <h2>Need PDF Access?</h2>
+                <p>To download the study materials, please reach out to us via email. We're here to help!</p>
+                <a href="mailto:sah61509@gmail.com" class="contact-email">sah61509@gmail.com</a>
+                <div style="margin-bottom: 20px;">
+                    <button class="contact-modal-btn" onclick="copyEmailToClipboard()">📋 Copy Email</button>
+                </div>
+                <div class="contact-modal-buttons">
+                    <button class="contact-modal-btn" onclick="closeContactModal()">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script>
         // PDF.js setup
@@ -1164,7 +1624,7 @@
 
         let pdfDoc = null;
         let currentPage = 1;
-        let zoomLevel = 1.5;
+        let zoomLevel = 0.6;
         let currentFileName = '';
 
         function toggleSubmenu(element) {
@@ -1178,12 +1638,40 @@
             }
         }
 
+        function toggleSection(element) {
+            // Find the container div after the title (could be chapters-container, sets-container, etc.)
+            const parentSection = element.parentElement;
+            const containers = parentSection.querySelectorAll('div');
+            let targetContainer = null;
+            
+            // Find the first div that's not the title itself
+            for (let container of containers) {
+                if (container !== parentSection && container.className === '') {
+                    targetContainer = container;
+                    break;
+                }
+            }
+            
+            // Alternative: look for divs with specific container classes
+            if (!targetContainer) {
+                targetContainer = parentSection.querySelector('.chapters-container, .sets-container');
+            }
+            
+            const icon = element.querySelector('.section-toggle-icon');
+            
+            if (targetContainer) {
+                const isHidden = targetContainer.style.display === 'none';
+                targetContainer.style.display = isHidden ? 'block' : 'none';
+                icon.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(180deg)';
+            }
+        }
+
         function openPDF(filename) {
             // Load the PDF and show the viewer
             const pdfPath = `./pdfs/${filename}.pdf`;
             currentFileName = filename;
             currentPage = 1;
-            zoomLevel = 1.5;
+            zoomLevel = 0.6;
             
             // Show PDF viewer, hide dashboard
             document.getElementById('mainContent').style.display = 'none';
@@ -1240,6 +1728,7 @@
             };
             
             document.getElementById('pdfTitle').textContent = titleMap[filename] || 'Document';
+            document.getElementById('pdfFooterTitle').textContent = titleMap[filename] || 'Document';
             
             // Load PDF using PDF.js
             pdfjsLib.getDocument(pdfPath).promise.then(function(pdf) {
@@ -1247,6 +1736,7 @@
                 document.getElementById('totalPages').textContent = pdf.numPages;
                 renderPage(1);
                 generateThumbnails();
+                setTimeout(() => initAntiDownloadProtections(), 200);
             }).catch(function(error) {
                 console.error('Error loading PDF:', error);
                 alert('Error loading PDF. Please check if the file exists.');
@@ -1256,13 +1746,18 @@
         function renderPage(pageNumber) {
             if (!pdfDoc) return;
             
+            const devicePixelRatio = window.devicePixelRatio || 1;
+            
+            // Render left page
             pdfDoc.getPage(pageNumber).then(function(page) {
                 const canvas = document.getElementById('pdfCanvas');
                 const context = canvas.getContext('2d');
-                const viewport = page.getViewport({ scale: zoomLevel });
+                const viewport = page.getViewport({ scale: zoomLevel * devicePixelRatio });
                 
                 canvas.width = viewport.width;
                 canvas.height = viewport.height;
+                canvas.style.width = (viewport.width / devicePixelRatio) + 'px';
+                canvas.style.height = (viewport.height / devicePixelRatio) + 'px';
                 
                 const renderContext = {
                     canvasContext: context,
@@ -1270,24 +1765,54 @@
                 };
                 
                 page.render(renderContext);
-                
-                // Update page info
-                document.getElementById('currentPage').textContent = pageNumber;
-                currentPage = pageNumber;
-                
-                // Update thumbnail selection
-                document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-                    if (index + 1 === pageNumber) {
-                        thumb.classList.add('active');
-                    } else {
-                        thumb.classList.remove('active');
-                    }
-                });
-                
-                // Update navigation button states
-                document.getElementById('prevBtn').disabled = pageNumber === 1;
-                document.getElementById('nextBtn').disabled = pageNumber === pdfDoc.numPages;
             });
+            
+            // Render right page (next page)
+            if (pageNumber < pdfDoc.numPages) {
+                pdfDoc.getPage(pageNumber + 1).then(function(page) {
+                    const canvas = document.getElementById('pdfCanvas2');
+                    const context = canvas.getContext('2d');
+                    const viewport = page.getViewport({ scale: zoomLevel * devicePixelRatio });
+                    
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    canvas.style.width = (viewport.width / devicePixelRatio) + 'px';
+                    canvas.style.height = (viewport.height / devicePixelRatio) + 'px';
+                    
+                    const renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    
+                    page.render(renderContext);
+                });
+            } else {
+                // Clear right canvas if it's the last page
+                const canvas = document.getElementById('pdfCanvas2');
+                canvas.width = 0;
+                canvas.height = 0;
+            }
+            
+            // Update page info
+            const nextPage = pageNumber + 1 <= pdfDoc.numPages ? pageNumber + 1 : '';
+            document.getElementById('currentPage').textContent = pageNumber + (nextPage ? ' - ' + nextPage : '');
+            currentPage = pageNumber;
+            
+            // Update thumbnail selection
+            document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+                if (index + 1 === pageNumber || index + 1 === pageNumber + 1) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+            
+            // Update navigation button states
+            document.getElementById('prevBtn').disabled = pageNumber === 1;
+            document.getElementById('nextBtn').disabled = pageNumber >= pdfDoc.numPages;
+            
+            // Apply anti-download protections
+            setTimeout(() => initAntiDownloadProtections(), 100);
         }
 
         function generateThumbnails() {
@@ -1313,10 +1838,13 @@
                 pageNum.style.color = '#999';
                 
                 pdfDoc.getPage(i).then(function(page) {
+                    const devicePixelRatio = window.devicePixelRatio || 1;
                     const context = canvas.getContext('2d');
-                    const viewport = page.getViewport({ scale: 0.5 });
+                    const viewport = page.getViewport({ scale: 0.5 * devicePixelRatio });
                     canvas.width = viewport.width;
                     canvas.height = viewport.height;
+                    canvas.style.width = (viewport.width / devicePixelRatio) + 'px';
+                    canvas.style.height = (viewport.height / devicePixelRatio) + 'px';
                     
                     const renderContext = {
                         canvasContext: context,
@@ -1331,26 +1859,26 @@
 
         function previousPage() {
             if (currentPage > 1) {
-                renderPage(currentPage - 1);
+                renderPage(Math.max(1, currentPage - 2));
             }
         }
 
         function nextPage() {
             if (pdfDoc && currentPage < pdfDoc.numPages) {
-                renderPage(currentPage + 1);
+                renderPage(currentPage + 2);
             }
         }
 
         function zoomIn() {
-            zoomLevel += 0.25;
-            document.getElementById('zoomLevel').textContent = Math.round(zoomLevel * 100 / 1.5) + '%';
+            zoomLevel += 0.1;
+            document.getElementById('zoomLevel').textContent = Math.round(zoomLevel * 100) + '%';
             renderPage(currentPage);
         }
 
         function zoomOut() {
-            if (zoomLevel > 0.5) {
-                zoomLevel -= 0.25;
-                document.getElementById('zoomLevel').textContent = Math.round(zoomLevel * 100 / 1.5) + '%';
+            if (zoomLevel > 0.2) {
+                zoomLevel -= 0.1;
+                document.getElementById('zoomLevel').textContent = Math.round(zoomLevel * 100) + '%';
                 renderPage(currentPage);
             }
         }
@@ -1363,18 +1891,34 @@
         }
 
         function openInNewTab() {
-            const pdfPath = `./pdfs/${currentFileName}.pdf`;
-            window.open(pdfPath, '_blank');
+            // Disabled - prevent opening PDF in new tab to block downloads
         }
 
         function downloadPDF() {
-            const pdfPath = `./pdfs/${currentFileName}.pdf`;
-            const link = document.createElement('a');
-            link.href = pdfPath;
-            link.download = `${currentFileName}.pdf`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            showContactModal();
+        }
+
+        function showContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) {
+                modal.classList.add('show');
+            }
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            if (modal) {
+                modal.classList.remove('show');
+            }
+        }
+
+        function copyEmailToClipboard() {
+            const email = 'sah61509@gmail.com';
+            navigator.clipboard.writeText(email).then(function() {
+                alert('Email copied to clipboard!');
+            }).catch(function(err) {
+                console.error('Could not copy email: ', err);
+            });
         }
 
         function searchPDF() {
@@ -1385,17 +1929,88 @@
             }
         }
 
+        function toggleViewAll(section) {
+            if (section === 'chapters') {
+                const rows = document.querySelectorAll('.chapter-row.hidden');
+                rows.forEach(row => row.classList.toggle('show'));
+            } else if (section === 'sets') {
+                const rows = document.querySelectorAll('.set-row.hidden');
+                rows.forEach(row => row.classList.toggle('show'));
+            }
+        }
+
         function navigateTo(section) {
             console.log('Navigate to:', section);
             // Add navigation logic here
         }
 
-        // Initialize - expand Chapter 1 on load
+        // Anti-download protections
+        function initAntiDownloadProtections() {
+            const pdfCanvases = document.querySelectorAll('#pdfCanvas, #pdfCanvas2');
+            
+            pdfCanvases.forEach(canvas => {
+                // Disable right-click context menu
+                canvas.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+                
+                // Disable drag and drop
+                canvas.addEventListener('dragstart', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+            });
+        }
+        
+        // Disable printing via keyboard
+        document.addEventListener('keydown', function(e) {
+            // Block Ctrl+P (Print)
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 'P')) {
+                const pdfViewer = document.getElementById('pdfViewerContainer');
+                if (pdfViewer && pdfViewer.classList.contains('active')) {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        }, true);
+        
+        // Override print function
+        window.print = function() {
+            return false;
+        };
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            const body = document.body;
+            const btn = document.getElementById('darkModeBtn');
+            
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                btn.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            } else {
+                btn.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Load saved theme on page load
         document.addEventListener('DOMContentLoaded', function() {
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                const btn = document.getElementById('darkModeBtn');
+                if (btn) btn.textContent = '☀️';
+            }
+            
             // Add id to main-content for toggling
             const mainContent = document.querySelector('.main-content');
             mainContent.id = 'mainContent';
             
+            // Expand first chapter
             const firstToggle = document.querySelector('.toggle-submenu');
             if (firstToggle) {
                 const submenu = firstToggle.nextElementSibling;
