@@ -120,6 +120,19 @@
             background: rgba(157, 78, 221, 0.08);
         }
 
+        body.light-mode .pdf-loading {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        body.light-mode .spinner {
+            border-color: rgba(157, 78, 221, 0.2);
+            border-top-color: #9d4edd;
+        }
+
+        body.light-mode .loading-text {
+            color: #333;
+        }
+
         .container {
             display: flex;
             min-height: 100vh;
@@ -690,6 +703,43 @@
 
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(157, 78, 221, 0.6);
+        }
+
+        /* Loading Spinner */
+        .pdf-loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1001;
+            display: none;
+        }
+
+        .pdf-loading.show {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(157, 78, 221, 0.3);
+            border-top: 4px solid #9d4edd;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: #e0e0e0;
+            font-size: 14px;
+            text-align: center;
         }
 
         /* PDF Viewer Styles */
@@ -1543,6 +1593,12 @@
             </div>
         </div>
 
+        <!-- PDF Loading Indicator -->
+        <div class="pdf-loading" id="pdfLoading">
+            <div class="spinner"></div>
+            <div class="loading-text">Loading PDF...</div>
+        </div>
+
         <!-- PDF Viewer Container -->
         <div class="pdf-viewer-container" id="pdfViewerContainer">
             <!-- PDF Viewer Header -->
@@ -1626,6 +1682,8 @@
         let currentPage = 1;
         let zoomLevel = 0.6;
         let currentFileName = '';
+        let pdfCache = {};
+        let preloadQueue = [];
 
         function toggleSubmenu(element) {
             const submenu = element.nextElementSibling;
@@ -1667,11 +1725,14 @@
         }
 
         function openPDF(filename) {
+            // Show loading indicator
+            document.getElementById('pdfLoading').classList.add('show');
+            
             // Load the PDF and show the viewer
             const pdfPath = `https://cdn.jsdelivr.net/gh/Mr-Sajan-Kumar-Sah/KUMAR@main/pdfs/${filename}.pdf`;
             currentFileName = filename;
             currentPage = 1;
-            zoomLevel = 0.6;
+            zoomLevel = 0.4; // Lower initial quality for faster first render
             
             // Show PDF viewer, hide dashboard
             document.getElementById('mainContent').style.display = 'none';
@@ -1730,17 +1791,38 @@
             document.getElementById('pdfTitle').textContent = titleMap[filename] || 'Document';
             document.getElementById('pdfFooterTitle').textContent = titleMap[filename] || 'Document';
             
-            // Load PDF using PDF.js
-            pdfjsLib.getDocument(pdfPath).promise.then(function(pdf) {
-                pdfDoc = pdf;
-                document.getElementById('totalPages').textContent = pdf.numPages;
+            // Load PDF using PDF.js with caching
+            if (pdfCache[filename]) {
+                // Use cached PDF
+                pdfDoc = pdfCache[filename];
+                document.getElementById('totalPages').textContent = pdfDoc.numPages;
                 renderPage(1);
                 generateThumbnails();
+                document.getElementById('pdfLoading').classList.remove('show');
                 setTimeout(() => initAntiDownloadProtections(), 200);
-            }).catch(function(error) {
-                console.error('Error loading PDF:', error);
-                alert('Error loading PDF. Please check if the file exists.');
-            });
+            } else {
+                // Load and cache PDF
+                pdfjsLib.getDocument(pdfPath).promise.then(function(pdf) {
+                    pdfDoc = pdf;
+                    pdfCache[filename] = pdf; // Cache for future use
+                    document.getElementById('totalPages').textContent = pdf.numPages;
+                    renderPage(1);
+                    generateThumbnails();
+                    document.getElementById('pdfLoading').classList.remove('show');
+                    
+                    // Gradually increase quality
+                    setTimeout(() => {
+                        zoomLevel = 0.6;
+                        renderPage(1);
+                    }, 500);
+                    
+                    setTimeout(() => initAntiDownloadProtections(), 200);
+                }).catch(function(error) {
+                    console.error('Error loading PDF:', error);
+                    document.getElementById('pdfLoading').classList.remove('show');
+                    alert('Error loading PDF. Please check if the file exists.');
+                });
+            }
         }
 
         function renderPage(pageNumber) {
@@ -1887,6 +1969,7 @@
             // Hide PDF viewer, show dashboard
             document.getElementById('pdfViewerContainer').classList.remove('active');
             document.getElementById('mainContent').style.display = 'block';
+            document.getElementById('pdfLoading').classList.remove('show');
             pdfDoc = null;
         }
 
@@ -1926,6 +2009,18 @@
             const searchTerm = document.getElementById('searchInput').value;
             if (searchTerm.length > 0) {
                 console.log('Searching for:', searchTerm);
+            }
+        }
+
+        function preloadPDF(filename) {
+            // Preload PDF in background if not already cached
+            if (!pdfCache[filename]) {
+                const pdfPath = `https://cdn.jsdelivr.net/gh/Mr-Sajan-Kumar-Sah/KUMAR@main/pdfs/${filename}.pdf`;
+                pdfjsLib.getDocument(pdfPath).promise.then(function(pdf) {
+                    pdfCache[filename] = pdf;
+                }).catch(function(err) {
+                    console.log('Preload failed for:', filename);
+                });
             }
         }
 
@@ -2017,6 +2112,16 @@
                 submenu.style.display = 'block';
                 firstToggle.querySelector('.toggle-icon').style.transform = 'rotate(90deg)';
             }
+            
+            // Add preload on hover for all PDF links
+            document.querySelectorAll('[onclick*="openPDF"]').forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    const match = this.getAttribute('onclick').match(/openPDF\('([^']+)'\)/);
+                    if (match) {
+                        preloadPDF(match[1]);
+                    }
+                });
+            });
         });
     </script>
 </body>
