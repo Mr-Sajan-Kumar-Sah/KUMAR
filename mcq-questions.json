@@ -9364,7 +9364,7 @@
     "id": 1171,
     "question": "UDP is better than TCP when:",
     "options": ["Error in transmission is likely to be higher", "There should not be breakage in transmission", "Loss in transmission is not considered critical", "All the above"],
-    "correctAnswer": 2,
+    "correctAnswer": 3,
     "category": "Computer Networks",
     "difficulty": "Medium"
   },

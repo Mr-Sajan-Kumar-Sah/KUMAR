@@ -2371,11 +2371,12 @@
                 <div class="quiz-info">
                     <div class="quiz-title">💻 NEC Mock Test 2026</div>
                     <div class="quiz-stats">
-                        <div class="quiz-stat">Question: <span class="quiz-stat-value" id="quizCurrentQuestion">1</span>/100</div>
-                        <div class="quiz-stat">Marks: <span class="quiz-stat-value" id="quizMarks">0</span>/100</div>
-                    </div>
+                	<div class="quiz-stat">Question: <span class="quiz-stat-value" id="quizCurrentQuestion">1</span>/100</div>
+                	<!-- Live marks are hidden during the test; results are shown after submission -->
+                	</div>
                 </div>
                 <div class="quiz-timer">⏱️ <span id="quizTimer">02:00:00</span></div>
+                <button class="quiz-footer-btn" style="background: linear-gradient(135deg,#10b981 0%,#059669 100%); border: 1px solid rgba(16,185,129,0.3); color: #e6fffa; margin-right:8px;" onclick="submitQuiz()">Submit</button>
                 <button class="quiz-footer-btn" style="background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.5); color: #fca5a5;" onclick="exitQuiz()">Exit</button>
             </div>
 
@@ -2408,9 +2409,19 @@
                 <p>You completed the NEC mock test. Review your result summary below and choose whether to continue reviewing your answers or exit to the main dashboard.</p>
                 <div class="quiz-results-summary">
                     <div class="quiz-result-metric">
-                        <h3>Score</h3>
+                        <h3>Obtained Marks</h3>
                         <p id="resultsScore">0/100</p>
                     </div>
+                    <div class="quiz-result-metric">
+                        <h3>Full Marks</h3>
+                        <p id="resultsFullMarks">100</p>
+                    </div>
+                    <div class="quiz-result-metric">
+                        <h3>Attended</h3>
+                        <p id="resultsAttended">0</p>
+                    </div>
+                </div>
+                <div class="quiz-results-summary">
                     <div class="quiz-result-metric">
                         <h3>Percentage</h3>
                         <p id="resultsPercentage">0%</p>
@@ -2419,21 +2430,12 @@
                         <h3>Time Left</h3>
                         <p id="resultsTime">00:00:00</p>
                     </div>
-                </div>
-                <div class="quiz-results-summary">
-                    <div class="quiz-result-metric">
-                        <h3>Correct</h3>
-                        <p id="resultsCorrect">0</p>
-                    </div>
-                    <div class="quiz-result-metric">
-                        <h3>Incorrect</h3>
-                        <p id="resultsIncorrect">0</p>
-                    </div>
                     <div class="quiz-result-metric">
                         <h3>Questions</h3>
                         <p>100</p>
                     </div>
                 </div>
+                <!-- Removed Correct/Incorrect/Questions summary cards per request -->
                 <div class="quiz-results-actions">
                     <button class="quiz-results-btn-review" onclick="reviewAnswers()">Review Answers</button>
                     <button class="quiz-results-btn-close" onclick="exitQuiz()">Exit to Dashboard</button>
@@ -2914,6 +2916,60 @@
         // QUIZ SYSTEM - Mock Test Implementation
         // ============================================
 
+                // Ensure fullscreen before starting test
+                function enterFullscreenRequired() {
+                    return new Promise((resolve, reject) => {
+                        const el = document.documentElement;
+                        const request = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+                        if (!request) {
+                            // Browser doesn't support fullscreen API; allow start but warn
+                            resolve();
+                            return;
+                        }
+
+                        // If already fullscreen, resolve immediately
+                        if (document.fullscreenElement) {
+                            resolve();
+                            return;
+                        }
+
+                        const onChange = () => {
+                            if (document.fullscreenElement) {
+                                document.removeEventListener('fullscreenchange', onChange);
+                                resolve();
+                            }
+                        };
+
+                        document.addEventListener('fullscreenchange', onChange);
+
+                        try {
+                            request.call(el).catch(() => {
+                                document.removeEventListener('fullscreenchange', onChange);
+                                reject(new Error('Fullscreen request denied'));
+                            });
+                        } catch (err) {
+                            document.removeEventListener('fullscreenchange', onChange);
+                            reject(err);
+                        }
+                    });
+                }
+
+                // Monitor fullscreen exit during test and attempt to re-enter or submit
+                document.addEventListener('fullscreenchange', () => {
+                    const quizVisible = document.getElementById('quizContainer') && document.getElementById('quizContainer').classList.contains('show');
+                    if (!document.fullscreenElement && quizVisible) {
+                        // User exited fullscreen during test
+                        const tryReenter = confirm('The test must run in fullscreen. Click OK to re-enter fullscreen or Cancel to submit the test.');
+                        if (tryReenter) {
+                            const el = document.documentElement;
+                            const request = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+                            if (request) request.call(el).catch(() => { alert('Could not re-enter fullscreen. The test will be submitted.'); submitQuiz(); });
+                        } else {
+                            submitQuiz();
+                        }
+                    }
+                });
+
         let quizState = {
             questions: [],
             currentQuestion: 0,
@@ -2936,6 +2992,14 @@
 
         async function startMockTest() {
             try {
+                // Require fullscreen before loading the test
+                try {
+                    await enterFullscreenRequired();
+                } catch (err) {
+                    alert('Please allow fullscreen to start the test. Test will not start without fullscreen.');
+                    return;
+                }
+
                 const response = await fetch('mcq-questions.json');
                 if (!response.ok) throw new Error('Failed to load questions');
 
@@ -2983,7 +3047,6 @@
             document.getElementById('quizCurrentQuestion').textContent = currentNum;
             document.getElementById('quizQuestionNum').textContent = `Question ${currentNum}`;
             document.getElementById('quizQuestionText').textContent = question.question;
-            document.getElementById('quizMarks').textContent = calculateScore();
 
             const progressPercent = (currentNum / 100) * 100;
             document.getElementById('quizProgressBar').style.width = progressPercent + '%';
@@ -3100,6 +3163,10 @@
             }
             const score = calculateScore();
             const percentage = ((score / 100) * 100).toFixed(2);
+            // Exit fullscreen when submitting so results modal is visible
+            if (document.fullscreenElement && document.exitFullscreen) {
+                document.exitFullscreen().catch(() => {});
+            }
             document.getElementById('quizContainer').classList.remove('show');
             showQuizResults(score, percentage);
         }
@@ -3117,9 +3184,10 @@
         function showQuizResults(score, percentage) {
             const modal = document.getElementById('quizResultsModal');
             document.getElementById('resultsScore').textContent = `${score}/100`;
+            document.getElementById('resultsFullMarks').textContent = '100';
+            const attended = Object.keys(quizState.selectedAnswers || {}).length;
+            document.getElementById('resultsAttended').textContent = attended;
             document.getElementById('resultsPercentage').textContent = `${percentage}%`;
-            document.getElementById('resultsCorrect').textContent = score;
-            document.getElementById('resultsIncorrect').textContent = 100 - score;
             document.getElementById('resultsTime').textContent = document.getElementById('quizTimer').textContent;
             modal.classList.add('show');
         }
@@ -3138,6 +3206,9 @@
         function exitQuiz() {
             if (quizState.timerIntervalId) {
                 clearInterval(quizState.timerIntervalId);
+            }
+            if (document.fullscreenElement && document.exitFullscreen) {
+                document.exitFullscreen().catch(() => {});
             }
             document.getElementById('quizContainer').classList.remove('show');
             document.getElementById('mainContent').style.display = 'block';
